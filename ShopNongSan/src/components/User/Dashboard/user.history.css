@@ -1,0 +1,25 @@
+.user-history-container {
+  display: grid;
+  grid-template-columns: 0.5fr 2.5fr;
+}
+
+.user-history-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-history-title div Button {
+  background-color: transparent;
+  color: rgb(10, 121, 10);
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.user-history-title-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

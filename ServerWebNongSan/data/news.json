@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Orange Juice Prices Rise Amid Supply Shortages",
+    "date": "2023-10-01",
+    "content": "Due to recent supply shortages, the prices of orange juice have seen a significant increase. Experts attribute this rise to adverse weather conditions affecting orange crops in major producing regions.",
+    "author": "Jane Doe",
+    "tags": ["food", "orange", "juice"],
+    "category": "food",
+    "banner": "/public/News/orrange.png",
+    "numberComment": 65
+  },
+  {
+    "title": "Egg Prices Stabilize After Recent Fluctuations",
+    "date": "2023-09-28",
+    "content": "After a period of volatility, egg prices have stabilized. Farmers report that improved production techniques and better feed quality have contributed to this stabilization.",
+    "author": "John Smith",
+    "tags": ["agriculture", "harvest", "local news"],
+    "category": "Food",
+    "banner": "/public/News/egg_day.png",
+    "numberComment": 45
+  },
+  {
+    "title": "Salad Consumption on the Rise",
+    "date": "2023-09-25",
+    "content": "A new organic market has opened its doors in the downtown area, offering a wide range of fresh produce and organic products. The market aims to promote healthy eating and support local farmers.",
+    "author": "Emily Johnson",
+    "tags": ["organic", "market", "health"],
+    "category": "Food",
+    "banner": "/public/News/salad_day.png",
+    "numberComment": 30
+  }
+]

@@ -1,0 +1,239 @@
+import { useEffect, useState } from "react";
+import NavBar from "../../components/NavBar/navbar";
+import "./NewBlog.css";
+import { useNavigate, useParams } from "react-router-dom";
+
+const EditBlog = () => {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
+  const [tags, setTags] = useState("");
+  const [category, setCategory] = useState("");
+  const [banner, setBanner] = useState("");
+  const [numberComments, setNumberComments] = useState("");
+  const [links, setLinks] = useState("");
+  const [message, setMessage] = useState(null);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const handleFileChange = (e) => {
+    setBanner(Array.from(e.target.files));
+  };
+  const { blogId } = useParams();
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/admin/blogs/${blogId}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch product data");
+        }
+        const data = await res.json();
+        if (data) {
+          setTitle(data.title || "");
+          setDate(data.date || "");
+          setContent(data.content || "");
+          setAuthor(data.author || "");
+          setTags(data.tags || "");
+          setCategory(data.category || "");
+          setNumberComments(data.numberComments || 0);
+          setLinks(data.links || "");
+
+          setErrors({});
+        } else {
+          console.error("No product data found for the given ID");
+        }
+      } catch (err) {
+        console.error("Error when fetch product: ", err);
+      }
+    };
+    fetchBlog();
+  }, [blogId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !content ||
+      !category ||
+      !author ||
+      !tags ||
+      !title ||
+      !date ||
+      !errors ||
+      !links
+    ) {
+      setErrors({
+        content: !content ? "Content is required" : "",
+        category: !category ? "Category is required" : "",
+        author: !author ? "Author is required" : "",
+        tags: !tags ? "Tags are required" : "",
+        title: !title ? "Title is required" : "",
+        date: !date ? "Date is required" : "",
+        errors: "Please fill in all fields",
+        links: !links ? "Links are required" : "",
+      });
+      return;
+    }
+    setErrors({});
+
+    try {
+      const formData = new FormData();
+      for (let i = 0; i < banner.length; i++) {
+        formData.append("images", banner[i]);
+      }
+
+      const uploadResponse = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/admin/upload-multiple`,
+        {
+          method: "POST",
+          credentials: "include",
+          body: formData,
+        }
+      );
+      const uploadData = await uploadResponse.json();
+      if (!uploadResponse.ok) {
+        throw new Error(uploadData.error || "Failed to upload image");
+      }
+      const imageUrl = uploadData.filePaths;
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/admin/blog/${blogId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title: title,
+            date,
+            content,
+            author,
+            tags,
+            category,
+            banner: imageUrl,
+            numberComments: numberComments,
+            links,
+          }),
+          credentials: "include",
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to update blog");
+      }
+      alert("Blog updated successfully!");
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating blog:", error);
+      setMessage("Error creating blog: " + error.message);
+    }
+  };
+
+  return (
+    <div className="dashboard-container-main min-h-screen flex bg-white">
+      <div className="col-span-1 md:col-span-1">
+        <NavBar />
+      </div>
+      <div
+        className="col-span-1 md:col-span-4 p-6 dashboard-container"
+        style={{ width: "100%" }}
+      >
+        <div
+          className="transactions bg-white shadow-md rounded-lg p-7 shadow-md mt-6"
+          style={{ width: "100%", height: "75vh" }}
+        >
+          <h2 className="text-2xl font-bold text-left mt-4 mb-6">Edit BLog</h2>
+          {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-row gap-2">
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter Title"
+              ></input>
+              <input
+                type="text"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder="Enter Category"
+              ></input>
+              <input
+                type="text"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                placeholder="Enter Author"
+              ></input>
+            </div>
+            <div className="flex flex-row gap-2">
+              <input
+                type="text"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+                placeholder="Enter Tags"
+              ></input>
+              <input
+                type="number"
+                value={numberComments}
+                onChange={(e) => setNumberComments(e.target.value)}
+                placeholder="Enter Number of Comments"
+              ></input>
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="Enter Date"
+              ></input>
+            </div>
+            <input>
+              <input
+                type="text"
+                value={links}
+                onChange={(e) => setLinks(e.target.value)}
+                placeholder="Enter Links"
+              ></input>
+            </input>
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Enter Content"
+              rows="4"
+              cols={50}
+              className="border border-gray-300 rounded px-3 py-2"
+              style={{ width: "100%", resize: "none" }}
+            ></textarea>
+            <div className="flex flex-col gap-2">
+              <p>Upload image (1-5 images)</p>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                className="border border-gray-300 p-2 rounded"
+                multiple
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-white bg-blue-500 hover:bg-blue-600 text-left rounded"
+              style={{
+                padding: "0.5rem 1rem",
+                fontSize: "1rem",
+                left: "0",
+                width: "fit-content",
+              }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default EditBlog;

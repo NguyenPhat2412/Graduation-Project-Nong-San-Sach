@@ -1,0 +1,98 @@
+.dashboard-container {
+  margin-top: 90px;
+  padding-top: 30px;
+  border-top: 1px solid #e5e7eb;
+  width: 100%;
+  padding-left: 100px;
+  padding-right: 50px;
+}
+
+.dashboard-container-main {
+}
+
+.navbar {
+  margin-bottom: 50px;
+}
+
+.transactions h1 {
+  padding-bottom: 10px;
+}
+
+.transactions {
+  margin-top: 20px;
+  padding: 20px;
+  height: 600px;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-list th {
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.transactions-list td {
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.dashboard-page {
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: 0;
+  margin-right: 70px;
+  padding-bottom: 30px;
+}
+
+.dashboard-navbar-list {
+  padding: 5px;
+}
+.dashboard-navbar-list p {
+  font-size: 30px;
+  font-weight: 600;
+  color: #8b5cf6;
+  margin-left: 10px;
+  margin-top: 10px;
+  padding-left: 60px;
+}
+
+.dashboard-navbar-list i {
+  padding-left: 220px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4b5563;
+  padding-top: 20px;
+}
+
+.stat-item div i {
+  font-size: 18px;
+  color: #6b7280;
+  padding-top: 20px;
+}
+
+.dashboard-stats {
+  margin-bottom: 50px;
+}
+
+.table-content thead tr th {
+  padding: 10px 10px;
+}
+
+.table-content tbody tr td {
+  padding: 10px 10px;
+}

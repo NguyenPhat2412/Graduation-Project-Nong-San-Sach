@@ -1,0 +1,34 @@
+.register-information-section {
+  background-color: #fff;
+}
+
+.back-to-home {
+  background-color: #2ba10e;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-to-home:hover {
+  background-color: #237c0a;
+}
+
+.app-404-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-404-container main {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error-message {
+  font-size: 1.5rem;
+  color: #333;
+  padding: 10px 20px;
+}

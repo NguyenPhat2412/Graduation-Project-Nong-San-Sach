@@ -1,0 +1,35 @@
+{
+  "brand": {
+    "logo": "Group.png",
+    "title": "Nông Sản Sạch",
+    "description": "Nơi cung cấp cho bạn thực phẩm hữu cơ tươi ngon được giao trực tiếp từ những người nông dân chăm chỉ."
+  },
+  "sections": [
+    {
+      "title": "Tài Khoản Của Tôi",
+      "links": [
+        { "label": "Tài Khoản", "url": "/tai-khoan" },
+        { "label": "Lịch Sử Đặt Hàng", "url": "/lich-su" },
+        { "label": "Giỏ Hàng", "url": "/gio-hang" },
+        { "label": "Danh sách yêu thích", "url": "/yeu-thich" }
+      ]
+    },
+    {
+      "title": "Trợ Giúp",
+      "links": [
+        { "label": "Liên Hệ", "url": "/lien-he" },
+        { "label": "Câu Hỏi thường gặp", "url": "/faq" },
+        { "label": "Điều Khoản & Dịch Vụ", "url": "/dieu-khoan" },
+        { "label": "Chính Sách", "url": "/chinh-sach" }
+      ]
+    },
+    {
+      "title": "Thông Tin",
+      "links": [
+        { "label": "Về chúng Tôi", "url": "/ve-chung-toi" },
+        { "label": "Cửa Hàng", "url": "/cua-hang" },
+        { "label": "Sản Phẩm", "url": "/san-pham" }
+      ]
+    }
+  ]
+}

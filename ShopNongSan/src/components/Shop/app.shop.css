@@ -1,0 +1,5 @@
+.shop-container-section {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-top: 20px;
+}

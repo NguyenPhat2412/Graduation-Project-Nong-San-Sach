@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+.navbar-address {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.navbar-address p {
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.navbar-setting {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-between-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .navbar-between {
+  background-color: gray;
+} */
+.navbar-between-content {
+  .navbar-logo,
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+  }
+  .navbar-logo img {
+    height: 50px;
+    width: 50px;
+  }
+  .navbar-logo p {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-left: 10px;
+    font-family: "Pacifico", cursive;
+  }
+  .navbar-icons {
+    gap: 10px;
+  }
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbar-menu p {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  cursor: pointer;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.navbar-between-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-between-menu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.navbar-search {
+  border: 2px solid #2bff00;
+  border-radius: 30px;
+}
+
+.navbar-search input {
+  padding: 7px;
+  border: none;
+}
+.navbar-search i {
+  padding: 10px;
+}
+.navbar-search input:focus {
+  outline: none;
+}
+
+.navbar-search Button {
+  padding: 10px;
+  background-color: #2bff00;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.navbar-search Button:hover {
+  background-color: #28c700;
+}

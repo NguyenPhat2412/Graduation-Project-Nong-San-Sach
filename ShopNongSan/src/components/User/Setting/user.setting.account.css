@@ -1,0 +1,38 @@
+.user-setting-account-form {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+.user-setting-account {
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+form .user-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form .user-avatar-section input {
+  display: none;
+}
+
+form .user-avatar-section Button {
+  background-color: transparent;
+  margin-top: 10px;
+  color: #28a745;
+  padding: 10px 20px;
+  border: 2px solid #28a745;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+form .user-avatar-section Button:hover {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}

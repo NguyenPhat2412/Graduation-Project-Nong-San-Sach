@@ -1,0 +1,15 @@
+.product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.product-title div:nth-child(2) {
+  color: #fff;
+  background-color: #41f713;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transform: translateY(-5px);
+}

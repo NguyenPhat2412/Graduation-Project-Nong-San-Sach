@@ -1,0 +1,10 @@
+.product-image img {
+  width: 100%;
+  height: auto;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

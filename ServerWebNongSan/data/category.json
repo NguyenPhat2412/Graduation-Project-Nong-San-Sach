@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Fresh Vegetable",
+    "category": "fresh_vegetable"
+  },
+  {
+    "name": "Organic",
+    "category": "organic"
+  },
+  {
+    "name": "Food",
+    "category": "food"
+  },
+  {
+    "name": "Agriculture",
+    "category": "agriculture"
+  },
+  {
+    "name": "Local News",
+    "category": "local news"
+  },
+  {
+    "name": "Health",
+    "category": "health"
+  }
+]

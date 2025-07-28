@@ -1,0 +1,26 @@
+[
+  {
+    "img": "public/Comment/Vector.png",
+    "avatar": "public/Avatar/Image.png",
+    "name": "Robert Fox",
+    "position": "customer",
+    "content": "Tôi đã mua sản phẩm này và tôi rất hài lòng với chất lượng của nó. Dịch vụ giao hàng cũng rất nhanh chóng và chuyên nghiệp. Tôi chắc chắn sẽ mua hàng ở đây lần nữa!",
+    "rating": 5
+  },
+  {
+    "img": "public/Comment/Vector.png",
+    "avatar": "public/Avatar/Image-1.png",
+    "name": "Jane Doe",
+    "position": "customer",
+    "content": "Sản phẩm tuyệt vời! Tôi đã mua một số loại rau và trái cây, và chúng đều rất tươi ngon. Dịch vụ khách hàng cũng rất tốt.",
+    "rating": 4
+  },
+  {
+    "img": "public/Comment/Vector.png",
+    "avatar": "public/Avatar/Image-2.png",
+    "name": "John Smith",
+    "position": "customer",
+    "content": "Tôi rất thích mua sắm ở đây. Các sản phẩm đều hữu cơ và an toàn cho sức khỏe. Tôi sẽ giới thiệu cho bạn bè của mình.",
+    "rating": 5
+  }
+]

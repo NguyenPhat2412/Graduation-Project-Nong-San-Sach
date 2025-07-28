@@ -1,0 +1,88 @@
+.view-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.view-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.view-info p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.view-subtitle {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #444;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.view-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+.view-table th,
+.view-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.view-table th {
+  background-color: #f8f8f8;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.view-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.view-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.view-loading,
+.view-error {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  color: gray;
+}
+
+.view-error {
+  color: red;
+}
+
+.view-back-btn {
+  margin-top: 30px;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.view-back-btn:hover {
+  background-color: #0056b3;
+}

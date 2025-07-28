@@ -1,0 +1,41 @@
+@import "tailwindcss";
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,43 @@
+.dashboard {
+  padding: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav {
+  border-right: 1px solid #e5e7eb;
+  max-height: 100vh;
+}
+.dashboard-list {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.dashboard-list i {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(0, 255, 115) !important;
+}
+
+.navbar-list {
+  margin-top: 20px;
+}
+
+.main-list {
+  padding-right: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-list i {
+  flex: 1;
+  text-align: left;
+}
+
+.main-list p {
+  flex: 3;
+  text-align: left;
+}

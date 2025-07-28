@@ -1,0 +1,21 @@
+.register-container {
+  width: 25%;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+}
+
+.register-container p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  margin-left: 5px;
+}

@@ -1,0 +1,54 @@
+.home-comment-wrapper {
+  margin-top: 24px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.home-comment-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.home-comment-author {
+  display: flex;
+  gap: 20px;
+}
+.home-comment-logo img {
+  width: 25px;
+  height: 25px;
+}
+.home-comment-logo {
+  padding-bottom: 10px;
+}
+.home-comment-content {
+  flex: 1;
+}
+
+.home-comment-name {
+  font-weight: bold;
+  margin: 0;
+}
+
+.home-comment-position {
+  color: gray;
+}
+
+.home-comment-info {
+  padding-top: 10px;
+}
+
+.home-comment {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.home-comment-star {
+  padding-left: 60px;
+  padding-top: 20px;
+}
+
+.home-comment-header {
+  padding-bottom: 20px;
+}

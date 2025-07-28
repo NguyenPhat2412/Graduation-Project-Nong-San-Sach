@@ -1,0 +1,49 @@
+.modal-body {
+  display: flex;
+}
+
+.modal-title-1 {
+  font-size: 3rem;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-title-2 {
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-content-1 input {
+  width: 60%;
+  height: 35px;
+  border-radius: 22px;
+  border: none;
+  margin-left: 5px;
+}
+
+.modal-content-1 input:focus {
+  outline: none;
+}
+
+.input-form-2 {
+  border: 2px solid #41f713;
+  width: fit-content;
+  border-radius: 22px;
+  margin-top: 24px;
+  margin-left: 60px;
+}
+
+.subscribe-button {
+  width: 38.2%;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: #1be225;
+  color: white;
+  font-weight: bold;
+}

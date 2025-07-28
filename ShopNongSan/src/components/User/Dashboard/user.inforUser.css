@@ -1,0 +1,14 @@
+.information-user {
+  border: 1px solid #ccc;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 20px 0px;
+}
+
+.information-user img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}

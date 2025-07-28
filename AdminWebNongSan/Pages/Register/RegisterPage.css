@@ -1,0 +1,78 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("/ShopIphoneByReactJs/img/banner1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.register-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 40px 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.register-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.register-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-button:hover {
+  background-color: #007bff;
+}
+
+.register-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #444;
+}
+
+.register-link {
+  color: #00cccc;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}

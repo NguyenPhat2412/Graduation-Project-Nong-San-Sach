@@ -1,0 +1,35 @@
+.latest-news-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.latest-news-content,
+.latest-news-content div {
+  display: flex;
+}
+
+.latest-news-content {
+  gap: 20px;
+  padding-top: 10px;
+}
+
+.latest-news-content div {
+  gap: 10px;
+}
+
+.latest-news-content div i {
+  font-size: 1.2rem;
+  color: #30e230;
+}
+
+.latest-news-section {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.latest-news-section h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
