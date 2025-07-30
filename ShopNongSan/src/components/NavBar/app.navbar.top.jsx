@@ -2,29 +2,20 @@ import { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { Link } from "react-router";
+import { useUser } from "../../UseContext/UserContext";
 const NavBarTop = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState(null);
 
+  const { userInfo } = useUser();
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
       setIsLoggedIn(true);
-
-      const fetchUserInfo = async () => {
-        const res = await fetch(
-          `${import.meta.env.VITE_DATABASE_URL}/api/client/user`,
-          {
-            credentials: "include",
-          }
-        );
-        const data = await res.json();
-        setUserInfo(data);
-      };
-
-      fetchUserInfo();
+    } else {
+      setIsLoggedIn(false);
     }
-  }, []);
+  }, [userInfo]);
+
   return (
     <div className="navbar">
       <div className="navbar-address">
