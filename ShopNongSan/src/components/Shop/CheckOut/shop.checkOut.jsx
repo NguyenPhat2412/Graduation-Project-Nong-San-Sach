@@ -279,7 +279,7 @@ const CheckOut = () => {
                         </div>
                       </div>
                       <div className="cart-item-price">
-                        ${(item?.price * item?.quantity).toFixed(2)}
+                        {(item?.price * item?.quantity).toFixed(2)} VND
                       </div>
                     </div>
                     <div className="underline-cart-item"></div>
@@ -289,13 +289,13 @@ const CheckOut = () => {
               <div className="cart-total">
                 <div>Total: </div>
                 <div>
-                  $
                   {cart
                     .reduce(
                       (total, item) => total + item.price * item.quantity,
                       0
                     )
-                    .toFixed(2)}
+                    .toFixed(2)}{" "}
+                  VND
                 </div>
               </div>
               <div>

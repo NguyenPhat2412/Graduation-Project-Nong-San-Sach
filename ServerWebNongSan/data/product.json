@@ -1,7 +1,7 @@
 [
   {
     "name": "Táo xanh",
-    "price": 14.99,
+    "price": 24000,
     "rating": 4,
     "img": "/public/product_vegetable/green_apple.png",
     "category": [
@@ -19,12 +19,12 @@
     "description": "Táo xanh gòm và chua nhẹ, giàu chất xơ và vitamin C, là món ăn nhẹ lành mạnh tuyệt vời",
     "brand": "/public/Brand/Group 19.png",
     "discount": 50,
-    "price_old": 29.99,
+    "price_old": 48000,
     "stock": true
   },
   {
     "name": "Cam Malta tươi Ấn Độ",
-    "price": 14.99,
+    "price": 24000,
     "rating": 4,
     "img": "/public/product_vegetable/fresh_india_malta.png",
     "category": ["fresh_fruit", "organic"],
@@ -35,7 +35,7 @@
   },
   {
     "name": "Bắp cải Trung Quốc",
-    "price": 12.0,
+    "price": 12000,
     "rating": 4,
     "img": "/public/product_vegetable/chinese_cabbage.png",
     "category": ["fresh_vegetable", "organic"],
@@ -50,7 +50,7 @@
   },
   {
     "name": "Rau diếp xanh",
-    "price": 11,
+    "price": 11000,
     "rating": 5,
     "img": "/public/product_vegetable/Green_Lettuce.png",
     "category": ["fresh_vegetable", "organic"],
@@ -61,7 +61,7 @@
   },
   {
     "name": "Cà tím",
-    "price": 10.0,
+    "price": 10000,
     "rating": 5,
     "img": "/public/product_vegetable/eggplant.png",
     "category": ["fresh_vegetable", "organic"],
@@ -72,7 +72,7 @@
   },
   {
     "name": "Khoai tây lớn",
-    "price": 9,
+    "price": 9000,
     "rating": 4,
     "img": "/public/product_vegetable/big_potatoes.png",
     "category": ["fresh_vegetable", "organic"],
@@ -83,7 +83,7 @@
   },
   {
     "name": "Ngô",
-    "price": 8.0,
+    "price": 8000,
     "rating": 5,
     "img": "/public/product_vegetable/corn.png",
     "category": ["fresh_vegetable", "organic"],
@@ -94,7 +94,7 @@
   },
   {
     "name": "Bông cải tươi",
-    "price": 8.9,
+    "price": 8900,
     "rating": 5,
     "img": "/public/product_vegetable/fresh_cauliflower.png",
     "category": ["fresh_vegetable", "organic"],
@@ -105,7 +105,7 @@
   },
   {
     "name": "Ớt chuông xanh",
-    "price": 9.4,
+    "price": 9400,
     "rating": 4,
     "img": "/public/product_vegetable/green_capsicum.png",
     "category": ["fresh_vegetable", "organic"],
@@ -113,12 +113,12 @@
     "description": "Ớt chuông xanh là một loại rau giòn và hơi chua, thường được sử dụng trong các món salad và xào.",
     "brand": "/public/Brand/Group 19.png",
     "discount": 50,
-    "price_old": 18.8,
+    "price_old": 18800,
     "stock": true
   },
   {
     "name": "Ớt xanh",
-    "price": 4.0,
+    "price": 4000,
     "rating": 5,
     "img": "/public/product_vegetable/green_chili.png",
     "category": ["fresh_vegetable", "organic"],
@@ -129,7 +129,7 @@
   },
   {
     "name": "Dưa chuột tươi",
-    "price": 5.0,
+    "price": 5000,
     "rating": 5,
     "img": "/public/product_vegetable/Cucumber.png",
     "category": ["fresh_vegetable", "organic"],
@@ -140,7 +140,7 @@
   },
   {
     "name": "Xoài",
-    "price": 6.0,
+    "price": 6000,
     "rating": 5,
     "img": "/public/product_vegetable/Mango.png",
     "category": ["fresh_fruit", "organic"],
@@ -148,12 +148,12 @@
     "description": "Xoài là một loại trái cây nhiệt đới ngọt ngào và mọng nước, giàu vitamin và hoàn hảo cho sinh tố.",
     "brand": "/public/Brand/Group 19.png",
     "discount": 50,
-    "price_old": 12.0,
+    "price_old": 12000,
     "stock": true
   },
   {
     "name": "Bánh mì",
-    "price": 5.0,
+    "price": 5000,
     "rating": 5,
     "img": "/public/product_vegetable/tomato.png",
     "category": ["fresh_vegetable", "organic"],
@@ -161,12 +161,12 @@
     "description": "Bánh mì là một loại thực phẩm phổ biến, thường được làm từ bột mì và có thể được nhân với nhiều loại thực phẩm khác nhau.",
     "brand": "/public/Brand/Group 19.png",
     "discount": 50,
-    "price_old": 10.0,
+    "price_old": 10000,
     "stock": true
   },
   {
     "name": "Đậu bắp",
-    "price": 7.0,
+    "price": 7000,
     "rating": 5,
     "img": "/public/product_vegetable/Okra.png",
     "category": ["fresh_vegetable", "organic"],
@@ -174,7 +174,7 @@
     "description": "Đậu bắp là một loại rau dinh dưỡng có kết cấu hơi nhớt, rất thích hợp cho các món súp và hầm.",
     "brand": "/public/Brand/Group 19.png",
     "discount": 50,
-    "price_old": 12.0,
+    "price_old": 12000,
     "stock": true
   }
 ]

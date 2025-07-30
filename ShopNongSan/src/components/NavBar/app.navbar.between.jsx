@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router";
 import Cart from "../Shop/Card/shop.card";
+import { useUser } from "../../UseContext/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCart } from "../Home/Redux/redux.controllerDatabase";
 
 const NavBarBetween = () => {
   const [open, setOpen] = useState(false);
+  const cart = useSelector((state) => state.cart.listCart);
+  const dispatch = useDispatch();
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+  const { userInfo } = useUser();
+
+  const userId = userInfo?._id;
+  useEffect(() => {
+    if (userId) {
+      dispatch(fetchCart(userId));
+    }
+  }, [userId, dispatch]);
+
   return (
     <div className="navbar-between">
       <div className="navbar-between-content">
@@ -26,7 +40,19 @@ const NavBarBetween = () => {
         <div className="navbar-icons">
           <i className="fa-solid fa-bell"></i>
           <div>|</div>
-          <i className="fa-solid fa-bag-shopping" onClick={showDrawer}></i>
+          <div className="cart-icon" onClick={showDrawer}>
+            <i className="fa-solid fa-bag-shopping">
+              {" "}
+              <span className="cart-length-navbar">{cart.length}</span>
+            </i>
+          </div>
+          <span>
+            {cart
+              .reduce((total, item) => total + item.price * item.quantity, 0)
+              .toFixed(2)}
+            VND
+          </span>
+
           <div>|</div>
           <Link to={"/account"} className="nav-link">
             <i className="fa-solid fa-user"></i>

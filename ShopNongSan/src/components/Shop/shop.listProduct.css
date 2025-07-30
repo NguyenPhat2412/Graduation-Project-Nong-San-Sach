@@ -8,3 +8,16 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-item {
+    margin-bottom: 20px;
+  }
+  .product-image img {
+    width: 100px;
+    height: 100px;
+  }
+}

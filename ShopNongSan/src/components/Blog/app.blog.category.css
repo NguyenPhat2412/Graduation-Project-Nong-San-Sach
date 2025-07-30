@@ -111,3 +111,24 @@
   grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   gap: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .blog-category-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .blog-category-input {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-category-input input {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+}

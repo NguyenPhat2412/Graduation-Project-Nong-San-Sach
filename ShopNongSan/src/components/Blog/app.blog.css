@@ -4,3 +4,9 @@
   gap: 20px;
   margin-top: 24px;
 }
+
+@media screen and (max-width: 768px) {
+  .blog-container-main {
+    grid-template-columns: 1fr;
+  }
+}

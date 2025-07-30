@@ -187,8 +187,8 @@ const CategoryProduct = () => {
                 <div className="sale-product-details">
                   <div className="product-name">{product.name}</div>
                   <div>
-                    <span className="current-price">${product.price}</span>
-                    <span className="old-price">${product.price_old}</span>
+                    <span className="current-price">{product.price} VND</span>
+                    <span className="old-price">{product.price_old} VND</span>
                   </div>
                   <div>
                     {Array.from({ length: product.rating }).map((_, index) => (

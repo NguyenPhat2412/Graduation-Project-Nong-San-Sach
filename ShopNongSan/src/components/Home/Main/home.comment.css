@@ -52,3 +52,9 @@
 .home-comment-header {
   padding-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .home-comment-container {
+    grid-template-columns: 1fr;
+  }
+}

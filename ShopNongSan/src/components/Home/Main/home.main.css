@@ -102,3 +102,50 @@
   font-size: 24px;
   margin-right: 10px;
 }
+
+@media screen and (max-width: 768px) {
+  .home-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-main-board {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .home-main-content {
+    width: 100%;
+    left: 0%;
+    transform: translateX(0%);
+    transform: translateY(80px);
+  }
+
+  .home-main-content p:nth-child(1) {
+    font-size: 14px;
+    width: 80%;
+  }
+
+  .home-main-content-button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0;
+  }
+  .home-main-content-button button {
+    padding: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .home-main-content-button i {
+    display: none;
+  }
+
+  .home-main-content-support {
+    flex-direction: column;
+    align-items: center;
+  }
+}

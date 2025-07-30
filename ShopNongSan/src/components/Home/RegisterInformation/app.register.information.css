@@ -7,8 +7,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: none;
+    .input-group-register {
+      display: flex;
+      flex-direction: row;
+      border: 2px solid #00ff40;
+      border-radius: 32px;
+    }
     input {
-      width: 250px;
+      width: 260px;
       padding: 10px;
       border-radius: 10px;
       border: none;
@@ -18,7 +25,7 @@
       outline: none;
     }
     button {
-      margin-left: 10px;
+      /* margin-left: 10px; */
       padding: 10px 20px;
       border-radius: 30px;
       border: none;
@@ -43,4 +50,15 @@
 .input-group {
   border: 2px solid #00ff40;
   border-radius: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .register-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .input-form {
+    flex-direction: column;
+  }
 }

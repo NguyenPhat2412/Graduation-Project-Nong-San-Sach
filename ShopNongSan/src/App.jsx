@@ -20,6 +20,7 @@ import UserDashboard from "./components/User/Dashboard/user.history";
 import UserHistory from "./components/User/History/user.history";
 import UserSetting from "./components/User/Setting/user.setting";
 import AppBlog from "./components/Blog/app.blog";
+import AppFaq from "./components/Faq/app.faq";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="/user/setting" element={<UserSetting />} />
           <Route path="/" element={<AppHome />} />
           <Route path="/app/blog" element={<AppBlog />} />
+          <Route path="/app/faq" element={<AppFaq />} />
         </Routes>
       </BrowserRouter>
     </>

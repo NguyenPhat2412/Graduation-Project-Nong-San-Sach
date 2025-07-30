@@ -5,7 +5,7 @@ const RegisterInformation = () => {
   const [show, setShow] = useState(false);
   return (
     <div className="register-form">
-      <div className="w-25">
+      <div className="register-form-header">
         <p className="fw-bold fs-5">Đăng ký nhận thông tin mới</p>
         <p>
           Vui lòng đăng ký để nhận thông tin về sản phẩm nông nghiệp và những
@@ -13,7 +13,7 @@ const RegisterInformation = () => {
         </p>
       </div>
       <div className="input-form">
-        <div className="input-group">
+        <div className="input-group-register">
           <input type="email" placeholder="Email của bạn" />
           <button className="btn btn-success" onClick={() => setShow(true)}>
             Đăng ký

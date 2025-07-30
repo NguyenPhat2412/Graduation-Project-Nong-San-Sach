@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-
+import "./app.footer.css";
 const AppFooter = () => {
   const [footerData, setFooterData] = useState([]);
   const [logo, setLogo] = useState({});
@@ -25,9 +25,9 @@ const AppFooter = () => {
 
   return (
     <footer className="bg-light text-center text-lg-start">
-      <div className="container p-4 d-flex gap-5">
-        <div className="row w-25">
-          <div className="col">
+      <div className="footer-container container p-4 d-flex gap-5">
+        <div className="footer-image-big row ">
+          <div className="footer-image col">
             <img
               src="../../../public/Image/Logo/Group.png"
               alt="Logo"
@@ -37,7 +37,7 @@ const AppFooter = () => {
             <p className="text-muted">{logo.description}</p>
           </div>
         </div>
-        <div className="row text-start w-75">
+        <div className="foot-data row w-75">
           {footerData.map((item, index) => (
             <div className="col-12 col-sm-4" key={index}>
               <h5>{item.title}</h5>

@@ -21,7 +21,6 @@ const Cart = (props) => {
       dispatch(fetchCart(userId));
     }
   }, [userId, dispatch]);
-  console.log("Cart items:", cart);
 
   // Handle delete item from cart
   const handleDeleteItem = async (productId) => {
@@ -33,7 +32,7 @@ const Cart = (props) => {
     <div>
       <Drawer
         title="Giỏ hàng"
-        width={500}
+        width={600}
         placement="right"
         closable={{ "aria-label": "Close Button" }}
         onClose={onClose}
@@ -52,7 +51,7 @@ const Cart = (props) => {
                     />
                     <div>
                       <div className="cart-item-name">{item?.name}</div>
-                      {/* <span>${item?.price.toFixed(2)} </span> */}
+                      <span>{item?.price.toFixed(2)} VND </span>
                       <span>Quantity: {item?.quantity}</span>
                     </div>
                   </div>

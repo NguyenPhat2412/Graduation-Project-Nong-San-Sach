@@ -104,3 +104,60 @@
 .navbar-search Button:hover {
   background-color: #28c700;
 }
+
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+}
+.navbar-icons i {
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.navbar-icons i:hover {
+  color: #28a745;
+}
+
+.cart-icon .cart-length-navbar {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #23ff06;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-between-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-auth {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-search {
+    width: 100%;
+  }
+  .navbar-between-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-between-menu p {
+    margin-bottom: 10px;
+  }
+  .navbar-search {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .navbar-search Button {
+    margin-left: 81px;
+  }
+}

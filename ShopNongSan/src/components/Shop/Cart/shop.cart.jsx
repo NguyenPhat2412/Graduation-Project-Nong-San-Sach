@@ -110,7 +110,7 @@ const ShopCart = () => {
                           />
                         </td>
                         <td>{item.name}</td>
-                        <td>${item.price.toFixed(2)}</td>
+                        <td>{item.price.toFixed(2)} VND</td>
                         <td>
                           <input
                             type="number"
@@ -125,7 +125,7 @@ const ShopCart = () => {
                             }
                           />
                         </td>
-                        <td>${(item.price * item.quantity).toFixed(2)}</td>
+                        <td>{(item.price * item.quantity).toFixed(2)} VND</td>
                         <td>
                           <button
                             onClick={() =>
@@ -159,7 +159,7 @@ const ShopCart = () => {
           <div className="cart-total-details-container">
             <div className="cart-total-details">
               <span className="cart-subtotal-label">SUBTOTAL</span>
-              <span className="text-gray-500">{totalPrice.toFixed(2)} $</span>
+              <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
             <div className="cart-total-details">
               <span className="cart-shipping-label">SHIPPING</span>
@@ -167,7 +167,7 @@ const ShopCart = () => {
             </div>
             <div className="cart-total-details">
               <span className="cart-total-label">TOTAL</span>
-              <span className="text-gray-500">{totalPrice.toFixed(2)} $</span>
+              <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
           </div>
           <input placeholder="Enter your coupon" className="coupon-input" />

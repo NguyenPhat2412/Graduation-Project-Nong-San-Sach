@@ -33,3 +33,9 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .latest-news-container {
+    grid-template-columns: 1fr;
+  }
+}

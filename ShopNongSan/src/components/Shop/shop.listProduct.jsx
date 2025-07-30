@@ -98,9 +98,13 @@ const ListProduct = () => {
             </div>
             <div className="product-details">
               <div className="product-name">{product.name}</div>
-              <span className="product-price">${product.price.toFixed(2)}</span>
+              <span className="product-price">
+                {product.price.toFixed(2)} VND
+              </span>
               {product.price_old && (
-                <span className="product-price-old">${product.price_old}</span>
+                <span className="product-price-old">
+                  {product.price_old} VND
+                </span>
               )}
               <div>
                 {Array.from({ length: product.rating }).map((_, index) => (

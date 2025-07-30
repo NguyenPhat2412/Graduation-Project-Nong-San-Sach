@@ -27,3 +27,15 @@
   height: 300px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  .address-image img {
+    height: auto;
+  }
+  .contact-details {
+    margin-top: 20px;
+  }
+}

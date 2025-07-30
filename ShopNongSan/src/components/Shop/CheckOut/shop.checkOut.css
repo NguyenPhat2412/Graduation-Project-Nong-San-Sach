@@ -128,7 +128,7 @@ select.form-control {
 .nav-link-1:hover {
   background-color: #218838;
 }
-/* Responsive tweaks (optional) */
+
 @media (max-width: 576px) {
   .form-group {
     margin-bottom: 12px;
@@ -141,5 +141,20 @@ select.form-control {
   }
   h3 {
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
+  .form-group-name {
+    grid-template-columns: 1fr;
+  }
+  .form-group-phone {
+    grid-template-columns: 1fr;
+  }
+  .form-group-zip {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

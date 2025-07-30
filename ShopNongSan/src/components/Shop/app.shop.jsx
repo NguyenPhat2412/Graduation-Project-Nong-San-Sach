@@ -15,6 +15,7 @@ const AppShop = () => {
       <img
         src="../../../public/Image/Login/Breadcrumbs (1).png"
         alt="Logo"
+        className="logo-app-doc-nhat"
       ></img>
       <Container>
         <div className="shop-container-section">
