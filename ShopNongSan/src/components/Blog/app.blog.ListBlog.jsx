@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./app.blog.listBlog.css";
+import "./app.blog.ListBlog.css";
 import { Pagination } from "antd";
 
 const ListBlog = () => {
