@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import NavBar from "../NavBar/app.navbar";
 import HomeMain from "./Main/home.main";
 import AppFooter from "../Footer/app.footer";
@@ -8,6 +8,7 @@ import RegisterInformation from "./RegisterInformation/app.register.information"
 import LatestNews from "./Main/home.latestNews";
 import FeatureProduct from "./Main/home.featuredProduct";
 import { useEffect } from "react";
+import { useNotification } from "../../UseContext/NotificationContext";
 const AppHome = () => {
   useEffect(() => {
     const handleResize = () => {
@@ -18,8 +19,17 @@ const AppHome = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const { contextHolder, openNotification } = useNotification();
+  useEffect(() => {
+    openNotification(
+      "success",
+      "Chào mừng bạn đến với ShopNongSan! Khám phá các sản phẩm mới và tin tức mới nhất."
+    );
+  }, [openNotification]);
+
   return (
     <>
+      {contextHolder}
       <Container>
         <NavBar />
         <HomeMain />

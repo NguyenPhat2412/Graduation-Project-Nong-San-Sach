@@ -36,4 +36,7 @@ router.put(
   ClientController.UpdateUser
 );
 
+// post contact
+router.post("/contact", authMiddleware, ClientController.PostContact);
+
 module.exports = router;

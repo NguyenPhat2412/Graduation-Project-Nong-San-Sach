@@ -6,17 +6,19 @@ const RegisterInformation = () => {
   return (
     <div className="register-form">
       <div className="w-25">
-        <p className="fw-bold fs-5">Sign Up For New Information</p>
+        <p className="fw-bold fs-5">Đăng ký nhận thông tin mới</p>
         <p>
-          Please sign up to receive information about agricultural products and
-          the latest news from us.
+          Vui lòng đăng ký để nhận thông tin về sản phẩm nông nghiệp và những
+          tin tức mới nhất từ chúng tôi.
         </p>
       </div>
       <div className="input-form">
-        <input type="email" placeholder="Your email" />
-        <button className="btn btn-success" onClick={() => setShow(true)}>
-          Sign Up
-        </button>
+        <div className="input-group">
+          <input type="email" placeholder="Email của bạn" />
+          <button className="btn btn-success" onClick={() => setShow(true)}>
+            Đăng ký
+          </button>
+        </div>
       </div>
       <div className="d-flex flex-row align-items-center justify-content-center gap-2">
         <i className="fa-brands fa-facebook"></i>

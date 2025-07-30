@@ -4,7 +4,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router";
 import AppHome from "./components/Home/app.home";
 import AppLogin from "./components/Login/app.login";
 import AppRegister from "./components/Register/app.register";

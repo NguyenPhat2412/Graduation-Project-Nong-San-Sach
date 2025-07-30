@@ -34,7 +34,7 @@ const HomeMain = () => {
           <div>
             <i className="fa-solid fa-wine-bottle"></i>
             <Link to="/user/setting" className="nav-link">
-              Setting
+              Cài Đặt
             </Link>
           </div>
           <div>
@@ -46,7 +46,7 @@ const HomeMain = () => {
           <div>
             <i className="fa-solid fa-plus"></i>
             <Link to="/app/shop" className="nav-link">
-              View All Categories
+              Xem thêm sản phẩm
             </Link>
           </div>
         </div>
@@ -57,12 +57,12 @@ const HomeMain = () => {
           />
         </div>
         <div className="home-main-content">
-          <p>Fresh & Healthy Organic Food</p>
+          <p>Rau củ tươi mát và Hoa quả ngon</p>
           <div className="home-main-content-text">
-            <p>Sales of to 48% off</p>
+            <p>Giảm giá lên đến 48%</p>
           </div>
           <div className="home-main-content-button">
-            <button>Shop now</button>
+            <button>Mua ngay</button>
             <i className="fa-solid fa-arrow-right"></i>
           </div>
         </div>

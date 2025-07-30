@@ -37,13 +37,13 @@ const FeatureProduct = () => {
   return (
     <div className="featured-products">
       <div className="featured-products-header">
-        <h3>Featured Products</h3>
+        <h3>Sản phẩm nổi bật</h3>
         {featuredProducts.length > 5 && (
           <button
             className="view-all-button"
             onClick={() => setShowAll((prev) => !prev)}
           >
-            {showAll ? "Show Less " : "View All"}
+            {showAll ? "Lược bớt" : "Xem thêm sản phẩm"}
             <span className="arrow">{showAll ? "▲" : "▼"}</span>
           </button>
         )}

@@ -11,7 +11,7 @@ const ModalRegister = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Subscribe to Our Newsletter
+          Đăng ký nhận thông tin mới
         </Modal.Title>
       </Modal.Header>
       <Modal.Body closeButton className="modal-body">
@@ -19,15 +19,15 @@ const ModalRegister = (props) => {
           <img src="../../../public/Modal/BG (1).png" />
         </div>
         <div className="modal-content-1">
-          <div className="modal-title-1">Subscribe to Our Newsletter</div>
+          <div className="modal-title-1">Đăng ký nhận thông tin mới</div>
           <p className="modal-title-2">
-            Subscribe to our newsletter and Save your{" "}
-            <strong style={{ color: "#c2af07ff" }}>20% money</strong> with
-            discount code today.
+            Đăng ký nhận bản tin của chúng tôi và tiết kiệm{" "}
+            <strong style={{ color: "#c2af07ff" }}>20% tiền</strong> với mã giảm
+            giá hôm nay.
           </p>
           <div className="input-form-2">
-            <input type="email" placeholder="Enter your email" />
-            <Button className="subscribe-button">Subscribe</Button>
+            <input type="email" placeholder="Nhập email của bạn" />
+            <Button className="subscribe-button">Đăng ký</Button>
           </div>
         </div>
       </Modal.Body>

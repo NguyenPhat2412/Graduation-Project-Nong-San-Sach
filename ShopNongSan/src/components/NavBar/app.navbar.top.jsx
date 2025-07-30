@@ -29,10 +29,10 @@ const NavBarTop = () => {
     <div className="navbar">
       <div className="navbar-address">
         <i className="fa-solid fa-location-dot"></i>
-        <p>Address: Cao Tho, Cao Duc, Bac Ninh</p>
+        <p>Địa chỉ: Cao Thọ, Cao Đức, Bắc Ninh</p>
       </div>
       <div className="navbar-setting">
-        <NavDropdown title="Vietnamese">
+        <NavDropdown title="Tiếng Việt">
           <NavDropdown.Item href="#action/3.1">Tiếng Anh</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Tiếng Trung</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Lựa chọn khác</NavDropdown.Item>
@@ -47,7 +47,7 @@ const NavBarTop = () => {
         {isLoggedIn ? (
           <div>
             <div>
-              Welcome back! <strong>{userInfo?.username}</strong>
+              Chào mừng <strong>{userInfo?.username}</strong>
             </div>
           </div>
         ) : (

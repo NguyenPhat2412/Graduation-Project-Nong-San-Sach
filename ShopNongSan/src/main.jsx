@@ -6,15 +6,16 @@ import { UserProvider } from "./UseContext/UserContext.jsx";
 import { store } from "./components/Home/Redux/store.js";
 import { Provider } from "react-redux";
 import { CategoryProvider } from "./UseContext/CategoryContext.jsx";
+import { NotificationProvider } from "./UseContext/NotificationContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <UserProvider>
-        <CategoryProvider>
+  <Provider store={store}>
+    <UserProvider>
+      <CategoryProvider>
+        <NotificationProvider>
           <App />
-        </CategoryProvider>
-      </UserProvider>
-    </Provider>
-  </StrictMode>
+        </NotificationProvider>
+      </CategoryProvider>
+    </UserProvider>
+  </Provider>
 );

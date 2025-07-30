@@ -11,7 +11,9 @@ const Order = require("../models/Order");
 const { default: mongoose } = require("mongoose");
 
 const { sendOrderConfirmationEmail } = require("../utils/emailService");
+const { sendContactEmail } = require("../utils/contactService");
 const Blogs = require("../models/Blog");
+const Contact = require("../models/Contact");
 exports.getFooter = async (req, res) => {
   try {
     const footer = await Footer.findOne();
@@ -438,6 +440,21 @@ exports.GetAllBlogs = async (req, res) => {
     res.status(200).json(blogs);
   } catch (error) {
     console.error("Error fetching blogs:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// Post contact
+exports.PostContact = async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  try {
+    const newContact = new Contact({ name, email, subject, message });
+    await sendContactEmail(name, email, subject, message);
+    await newContact.save();
+    res.status(201).json({ message: "Contact submitted successfully" });
+  } catch (error) {
+    console.error("Error submitting contact:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

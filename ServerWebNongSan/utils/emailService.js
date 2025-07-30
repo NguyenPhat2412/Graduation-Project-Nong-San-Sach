@@ -3,8 +3,8 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_HOST, // Your email address
-    pass: process.env.EMAIL_PASSWORD, // Your email password or app password
+    user: process.env.EMAIL_HOST,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -69,7 +69,6 @@ const sendOrderConfirmationEmail = async (
       <p>Trân trọng,</p>
       <p>Đội ngũ hỗ trợ khách hàng</p>
       `;
-  console.log(htmlContent);
   return transporter.sendMail({
     from: process.env.EMAIL_HOST,
     to: to,

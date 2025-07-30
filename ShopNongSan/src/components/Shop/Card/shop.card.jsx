@@ -32,7 +32,7 @@ const Cart = (props) => {
   return (
     <div>
       <Drawer
-        title="Shopping Card"
+        title="Giỏ hàng"
         width={500}
         placement="right"
         closable={{ "aria-label": "Close Button" }}
@@ -67,7 +67,7 @@ const Cart = (props) => {
             </ul>
             <div className="cart-total">
               <div className="cart-total-label">
-                <span>Total: </span>
+                <span>Tổng tiền: </span>
                 <span>
                   $
                   {cart
@@ -78,11 +78,11 @@ const Cart = (props) => {
                     .toFixed(2)}
                 </span>
               </div>
-              <button className="cart-checkout-button">Checkout</button>
+              <button className="cart-checkout-button">Thanh toán</button>
             </div>
             <div className="cart-go-to-cart">
               <Link to="/app/shop/cart" className="nav-link">
-                Go to Cart
+                Đi đến giỏ hàng
               </Link>
             </div>
           </>

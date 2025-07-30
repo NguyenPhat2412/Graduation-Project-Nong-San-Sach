@@ -11,7 +11,23 @@
       width: 250px;
       padding: 10px;
       border-radius: 10px;
-      border: 1px solid #ced4da;
+      border: none;
+      border-radius: 30px;
+    }
+    input:focus {
+      outline: none;
+    }
+    button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        background-color: #218838;
+      }
     }
   }
   div i {
@@ -22,4 +38,9 @@
       color: #007bff;
     }
   }
+}
+
+.input-group {
+  border: 2px solid #00ff40;
+  border-radius: 30px;
 }

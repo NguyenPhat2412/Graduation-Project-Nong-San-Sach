@@ -1,26 +1,26 @@
 [
   {
-    "name": "Fresh Vegetable",
+    "name": "Rau củ quả",
     "category": "fresh_vegetable"
   },
   {
-    "name": "Organic",
+    "name": "Hữu cơ",
     "category": "organic"
   },
   {
-    "name": "Food",
+    "name": "Thực phẩm",
     "category": "food"
   },
   {
-    "name": "Agriculture",
+    "name": "Nông nghiệp",
     "category": "agriculture"
   },
   {
-    "name": "Local News",
+    "name": "Tin tức địa phương",
     "category": "local news"
   },
   {
-    "name": "Health",
+    "name": "Sức khỏe",
     "category": "health"
   }
 ]

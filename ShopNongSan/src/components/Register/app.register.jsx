@@ -80,44 +80,52 @@ const AppRegister = () => {
       ></img>
       <Container className="login-container">
         <Form>
-          <p>REGISTER PAGE</p>
+          <p>ĐĂNG KÝ</p>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Control
               type="text"
-              placeholder="Enter your name"
+              placeholder="Nhập tên của bạn"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {error && <div className="error-message">Name is required</div>}
+            {error && (
+              <div className="error-message">Tên không được để trống</div>
+            )}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
-              placeholder="Enter your email"
+              placeholder="Nhập email của bạn"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {error && <div className="error-message">Email is required</div>}
+            {error && (
+              <div className="error-message">Email không được để trống</div>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Enter your password"
+              placeholder="Nhập mật khẩu của bạn"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {error && <div className="error-message">Password is required</div>}
+            {error && (
+              <div className="error-message">Mật khẩu không được để trống</div>
+            )}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
             <Form.Control
               type="password"
-              placeholder="Confirm your password"
+              placeholder="Nhập lại mật khẩu của bạn"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             {error && (
-              <div className="error-message">Confirm Password is required</div>
+              <div className="error-message">
+                Mật khẩu xác nhận không được để trống
+              </div>
             )}
           </Form.Group>
           <Form.Group
@@ -126,16 +134,16 @@ const AppRegister = () => {
           >
             <Form.Check
               type="checkbox"
-              label="I agree to the terms and conditions"
+              label="Tôi đồng ý với các điều khoản và điều kiện"
             />
           </Form.Group>
           <Button variant="success" className="w-100" onClick={handleSubmit}>
-            Register
+            Đăng ký
           </Button>
           <Form.Text className="text-muted d-flex justify-content-center gap-1">
-            Already have an account?{" "}
+            Bạn đã có tài khoản?{" "}
             <Link to={"/account/login"} className="text-muted">
-              Login here
+              Đăng nhập tại đây
             </Link>
           </Form.Text>
         </Form>

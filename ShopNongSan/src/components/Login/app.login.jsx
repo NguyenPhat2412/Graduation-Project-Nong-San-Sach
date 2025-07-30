@@ -5,11 +5,15 @@ import RegisterInformation from "../Home/RegisterInformation/app.register.inform
 import AppFooter from "../Footer/app.footer";
 import NavBar from "../NavBar/app.navbar";
 import { useState } from "react";
+import { useNotification } from "../../UseContext/NotificationContext";
+
 const AppLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+
+  const { setType, setMessage } = useNotification();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,15 +36,14 @@ const AppLogin = () => {
       if (!response.ok) {
         throw new Error("Login failed");
       }
-      const data = await response.json();
-      console.log("Login successful:", data);
 
       if (email === "" || password === "") {
         setError(true);
         return;
       }
       clearForm();
-      alert("Login successful!");
+      setType("success");
+      setMessage("Đăng nhập thành công!");
       setError(false);
       navigate("/");
     } catch (error) {
@@ -64,33 +67,41 @@ const AppLogin = () => {
       ></img>
       <Container className="login-container">
         <Form>
-          <p>LOGIN PAGE</p>
+          <p>ĐĂNG NHẬP</p>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
               type="email"
-              placeholder="Enter your email"
+              placeholder="Nhập email của bạn"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {error && <div className="error-message">Email is required</div>}
+            {error && (
+              <div className="error-message-login">
+                Email không được để trống
+              </div>
+            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
               type="password"
-              placeholder="Enter your password"
+              placeholder="Nhập mật khẩu của bạn"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {error && <div className="error-message">Password is required</div>}
+            {error && (
+              <div className="error-message-login">
+                Mật khẩu không được để trống
+              </div>
+            )}
           </Form.Group>
           <Form.Group
             className="d-flex mb-3 justify-content-between"
             controlId="formBasicCheckbox"
           >
-            <Form.Check type="checkbox" label="Check me out" />
+            <Form.Check type="checkbox" label="Ghi nhớ tôi" />
             <Link to={"/forgot-password"} className="text-muted">
-              Forget Password
+              Quên mật khẩu?
             </Link>
           </Form.Group>
           <Button
@@ -99,16 +110,17 @@ const AppLogin = () => {
             className="w-100 "
             onClick={handleSubmit}
           >
-            Login
+            Đăng nhập
           </Button>
           <Form.Text className="text-muted d-flex justify-content-center gap-1">
-            Don't have an account?{" "}
+            Bạn chưa có tài khoản? {""}
             <Link to={"/account/register"} className="text-muted">
-              Register here
+              Đăng ký tại đây
             </Link>
           </Form.Text>
         </Form>
       </Container>
+
       <Container>
         <RegisterInformation />
       </Container>

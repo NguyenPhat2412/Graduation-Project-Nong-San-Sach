@@ -72,7 +72,7 @@ const CategoryProduct = () => {
     <div className="category-product">
       <div>
         <div className="category-header">
-          <h3>All Categories</h3>
+          <h3>Tất cả danh mục</h3>
           <button onClick={handleSaleToggle}>
             {showAll ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -103,7 +103,7 @@ const CategoryProduct = () => {
 
       <div>
         <div className="category-header">
-          <h3>Price</h3>
+          <h3>Giá cả</h3>
           <button onClick={handlePriceToggle}>
             {showPriceFilter ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -121,7 +121,7 @@ const CategoryProduct = () => {
             value={minPrice}
             min="0"
             max="100"
-            placeholder="Min Price"
+            placeholder="Giá tối thiểu"
             onChange={(e) => setMinPrice(Number(e.target.value))}
           />
           <input
@@ -129,7 +129,7 @@ const CategoryProduct = () => {
             value={maxPrice}
             min="0"
             max="100"
-            placeholder="Max Price"
+            placeholder="Giá tối đa"
             onChange={(e) => setMaxPrice(Number(e.target.value))}
           />
         </div>
@@ -137,7 +137,7 @@ const CategoryProduct = () => {
 
       <div className="rating-filter">
         <div className="category-header">
-          <h3>Rating</h3>
+          <h3>Đánh giá</h3>
           <button onClick={handleRatingToggle}>
             {showRatingFilter ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -173,7 +173,7 @@ const CategoryProduct = () => {
 
       {/* Sale */}
       <div>
-        <h3>Sale</h3>
+        <h3>Giảm giá</h3>
         <div className="sale-filter">
           {ProductSale.length > 0 &&
             ProductSale.map((product) => (

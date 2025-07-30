@@ -20,8 +20,8 @@ const NavBarBetween = () => {
         </div>
         <div className="navbar-search">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search product" />
-          <Button>Search</Button>
+          <input type="text" placeholder="Tìm kiếm sản phẩm" />
+          <Button>Tìm kiếm</Button>
         </div>
         <div className="navbar-icons">
           <i className="fa-solid fa-bell"></i>
@@ -35,30 +35,36 @@ const NavBarBetween = () => {
       </div>
       <div className="navbar-between-menu">
         <div className="navbar-menu">
-          <NavDropdown title="Home">
-            <NavDropdown.Item href="/">Home</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Tiếng Trung</NavDropdown.Item>
+          <NavDropdown title="Trang chủ">
+            <NavDropdown.Item href="/">Trang chủ</NavDropdown.Item>
+            <NavDropdown.Item href="/app/about">Giới thiệu</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">
               Lựa chọn khác
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Shop">
-            <NavDropdown.Item href="/app/shop">List Vegetable</NavDropdown.Item>
-            <NavDropdown.Item href="/app/shop/cart">Cart</NavDropdown.Item>
+          <NavDropdown title="Cửa hàng">
+            <NavDropdown.Item href="/app/shop">
+              Danh sách sản phẩm
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/app/shop/cart">Giỏ hàng</NavDropdown.Item>
             <NavDropdown.Item href="/app/shop/checkout">
-              Check Out
+              Thanh toán
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Blogs">
-            <NavDropdown.Item href="/app/blog">Blog</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Tiếng Trung</NavDropdown.Item>
+          <NavDropdown title="Tin tức">
+            <NavDropdown.Item href="/app/blog">Tin tức</NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">
+              Thông tin tin tức
+            </NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">
               Lựa chọn khác
             </NavDropdown.Item>
           </NavDropdown>
-          <p>About Us</p>
+          <Link to="/app/faq" className="nav-link">
+            Về chúng tôi
+          </Link>
           <Link to="/app/contact" className="nav-link">
-            Contact
+            Liên hệ
           </Link>
         </div>
         <div>

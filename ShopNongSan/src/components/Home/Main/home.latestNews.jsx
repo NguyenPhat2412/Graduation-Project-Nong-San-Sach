@@ -40,15 +40,15 @@ const LatestNews = () => {
 
             <div className="latest-news-content">
               <div>
-                <i class="fa-solid fa-comment"></i>
+                <i className="fa-solid fa-comment"></i>
                 <p>{item.numberComment}</p>
               </div>
               <div>
-                <i class="fa-solid fa-user-tag"></i>
+                <i className="fa-solid fa-user-tag"></i>
                 <p>{item.author}</p>
               </div>
               <div>
-                <i class="fa-solid fa-tag"></i>
+                <i className="fa-solid fa-tag"></i>
                 <p>{item.category}</p>
               </div>
             </div>
@@ -58,7 +58,7 @@ const LatestNews = () => {
               className="nav-link text-success text-decoration-underline"
               to={`/news/${item._id}`}
             >
-              Read more <i class="fa-solid fa-arrow-right"></i>
+              Read more <i className="fa-solid fa-arrow-right"></i>
             </Link>
           </div>
         ))}
