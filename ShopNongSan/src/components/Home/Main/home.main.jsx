@@ -52,7 +52,7 @@ const HomeMain = () => {
         </div>
         <div>
           <img
-            src="../../../../public/Banner/Rectangle 52.png"
+            src={`${import.meta.env.VITE_DATABASE_URL}/public/Banner/Rectangle 52.png`}
             alt="Image Banner"
           />
         </div>

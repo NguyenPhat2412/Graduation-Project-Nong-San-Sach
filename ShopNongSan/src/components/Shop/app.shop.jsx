@@ -13,7 +13,7 @@ const AppShop = () => {
         <NavBar />
       </Container>
       <img
-        src="../../../public/Image/Login/Breadcrumbs (1).png"
+        src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Login/Breadcrumbs (1).png`}
         alt="Logo"
         className="logo-app-doc-nhat"
       ></img>

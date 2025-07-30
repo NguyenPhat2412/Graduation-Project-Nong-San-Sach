@@ -16,7 +16,9 @@ const ModalRegister = (props) => {
       </Modal.Header>
       <Modal.Body closeButton className="modal-body">
         <div>
-          <img src="../../../public/Modal/BG (1).png" />
+          <img
+            src={`${import.meta.env.VITE_DATABASE_URL}/public/Modal/BG (1).png`}
+          />
         </div>
         <div className="modal-content-1">
           <div className="modal-title-1">Đăng ký nhận thông tin mới</div>

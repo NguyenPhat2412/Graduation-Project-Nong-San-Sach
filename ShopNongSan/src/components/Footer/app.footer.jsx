@@ -29,7 +29,7 @@ const AppFooter = () => {
         <div className="footer-image-big row ">
           <div className="footer-image col">
             <img
-              src="../../../public/Image/Logo/Group.png"
+              src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Logo/Group.png}`}
               alt="Logo"
               className="img-fluid"
             />
@@ -55,7 +55,10 @@ const AppFooter = () => {
         </div>
       </div>
       <div className="text-center p-3 text-white">
-        <img src="../../../public/Footer/logobank.png" alt="Footer Logo" />
+        <img
+          src={`${import.meta.env.VITE_DATABASE_URL}/public/Footer/logobank.png`}
+          alt="Footer Logo"
+        />
       </div>
     </footer>
   );
