@@ -11,6 +11,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: "dist",
+    chunkSizeWarningLimit: 1500,
   },
   // Hook sau khi build để copy static.json vào dist
   closeBundle: () => {
