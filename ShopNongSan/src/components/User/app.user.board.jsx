@@ -29,7 +29,6 @@ const AppUserBoard = () => {
         credentials: "include",
       });
       Cookies.remove("token", { path: "/", sameSite: "None", secure: true });
-      alert("You have logged out successfully!");
     } catch (error) {
       console.error("Logout failed:", error);
     }
