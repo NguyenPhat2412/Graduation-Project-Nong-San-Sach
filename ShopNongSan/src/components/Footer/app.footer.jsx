@@ -29,7 +29,7 @@ const AppFooter = () => {
         <div className="footer-image-big row ">
           <div className="footer-image col">
             <img
-              src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Logo/Group.png}`}
+              src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Logo/Group.png`}
               alt="Logo"
               className="img-fluid"
             />
