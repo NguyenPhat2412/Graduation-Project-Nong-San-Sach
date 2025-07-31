@@ -9,7 +9,8 @@ import { fetchCart } from "../../Home/Redux/redux.controllerDatabase";
 
 import RegisterInformation from "../../Home/RegisterInformation/app.register.information";
 import "./shop.checkOut.css";
-import { message } from "antd";
+import { notification } from "antd";
+import { Link } from "react-router";
 const CheckOut = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -18,8 +19,14 @@ const CheckOut = () => {
   const [address, setAddress] = useState("");
   const [zipCode, setZipCode] = useState("");
   const { userInfo } = useUser();
-  const [messageApi, contextHolder] = message.useMessage();
-  const key = "updatable";
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.listCart);
@@ -46,19 +53,22 @@ const CheckOut = () => {
       !address ||
       !zipCode
     ) {
-      alert("Please fill in all fields.");
+      openNotification("error", "Please fill in all fields.");
       return false;
     }
     if (!validateEmail(email)) {
-      alert("Please enter a valid email address.");
+      openNotification("error", "Please enter a valid email address.");
       return false;
     }
     if (phoneNumber.length < 10) {
-      alert("Phone number must be at least 10 digits long.");
+      openNotification(
+        "error",
+        "Phone number must be at least 10 digits long."
+      );
       return false;
     }
     if (zipCode.length < 5) {
-      alert("Zip code must be at least 5 digits long.");
+      openNotification("error", "Zip code must be at least 5 digits long.");
       return false;
     }
     return true;
@@ -102,31 +112,27 @@ const CheckOut = () => {
           if (data.order) {
             handleMessage();
           } else {
-            alert("Failed to place order. Please try again.");
+            openNotification(
+              "error",
+              "Failed to place order. Please try again."
+            );
             console.error("Error placing order:", data);
           }
         })
         .catch((error) => {
           console.error("Error placing order:", error);
-          alert("An error occurred while placing your order.");
+          openNotification(
+            "error",
+            "An error occurred while placing your order."
+          );
         });
     }
   };
 
   const handleMessage = async () => {
-    messageApi.open({
-      key,
-      type: "loading",
-      content: "Placing order...",
-      duration: 0,
-    });
+    openNotification("loading", "Placing order...");
     setTimeout(() => {
-      messageApi.open({
-        key,
-        type: "success",
-        content: "Order placed successfully!",
-        duration: 2,
-      });
+      openNotification("success", "Order placed successfully!");
 
       setFirstName("");
       setLastName("");
@@ -137,6 +143,16 @@ const CheckOut = () => {
       dispatch(fetchCart(userId));
     }, 2000);
   };
+
+  // check authentication
+  if (!userInfo) {
+    openNotification("error", "You need to be logged in to checkout.");
+    return (
+      <Link to="/account/login" className="nav-link-1">
+        Login
+      </Link>
+    );
+  }
 
   // Load Tỉnh/Thành phố
   // useEffect(() => {

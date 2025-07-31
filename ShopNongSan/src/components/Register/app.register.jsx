@@ -5,6 +5,7 @@ import RegisterInformation from "../Home/RegisterInformation/app.register.inform
 import AppFooter from "../Footer/app.footer";
 import NavBar from "../NavBar/app.navbar";
 import { useState } from "react";
+import { notification } from "antd";
 const AppRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -13,10 +14,18 @@ const AppRegister = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
 
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Thông báo",
+      description: message,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Post registration data to the server or perform validation
       const response = await fetch(
         `${import.meta.env.VITE_DATABASE_URL}/api/client/register`,
         {
@@ -35,11 +44,9 @@ const AppRegister = () => {
         throw new Error("Registration failed");
       }
       const data = await response.json();
-      console.log("Registration successful:", data);
-
       if (password !== confirmPassword) {
         setError(true);
-        alert("Passwords do not match");
+        openNotification("error", "Passwords do not match");
         return;
       }
       if (
@@ -52,7 +59,7 @@ const AppRegister = () => {
         return;
       }
       clearForm();
-      alert("Registration successful!");
+      openNotification("success", "Registration successful!");
       setError(false);
       navigate("/account/login");
     } catch (error) {
@@ -71,6 +78,7 @@ const AppRegister = () => {
 
   return (
     <>
+      {contextHolder}
       <Container>
         <NavBar />
       </Container>
