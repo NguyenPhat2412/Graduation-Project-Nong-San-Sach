@@ -66,7 +66,10 @@ const ContactMe = () => {
       </Container>
 
       <div>
-        <img src="../../../public/Image/Login/Breadcrumbs (1).png" alt="Logo" />
+        <img
+          src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Login/Breadcrumbs (1).png`}
+          alt="Logo"
+        />
       </div>
       <Container>
         <div>
@@ -119,7 +122,9 @@ const ContactMe = () => {
         </div>
       </Container>
       <div className="address-image">
-        <img src="/public/Address/Address.png" />
+        <img
+          src={`${import.meta.env.VITE_DATABASE_URL}/public/Address/Address.png`}
+        />
       </div>
       <div className="register-information-section">
         <Container>

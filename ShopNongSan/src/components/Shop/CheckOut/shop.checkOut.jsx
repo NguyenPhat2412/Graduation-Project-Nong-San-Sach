@@ -152,7 +152,10 @@ const CheckOut = () => {
       </Container>
 
       <div>
-        <img src="../../../public/Image/Login/Breadcrumbs (1).png" alt="Logo" />
+        <img
+          src={`${import.meta.env.VITE_DATABASE_URL}/public/Image/Login/Breadcrumbs (1).png`}
+          alt="Logo"
+        />
       </div>
       <Container>
         <h1>Billing Information</h1>
