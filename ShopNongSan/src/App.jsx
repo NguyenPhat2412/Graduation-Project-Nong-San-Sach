@@ -21,8 +21,15 @@ import UserHistory from "./components/User/History/user.history";
 import UserSetting from "./components/User/Setting/user.setting";
 import AppBlog from "./components/Blog/app.blog";
 import AppFaq from "./components/Faq/app.faq";
+import LiveChat from "./components/LiveChat/LiveChat";
+import ChatBubble from "./components/LiveChat/ChatBubble";
+import { useState } from "react";
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
   return (
     <>
       <BrowserRouter>
@@ -44,6 +51,8 @@ function App() {
           <Route path="/app/faq" element={<AppFaq />} />
         </Routes>
       </BrowserRouter>
+      <LiveChat isOpen={open} />
+      <ChatBubble toggleChat={showDrawer} isOpen={open} />
     </>
   );
 }
