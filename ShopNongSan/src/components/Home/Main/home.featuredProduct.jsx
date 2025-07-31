@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./home.featuredProduct.css";
 import ProductDetails from "../../Shop/ProductDetails/shop.productDetails";
+import { useUser } from "../../../UseContext/UserContext";
 const FeatureProduct = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
+
+  const { userInfo } = useUser();
+  const userId = userInfo._id;
 
   // Fetch featured products data from database
   useEffect(() => {
@@ -25,6 +29,27 @@ const FeatureProduct = () => {
     };
     fetchFeaturedProducts();
   }, []);
+
+  // recently viewed products
+  useEffect(() => {
+    const recentlyViewed = fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/api/client/recently-viewed/${userId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    recentlyViewed
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Recently viewed products:", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching recently viewed products:", error);
+      });
+  });
 
   const handleShowDetails = (product) => {
     setSelectedProduct(product);

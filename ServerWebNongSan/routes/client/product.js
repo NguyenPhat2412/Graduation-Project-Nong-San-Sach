@@ -49,4 +49,13 @@ router.get(
   "/products/price/minPrice=:minPrice&maxPrice=:maxPrice",
   ClientController.GetProductByPrice
 );
+
+// post recently viewed products
+router.post("/recently-viewed/:userId", ClientController.recentlyViewedProduct);
+
+// get recently viewed products
+router.get(
+  "/recently-viewed/:userId",
+  ClientController.getRecentlyViewedProducts
+);
 module.exports = router;

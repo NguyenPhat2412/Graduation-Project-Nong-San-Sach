@@ -473,3 +473,47 @@ exports.PostContact = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+// Recently Viewed
+exports.recentlyViewedProduct = async (req, res) => {
+  const { userId, productId } = req.params;
+
+  try {
+    let user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (!user.recentlyViewed) {
+      user.recentlyViewed = [];
+    }
+
+    if (!user.recentlyViewed.includes(productId)) {
+      user.recentlyViewed.push(productId);
+      if (user.recentlyViewed.length > 5) {
+        user.recentlyViewed.shift();
+      }
+    }
+
+    await user.save();
+    res.status(200).json({ message: "Product added to recently viewed" });
+  } catch (error) {
+    console.error("Error adding product to recently viewed:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.getRecentlyViewedProducts = async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    const user = await User.findById(userId).populate("recentlyViewed");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user.recentlyViewed);
+  } catch (error) {
+    console.error("Error fetching recently viewed products:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

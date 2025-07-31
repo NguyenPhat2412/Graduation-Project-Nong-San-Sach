@@ -9,6 +9,7 @@ import LatestNews from "./Main/home.latestNews";
 import FeatureProduct from "./Main/home.featuredProduct";
 import { useEffect } from "react";
 import { useNotification } from "../../UseContext/NotificationContext";
+import RecentlyViewedProducts from "./Main/home.recentlyView";
 const AppHome = () => {
   useEffect(() => {
     const handleResize = () => {
@@ -34,6 +35,11 @@ const AppHome = () => {
         <NavBar />
         <HomeMain />
       </Container>
+      <div>
+        <Container>
+          <RecentlyViewedProducts />
+        </Container>
+      </div>
       <div>
         <Container>
           <FeatureProduct />
