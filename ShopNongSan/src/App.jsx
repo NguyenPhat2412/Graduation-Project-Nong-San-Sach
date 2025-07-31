@@ -28,7 +28,7 @@ import { useState } from "react";
 function App() {
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
-    setOpen(true);
+    setOpen((prev) => !prev);
   };
   return (
     <>
