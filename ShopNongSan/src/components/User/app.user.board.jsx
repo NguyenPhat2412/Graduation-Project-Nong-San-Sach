@@ -22,9 +22,17 @@ const AppUserBoard = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-    Cookies.remove("token", { path: "/", sameSite: "None", secure: true });
-    alert("You have logged out successfully!");
+  const handleLogout = async () => {
+    try {
+      await fetch(`${import.meta.env.VITE_DATABASE_URL}/api/client/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      Cookies.remove("token", { path: "/", sameSite: "None", secure: true });
+      alert("You have logged out successfully!");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
   return (
     <Container className="user-board">
