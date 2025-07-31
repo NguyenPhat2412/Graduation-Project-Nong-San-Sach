@@ -62,23 +62,31 @@ const NavBarBetween = () => {
       <div className="navbar-between-menu">
         <div className="navbar-menu">
           <NavDropdown title="Trang chủ">
-            <NavDropdown.Item href="/">Trang chủ</NavDropdown.Item>
-            <NavDropdown.Item href="/app/about">Giới thiệu</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">
+            <NavDropdown.Item as={Link} to="/">
+              Trang chủ
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/app/about">
+              Giới thiệu
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="#action/3.3">
               Lựa chọn khác
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Cửa hàng">
-            <NavDropdown.Item href="/app/shop">
+            <NavDropdown.Item as={Link} to="/app/shop">
               Danh sách sản phẩm
             </NavDropdown.Item>
-            <NavDropdown.Item href="/app/shop/cart">Giỏ hàng</NavDropdown.Item>
-            <NavDropdown.Item href="/app/shop/checkout">
+            <NavDropdown.Item as={Link} to="/app/shop/cart">
+              Giỏ hàng
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/app/shop/checkout">
               Thanh toán
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Tin tức">
-            <NavDropdown.Item href="/app/blog">Tin tức</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/app/blog">
+              Tin tức
+            </NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
               Thông tin tin tức
             </NavDropdown.Item>

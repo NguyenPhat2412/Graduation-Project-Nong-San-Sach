@@ -237,7 +237,7 @@ exports.LoginUser = async (req, res) => {
       { expiresIn: "24h" }
     );
     res.cookie("token", token, {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: "None",
     });
