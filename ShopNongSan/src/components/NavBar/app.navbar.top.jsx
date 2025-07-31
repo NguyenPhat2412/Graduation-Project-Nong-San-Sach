@@ -17,7 +17,7 @@ const NavBarTop = () => {
         const data = await response.json();
         if (response.ok) {
           setIsLoggedIn(true);
-          setUserInfo(data.user);
+          setUserInfo(data.username);
         } else {
           setIsLoggedIn(false);
           setUserInfo(null);
@@ -51,7 +51,7 @@ const NavBarTop = () => {
         {isLoggedIn ? (
           <div>
             <div>
-              Chào mừng <strong>{userInfo?.username}</strong>
+              Chào mừng <strong>{userInfo}</strong>
             </div>
           </div>
         ) : (

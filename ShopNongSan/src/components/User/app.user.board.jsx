@@ -23,7 +23,7 @@ const AppUserBoard = () => {
   }, []);
 
   const handleLogout = () => {
-    Cookies.remove("token");
+    Cookies.remove("token", { sameSite: "None", secure: true });
     alert("You have logged out successfully!");
   };
   return (
