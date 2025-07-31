@@ -39,4 +39,7 @@ router.put(
 // post contact
 router.post("/contact", authMiddleware, ClientController.PostContact);
 
+// Logout
+router.post("/logout", authMiddleware, ClientController.LogoutUser);
+
 module.exports = router;

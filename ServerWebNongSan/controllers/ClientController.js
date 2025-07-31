@@ -248,6 +248,17 @@ exports.LoginUser = async (req, res) => {
   }
 };
 
+// Logout User
+exports.LogoutUser = (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: false,
+    secure: true,
+    sameSite: "None",
+    path: "/",
+  });
+  res.status(200).json({ message: "Logout successful" });
+};
+
 // Update User
 exports.UpdateUser = async (req, res) => {
   const { userId } = req.params;
