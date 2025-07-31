@@ -7,20 +7,23 @@ const NavBarTop = () => {
 
   useEffect(() => {
     try {
-      const response = async () => {
-        await fetch(`${import.meta.env.VITE_DATABASE_URL}/api/client/user`, {
-          credentials: "include",
-        });
-        const response = await response.json();
+      const CheckAuth = async () => {
+        const response = await fetch(
+          `${import.meta.env.VITE_DATABASE_URL}/api/client/user`,
+          {
+            credentials: "include",
+          }
+        );
+        const data = await response.json();
         if (response.ok) {
           setIsLoggedIn(true);
-          setUserInfo(response.user);
+          setUserInfo(data.user);
         } else {
           setIsLoggedIn(false);
           setUserInfo(null);
         }
       };
-      response();
+      CheckAuth();
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
