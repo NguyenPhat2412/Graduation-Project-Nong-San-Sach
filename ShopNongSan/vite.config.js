@@ -19,4 +19,5 @@ export default defineConfig({
     const destPath = path.resolve(__dirname, "dist", "static.json");
     fs.copyFileSync(srcPath, destPath);
   },
+  base: "/",
 });
