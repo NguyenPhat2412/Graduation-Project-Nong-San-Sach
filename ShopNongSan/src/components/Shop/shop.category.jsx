@@ -168,7 +168,10 @@ const CategoryProduct = () => {
       </div>
 
       <div className="banner">
-        <img src="/public/ShopDiscount/Bannar.png" alt="Description" />
+        <img
+          src={`${import.meta.env.VITE_DATABASE_URL}/public/ShopDiscount/Bannar.png`}
+          alt="Description"
+        />
       </div>
 
       {/* Sale */}
