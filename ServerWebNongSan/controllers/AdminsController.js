@@ -2,6 +2,7 @@ const Order = require("../models/Order");
 const Product = require("../models/product");
 const User = require("../models/User");
 const Blog = require("../models/Blog");
+const jwt = require("jsonwebtoken");
 
 exports.getNumberOfClient = async (req, res) => {
   try {
@@ -43,7 +44,7 @@ exports.getAllOrders = async (req, res) => {
 
 exports.getAllUser = async (req, res) => {
   try {
-    const users = await User.find({ role: "user" }).select("-password");
+    const users = await User.find({ role: "user" });
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
@@ -73,6 +74,15 @@ exports.loginAdmin = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Admin not found" });
     }
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+    res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     console.error("Error logging in admin:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -81,14 +91,14 @@ exports.loginAdmin = async (req, res) => {
 
 // register admin
 exports.registerAdmin = async (req, res) => {
-  const { name, email, password, currentPassword } = req.body;
+  const { username, email, password, currentPassword } = req.body;
   try {
     const existingAdmin = await User.findOne({ email, role: "admin" });
     if (existingAdmin) {
       return res.status(400).json({ message: "Admin already exists" });
     }
     const newAdmin = new User({
-      name,
+      username,
       email,
       password,
       role: "admin",
@@ -277,6 +287,21 @@ exports.getBlogById = async (req, res) => {
     res.status(200).json(blog);
   } catch (error) {
     console.error("Error fetching blog by ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.GetOrderByOrderId = async (req, res) => {
+  const orderId = req.params.orderId;
+
+  try {
+    const order = await Order.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+    res.status(200).json(order);
+  } catch (error) {
+    console.error("Error fetching order:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

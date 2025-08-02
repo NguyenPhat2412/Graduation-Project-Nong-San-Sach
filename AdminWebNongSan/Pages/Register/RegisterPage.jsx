@@ -1,31 +1,45 @@
 import { useState } from "react";
 import "./RegisterPage.css";
 import { Link, useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const SignUpPage = () => {
   const [name, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const navigate = useNavigate();
+
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   const handleSignUp = () => {
     if (!email || !password || !name) {
-      setError("You must fill in all fields!");
+      openNotification("error", "You must fill in all fields!");
       return;
     }
     if (password.length < 8) {
-      setError("Password must be at least 8 characters long!");
+      openNotification("error", "Password must be at least 8 characters long!");
+      return;
+    }
+    if (password !== currentPassword) {
+      openNotification("error", "Passwords do not match!");
       return;
     }
 
     const userData = {
-      name: name,
+      username: name,
       email,
       password,
     };
 
-    fetch(`${import.meta.env.VITE_API_URL}/api/admin/user/register`, {
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -34,20 +48,24 @@ const SignUpPage = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          setError(data.error);
+          openNotification("error", data.error);
         } else {
-          alert("Đăng ký thành công!");
+          openNotification("success", "Đăng ký thành công!");
           navigate("/login");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        setError("Đã xảy ra lỗi, vui lòng thử lại sau.");
+        openNotification("error", "Đã xảy ra lỗi, vui lòng thử lại sau.");
       });
   };
 
   return (
     <div className="register-container">
+      {contextHolder}
+      <div className="register-header">
+        <p>Chào mừng đến với trang quản lý web nông sản của chúng tôi!</p>
+      </div>
       <div className="register-wrapper">
         <div className="register-box">
           <h1 className="register-title">Sign Up</h1>
@@ -72,7 +90,13 @@ const SignUpPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && <p className="register-error">{error}</p>}
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="register-input"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+          />
           <button className="register-button" onClick={handleSignUp}>
             Sign Up
           </button>

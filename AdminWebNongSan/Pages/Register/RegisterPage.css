@@ -5,6 +5,7 @@
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  flex-direction: column;
 }
 
 .register-wrapper {
@@ -74,4 +75,16 @@
 
 .register-link:hover {
   text-decoration: underline;
+}
+
+.register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.register-header p {
+  font-size: 16px;
+  color: #555;
 }

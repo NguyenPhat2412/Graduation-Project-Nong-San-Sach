@@ -17,7 +17,11 @@ export const NotificationProvider = ({ children }) => {
   return (
     <NotificationContext.Provider
       value={{
-        openNotification,
+        openNotification(type, message) {
+          setType(type);
+          setMessage(message);
+          openNotification(type, message);
+        },
         api,
         type,
         setType,

@@ -9,7 +9,10 @@ const FeatureProduct = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   const { userInfo } = useUser();
-  const userId = userInfo._id;
+  let userId;
+  if (userInfo) {
+    userId = userInfo._id;
+  }
 
   // Fetch featured products data from database
   useEffect(() => {
@@ -32,6 +35,7 @@ const FeatureProduct = () => {
 
   // recently viewed products
   useEffect(() => {
+    if (!userId) return;
     const recentlyViewed = fetch(
       `${import.meta.env.VITE_DATABASE_URL}/api/client/recently-viewed/${userId}`,
       {

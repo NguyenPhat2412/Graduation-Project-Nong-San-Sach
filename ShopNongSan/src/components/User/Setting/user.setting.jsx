@@ -3,12 +3,9 @@ import NavBar from "../../NavBar/app.navbar";
 import AppUserBoard from "../app.user.board";
 import AppFooter from "../../Footer/app.footer";
 import UserSettingAccount from "./user.setting.account";
-import { useUser } from "../../../UseContext/UserContext";
 import UserSettingPassword from "./user.setting.password";
 
 const UserSetting = () => {
-  const { userInfo } = useUser();
-  console.log("User Info:", userInfo);
   return (
     <>
       <Container>

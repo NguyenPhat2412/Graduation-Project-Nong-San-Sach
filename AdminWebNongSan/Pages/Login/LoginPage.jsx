@@ -1,23 +1,31 @@
 import { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   const validate = () => {
     if (!email || !password) {
-      setError("You must fill in all fields!");
+      openNotification("error", "You must fill in all fields!");
       return false;
     }
     if (password.length < 8) {
-      setError("Password must be at least 8 characters long!");
+      openNotification("error", "Password must be at least 8 characters long!");
       return false;
     }
-    setError("");
     return true;
   };
 
@@ -28,7 +36,7 @@ const LoginPage = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/user/login`,
+        `${import.meta.env.VITE_API_URL}/api/admin/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -38,9 +46,10 @@ const LoginPage = () => {
       );
       const data = await response.json();
       if (data.error) {
-        setError(data.error);
+        openNotification("error", data.error);
       } else {
-        alert("Đăng nhập thành công!");
+        openNotification("success", "Đăng nhập thành công!");
+        console.log("Login successful:", data);
 
         localStorage.setItem("currentUser", JSON.stringify(data.user));
         localStorage.setItem("token", data.token);
@@ -48,13 +57,13 @@ const LoginPage = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.error("Error:", error);
-      setError("Đã xảy ra lỗi, vui lòng thử lại sau.");
+      openNotification("error", "Đã xảy ra lỗi, vui lòng thử lại sau.");
     }
   };
 
   return (
     <div className="login-container">
+      {contextHolder}
       <div className="login-wrapper">
         <div className="login-box">
           <h1 className="login-title">Sign In</h1>
@@ -70,7 +79,6 @@ const LoginPage = () => {
             className="login-input"
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && <p className="login-error">{error}</p>}
           <button className="login-button" onClick={handleLogin}>
             SIGN IN
           </button>

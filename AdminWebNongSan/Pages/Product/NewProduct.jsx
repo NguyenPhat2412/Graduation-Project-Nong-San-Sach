@@ -2,6 +2,7 @@ import { useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "./NewProduct.css";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const NewProduct = () => {
   const [name, setProductName] = useState("");
@@ -17,6 +18,13 @@ const NewProduct = () => {
   const navigate = useNavigate();
   const handleFileChange = (e) => {
     setImage(Array.from(e.target.files));
+  };
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -38,6 +46,7 @@ const NewProduct = () => {
         images: !image ? "Image is required" : "",
         errors: "Please fill in all fields",
       });
+
       return;
     }
     setErrors({});
@@ -84,9 +93,10 @@ const NewProduct = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        openNotification("error", "Failed to create product");
         throw new Error(data.error || "Failed to create product");
       }
-      alert("Product created successfully!");
+      openNotification("success", "Product created successfully!");
       setProductName("");
       setCategory("");
       setPrice("");
@@ -100,6 +110,7 @@ const NewProduct = () => {
 
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>

@@ -1,88 +1,71 @@
-.view-container {
+/* vieworder.css */
+
+.view-order-container {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
 }
 
-.view-title {
-  font-size: 28px;
+.view-order-title {
+  font-size: 32px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: #333;
 }
 
-.view-info p {
-  margin-bottom: 10px;
+.view-order-info p {
+  margin-bottom: 12px;
   font-size: 16px;
-}
-
-.view-subtitle {
-  margin-top: 30px;
-  font-size: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
   color: #444;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
 }
 
-.view-table {
+.view-order-info span {
+  font-weight: 600;
+  color: #222;
+}
+
+.product-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
-  font-size: 15px;
+  margin-top: 30px;
 }
 
-.view-table th,
-.view-table td {
-  border: 1px solid #ddd;
+.product-table th,
+.product-table td {
   padding: 12px;
-  text-align: left;
+  border: 1px solid #ccc;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.view-table th {
-  background-color: #f8f8f8;
-  color: #555;
+.product-table thead {
+  background-color: #f5f5f5;
+  color: #333;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
-.view-table tr:hover {
-  background-color: #f1f1f1;
-}
-
-.view-image {
+.product-image-view-order {
   width: 80px;
   height: 80px;
   object-fit: cover;
-  border-radius: 5px;
-}
-
-.view-loading,
-.view-error {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 16px;
-  color: gray;
-}
-
-.view-error {
-  color: red;
-}
-
-.view-back-btn {
-  margin-top: 30px;
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
   border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
 }
 
-.view-back-btn:hover {
+.back-button {
+  display: inline-block;
+  margin-top: 30px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.back-button:hover {
   background-color: #0056b3;
 }

@@ -140,6 +140,12 @@ exports.AddToCart = async (req, res) => {
   try {
     const productObjectId = new mongoose.Types.ObjectId(productId);
 
+    if (!userId) {
+      res
+        .status(403)
+        .json({ message: "Bạn cần đăng nhập để thực hiện hành động này" });
+    }
+
     let cart = await Cart.findOne({
       userId,
     });
@@ -295,22 +301,28 @@ exports.PostOrder = async (req, res) => {
       products,
       totalAmount,
     });
+    if (!userId) {
+      return res
+        .status(403)
+        .json({ message: "Bạn cần đăng nhập để thực hiện hành động này" });
+    }
 
-    const saveOrder = await order.save();
+    if (userId) {
+      const saveOrder = await order.save();
 
-    // Send confirmation email
-    await sendOrderConfirmationEmail(
-      order.customer.email,
-      order.customer.name,
-      order.customer.phone,
-      order.customer.address,
-      products,
-      order.createdAt
-    );
-
-    res
-      .status(201)
-      .json({ message: "Order placed successfully", order: saveOrder });
+      // Send confirmation email
+      await sendOrderConfirmationEmail(
+        order.customer.email,
+        order.customer.name,
+        order.customer.phone,
+        order.customer.address,
+        products,
+        order.createdAt
+      );
+      res
+        .status(201)
+        .json({ message: "Order placed successfully", order: saveOrder });
+    }
   } catch (error) {
     console.error("Error placing order:", error);
     res.status(500).json({ error: "Internal server error" });

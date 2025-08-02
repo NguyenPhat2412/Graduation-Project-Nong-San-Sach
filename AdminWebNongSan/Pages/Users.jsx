@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar/navbar";
 import "../components/Dashboard/Dashboard.css";
+import { notification } from "antd";
 // import DashBoardNavbar from "../components/Dashboard/NavBarDashBoard";
 
 const Users = () => {
@@ -8,6 +9,15 @@ const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const bookingsPerPage = 6;
+
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   // Lấy thông tin người dùng
   useEffect(() => {
@@ -43,9 +53,9 @@ const Users = () => {
     );
     if (response.ok) {
       setUsers(users.filter((user) => user._id !== id));
-      alert("User deleted successfully!");
+      openNotification("success", "User deleted successfully!");
     } else {
-      alert("Failed to delete user!");
+      openNotification("error", "Failed to delete user!");
     }
   };
 
@@ -63,6 +73,7 @@ const Users = () => {
 
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white ">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>

@@ -144,16 +144,6 @@ const CheckOut = () => {
     }, 2000);
   };
 
-  // check authentication
-  if (!userInfo) {
-    openNotification("error", "You need to be logged in to checkout.");
-    return (
-      <Link to="/account/login" className="nav-link-1">
-        Login
-      </Link>
-    );
-  }
-
   // Load Tỉnh/Thành phố
   // useEffect(() => {
   //   fetch("https://provinces.open-api.vn/api/p/")

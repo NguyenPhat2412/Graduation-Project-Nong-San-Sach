@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "../../components/Dashboard/Dashboard.css";
 import { Link } from "react-router-dom";
+import { notification } from "antd";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -9,6 +10,15 @@ const Product = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchProduct, setSearchProduct] = useState("");
   const ProductPerPage = 7;
+
+  const [api, contextHolder] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   // Get info of Product
   useEffect(() => {
@@ -40,9 +50,11 @@ const Product = () => {
         .then((data) => {
           setProducts(data);
           setLoading(false);
-          console.log(data);
         })
-        .catch((err) => console.error("Lỗi lấy user:", err));
+        .catch((err) => {
+          console.error("Lỗi lấy user:", err);
+          openNotification("error", "Failed to fetch products");
+        });
     }
   }, [searchProduct]);
 
@@ -61,10 +73,11 @@ const Product = () => {
       if (!res.ok) {
         throw new Error("Failed to delete product");
       }
-      alert("Product deleted successfully");
+      openNotification("success", "Product deleted successfully");
       navigator("/");
     } catch (err) {
       console.error("Error when delete product", err);
+      openNotification("error", "Failed to delete product");
     }
   };
 
@@ -84,6 +97,7 @@ const Product = () => {
   const endPage = Math.min(totalPages, startPage + paginateRange - 1);
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white ">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>

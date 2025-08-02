@@ -119,7 +119,7 @@ const Blog = () => {
                     <th className="py-2 px-3 border">STT</th>
                     <th className="py-2 px-3 border">ID</th>
                     <th className="py-2 px-3 border">Title</th>
-                    <th className="py-2 px-3 border">Date</th>
+
                     <th className="py-2 px-3 border">Banner</th>
                     <th className="py-2 px-3 border">Author</th>
                     <th className="py-2 px-3 border">Tags</th>
@@ -134,7 +134,7 @@ const Blog = () => {
                       <td className="py-2 px-3 border">{idx + 1}</td>
                       <td className="py-2 px-3 border">{b._id}</td>
                       <td className="py-2 px-3 border">{b.title || "N/A"}</td>
-                      <td className="py-2 px-3 border">{b.date}</td>
+
                       <td className="py-2 px-3 border">
                         {
                           <img
@@ -149,7 +149,7 @@ const Blog = () => {
                       <td className="py-2 px-3 border">
                         {b.category || "N/A"}
                       </td>
-                      <td className="py-2 px-3 border ">
+                      <td className="py-2 px-3 flex">
                         <Link
                           className="bg-blue-500 text-white rounded"
                           style={{

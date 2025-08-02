@@ -15,4 +15,7 @@ router.get("/products/:productId", adminController.getProductById);
 // add a new product
 router.post("/products", adminController.addNewProduct);
 
+// get order by Id
+router.get("/orders/:orderId", adminController.GetOrderByOrderId);
+
 module.exports = router;

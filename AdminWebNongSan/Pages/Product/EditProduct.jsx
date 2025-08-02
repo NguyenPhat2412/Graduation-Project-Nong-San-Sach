@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "./NewProduct.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { notification } from "antd";
 
 const EditProduct = () => {
   const [productName, setProductName] = useState("");
@@ -12,12 +13,20 @@ const EditProduct = () => {
   const [description, setDescription] = useState("");
   const [discount, setDiscount] = useState("");
   const [price_old, setPriceOld] = useState("");
+  const [errors, setErrors] = useState({});
 
   const [message, setMessage] = useState(null);
-  const [errors, setErrors] = useState({});
   const navigator = useNavigate();
 
   const { productId } = useParams();
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -41,7 +50,6 @@ const EditProduct = () => {
           throw new Error("Failed to fetch product data");
         }
         const data = await res.json();
-        console.log(data);
         if (data) {
           setProductName(data.product.name || "");
           setCategory(data.product.category || "");
@@ -52,13 +60,11 @@ const EditProduct = () => {
           setDescription(data.product.description || "");
           setDiscount(data.product.discount || 0);
           setPriceOld(data.product.price_old || "");
-
-          setErrors({});
         } else {
-          console.error("No product data found for the given ID");
+          openNotification("error", "No product data found for the given ID");
         }
       } catch (err) {
-        console.error("Error when fetch product: ", err);
+        openNotification("error", "Error when fetch product: " + err.message);
       }
     };
     fetchProduct();
@@ -84,39 +90,55 @@ const EditProduct = () => {
     }
     setErrors({});
 
-    const updatedProduct = {
+    const UpdateProduct = {
       name: productName,
-      category: category,
-      image: image ? URL.createObjectURL(image) : null,
+      category,
+      img: image,
+      price,
+      rating,
+      description,
+      discount,
+      price_old,
     };
-
-    try {
-      const res = await fetch(
-        `${
-          import.meta.env.VITE_API_URL
-        }/api/admin/product/edit-product/${productId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedProduct),
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/products/${productId}`, {
+      method: "PUT",
+      body: JSON.stringify(UpdateProduct),
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update product");
         }
-      );
-      const result = await res.json();
-      if (!res.ok) {
-        throw new Error(result.message || "Failed to add  product");
-      }
-      alert("Updated product successfully");
-      navigator("/");
-    } catch (err) {
-      console.error("Error when update product", err);
-      setMessage("Error when update product: " + err.message);
-    }
+        return response.json();
+      })
+      .then((data) => {
+        openNotification("success", "Product updated successfully!");
+        setProductName("");
+        setCategory("");
+        setImage(null);
+        setPrice("");
+        setRating("");
+        setDescription("");
+        setDiscount("");
+        setPriceOld("");
+        navigator("/products");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error updating product:", error);
+        openNotification(
+          "error",
+          "Error when update product: " + error.message
+        );
+      });
   };
 
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>
@@ -140,9 +162,6 @@ const EditProduct = () => {
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="Enter Product Name"
               ></input>
-              {errors.productName && (
-                <p className="text-red-500 text-sm">{errors.productName}</p>
-              )}
 
               <input
                 type="text"
@@ -204,9 +223,7 @@ const EditProduct = () => {
                 left: "0",
                 width: "fit-content",
               }}
-              onClick={(e) => {
-                handleSubmit(e);
-              }}
+              onClick={handleSubmit}
             >
               Submit
             </button>

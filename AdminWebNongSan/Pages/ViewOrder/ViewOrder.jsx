@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
 import "./ViewOrder.css";
+import { Link } from "react-router-dom";
 
 const ViewOrder = () => {
   const { orderId } = useParams();
-  const navigate = useNavigate();
+
   const [viewOrder, setViewOrder] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -12,10 +13,10 @@ const ViewOrder = () => {
     const fetchOrderDetails = async () => {
       try {
         const response = await fetch(
-          `${
-            import.meta.env.VITE_API_URL
-          }/api/client/order/view-orders/${orderId}`,
-          { credentials: "include" }
+          `${import.meta.env.VITE_API_URL}/api/admin/orders/${orderId}`,
+          {
+            credentials: "include",
+          }
         );
         const data = await response.json();
         setViewOrder(data);
@@ -29,63 +30,68 @@ const ViewOrder = () => {
   }, [orderId]);
 
   if (loading) {
-    return <p className="view-loading">Đang tải dữ liệu đơn hàng...</p>;
+    return <p className="text-center">Đang tải dữ liệu đơn hàng...</p>;
   }
 
   if (!viewOrder) {
-    return <p className="view-error">Không tìm thấy đơn hàng.</p>;
+    return <p className="text-center text-red">Không tìm thấy đơn hàng.</p>;
   }
 
   return (
-    <div className="view-container">
-      <h1 className="view-title">Thông tin đơn hàng</h1>
-      <div className="view-info">
+    <div className="view-order-container">
+      <h1 className="view-order-title">Thông tin đơn hàng</h1>
+      <div className="view-order-info">
         <p>
-          <strong>ID User:</strong> {viewOrder.userId}
+          <span>ID User:</span> {viewOrder.userId?._id || "N/A"}
         </p>
         <p>
-          <strong>Full Name:</strong> {viewOrder.customer.name}
+          <span>Full Name:</span> {viewOrder.customer?.name}
         </p>
         <p>
-          <strong>Phone:</strong> {viewOrder.customer.phone}
+          <span>Phone:</span> {viewOrder.customer?.phone}
         </p>
         <p>
-          <strong>Address:</strong> {viewOrder.customer.address}
+          <span>Address:</span> {viewOrder.customer?.address}
         </p>
         <p>
-          <strong>Tổng tiền:</strong>{" "}
-          {viewOrder.totalPrice?.toLocaleString("vi-VN", {
+          <span>Tổng tiền:</span>{" "}
+          {viewOrder.totalAmount?.toLocaleString("en-US", {
             style: "currency",
-            currency: "VND",
+            currency: "USD",
           })}
         </p>
       </div>
 
-      <h3 className="view-subtitle">Danh sách sản phẩm</h3>
-
-      <table className="view-table">
+      <h3 style={{ marginTop: "30px", marginBottom: "10px" }}>
+        Danh sách sản phẩm
+      </h3>
+      <table className="product-table">
         <thead>
           <tr>
-            <th>ID sản phẩm</th>
-            <th>Ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Giá</th>
-            <th>Số lượng</th>
+            <th>Id product</th>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
-          {viewOrder.cart && viewOrder.cart.length > 0 ? (
-            viewOrder.cart.map((item) => (
+          {viewOrder.products && viewOrder.products.length > 0 ? (
+            viewOrder.products.map((item) => (
               <tr key={item._id}>
                 <td>{item.productId}</td>
                 <td>
-                  <img src={item.img} alt={item.name} className="view-image" />
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}${item.img}`}
+                    alt={item.name}
+                    className="product-image-view-order"
+                  />
                 </td>
                 <td>{item.name}</td>
                 <td>
-                  {item.price.toLocaleString("vi-VN", {
+                  {item.price.toLocaleString("en-US", {
                     style: "currency",
-                    currency: "VND",
+                    currency: "USD",
                   })}
                 </td>
                 <td>{item.quantity}</td>
@@ -93,17 +99,16 @@ const ViewOrder = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="5" className="text-center">
-                Không có sản phẩm nào.
-              </td>
+              <td colSpan="5">Không có sản phẩm nào.</td>
             </tr>
           )}
         </tbody>
       </table>
-
-      <button className="view-back-btn" onClick={() => navigate("/")}>
-        Quay lại danh sách đơn hàng
-      </button>
+      <div className="back-button">
+        <Link to="/" style={{ marginTop: "20px" }}>
+          Quay lại danh sách đơn hàng
+        </Link>
+      </div>
     </div>
   );
 };

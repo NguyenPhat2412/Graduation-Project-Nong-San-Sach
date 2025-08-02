@@ -8,6 +8,7 @@ import {
   addToCart,
   fetchCart,
 } from "../../Home/Redux/redux.controllerDatabase";
+
 const ProductDetails = (props) => {
   const { ProductDetails } = props;
   const { userInfo, loading } = useUser();
@@ -53,6 +54,10 @@ const ProductDetails = (props) => {
   // };
 
   const handleAddToCart = () => {
+    if (!userId) {
+      alert("You need to be logged in to add items to the cart.");
+      return;
+    }
     const productId = ProductDetails._id;
     dispatch(addToCart({ userId, productId, quantity })).then(() => {
       dispatch(fetchCart(userId));
