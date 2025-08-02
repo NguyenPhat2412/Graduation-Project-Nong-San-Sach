@@ -42,7 +42,7 @@ const ViewOrder = () => {
       <h1 className="view-order-title">Thông tin đơn hàng</h1>
       <div className="view-order-info">
         <p>
-          <span>ID User:</span> {viewOrder.userId?._id || "N/A"}
+          <span>ID User:</span> {viewOrder.userId || "N/A"}
         </p>
         <p>
           <span>Full Name:</span> {viewOrder.customer?.name}
