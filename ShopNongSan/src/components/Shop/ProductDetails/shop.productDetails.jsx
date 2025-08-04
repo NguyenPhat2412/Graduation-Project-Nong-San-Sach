@@ -14,6 +14,30 @@ const ProductDetails = (props) => {
   const { userInfo, loading } = useUser();
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+
+  // set localStorage
+  const recentlyViewedProducts = JSON.parse(
+    localStorage.getItem("recentlyViewed") || "[]"
+  );
+  const addRecentlyViewed = (product) => {
+    if (!product) return;
+    const productExists = recentlyViewedProducts.some(
+      (item) => item._id === product._id
+    );
+    if (!productExists) {
+      recentlyViewedProducts.push(product);
+      localStorage.setItem(
+        "recentlyViewed",
+        JSON.stringify(recentlyViewedProducts)
+      );
+    }
+  };
+
+  // Add product to recently viewed
+  if (ProductDetails) {
+    addRecentlyViewed(ProductDetails);
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }

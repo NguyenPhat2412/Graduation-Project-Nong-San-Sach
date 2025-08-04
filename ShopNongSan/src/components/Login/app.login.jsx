@@ -46,6 +46,7 @@ const AppLogin = () => {
       setMessage("Đăng nhập thành công!");
       setError(false);
       navigate("/");
+      window.location.reload();
     } catch (error) {
       console.error("Error during login:", error);
       setError(true);
