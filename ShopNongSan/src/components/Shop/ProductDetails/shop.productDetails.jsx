@@ -80,34 +80,54 @@ const ProductDetails = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div>
-          <img
-            src={`${import.meta.env.VITE_DATABASE_URL}${ProductDetails?.img}`}
-            alt={ProductDetails?.name}
-          />
-        </div>
-        <div>
-          <p>{ProductDetails?.description}</p>
-          {Array.from({ length: ProductDetails?.rating }).map((_, index) => (
-            <span key={index}>⭐</span>
-          ))}
-          <p>
-            Brand:{" "}
+        <div className="product-modal-body">
+          <div className="product-modal-image">
             <img
-              src={`${import.meta.env.VITE_DATABASE_URL}${ProductDetails?.brand}`}
+              src={`${import.meta.env.VITE_DATABASE_URL}${ProductDetails?.img}`}
               alt={ProductDetails?.name}
             />
-          </p>
-          <p>Price: ${ProductDetails?.price.toFixed(2)}</p>
-          <p>Category: {ProductDetails?.category}</p>
-          <p>Tag: {ProductDetails?.tag}</p>
-          <input
-            type="number"
-            min="1"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          <Button onClick={handleAddToCart}>Add To Cart</Button>
+          </div>
+          <div className="product-info">
+            <p>{ProductDetails?.description}</p>
+            {Array.from({ length: ProductDetails?.rating }).map((_, index) => (
+              <span key={index}>⭐</span>
+            ))}
+            <p>
+              <strong>Brand: </strong>
+              <img
+                src={`${import.meta.env.VITE_DATABASE_URL}${ProductDetails?.brand}`}
+                alt={ProductDetails?.name}
+              />
+            </p>
+            <p>
+              <strong>Price: </strong>${ProductDetails?.price.toFixed(2)}
+            </p>
+            <p>
+              <strong>Category: </strong>
+              {Array.from({ length: ProductDetails?.category.length }).map(
+                (_, index) => (
+                  <span key={index}>{ProductDetails?.category[index]}, </span>
+                )
+              )}
+            </p>
+            <p>
+              <strong>Tag: </strong>
+              {Array.from({ length: ProductDetails?.tag.length }).map(
+                (_, index) => (
+                  <span key={index}>{ProductDetails?.tag[index]}, </span>
+                )
+              )}
+            </p>
+            <div className="add-to-cart-product">
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              />
+              <Button onClick={handleAddToCart}>Add To Cart</Button>
+            </div>
+          </div>
         </div>
       </Modal.Body>
     </Modal>
