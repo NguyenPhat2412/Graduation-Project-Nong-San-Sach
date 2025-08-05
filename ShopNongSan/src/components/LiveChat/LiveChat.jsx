@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import "./LiveChat.css";
 
@@ -7,18 +7,22 @@ const LiveChat = ({ isOpen }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  const socket = io(import.meta.env.VITE_DATABASE_URL, {
-    transports: ["websocket"],
-    withCredentials: true,
-  });
+  const socketRef = useRef(null);
 
   useEffect(() => {
+    socketRef.current = io(import.meta.env.VITE_DATABASE_URL, {
+      transports: ["websocket"],
+      withCredentials: true,
+    });
+
+    const socket = socketRef.current;
     const handleRoomCreated = (roomId) => {
       localStorage.setItem("roomId", roomId);
       setRoomId(roomId);
     };
 
     const handleNewMessage = (msg) => {
+      console.log(msg);
       setMessages((prev) => [...prev, msg]);
     };
 
@@ -41,8 +45,8 @@ const LiveChat = ({ isOpen }) => {
   }, []);
 
   const sendMessage = () => {
-    if (!input.trim() || !socket.connected) return;
-    socket.emit("client_message", { roomId, message: input });
+    if (!input.trim() || !socketRef.current.connected) return;
+    socketRef.current.emit("client_message", { roomId, message: input });
     setInput("");
   };
 

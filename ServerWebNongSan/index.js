@@ -104,6 +104,7 @@ io.on("connection", (socket) => {
 
     // Bot
     const botResponse = `Bot response to: ${message}`;
+    console.log(botResponse);
     room[roomId].messages.push({ sender: "bot", message: botResponse });
     setTimeout(() => {
       io.to(roomId).emit("new_message", {

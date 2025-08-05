@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import NavBar from "../components/NavBar/navbar";
-const socket = io("http://localhost:5000", {
-  transports: ["websocket"],
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000,
-});
+import { useRef } from "react";
 
 const AdminPanel = () => {
   const [rooms, setRooms] = useState([]);
@@ -13,35 +9,44 @@ const AdminPanel = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
+  const socketRef = useRef([]);
+  const selectedRef = useRef(null);
   useEffect(() => {
+    selectedRef.current = selectedRoom;
+  }, [selectedRoom]);
+  useEffect(() => {
+    socketRef.current = io(import.meta.env.VITE_API_URL, {
+      transports: ["websocket"],
+      withCredentials: true,
+    });
+    const socket = socketRef.current;
+
     socket.emit("get_rooms");
 
     const interval = setInterval(() => {
       socket.emit("get_rooms");
-    }, 5000); // Fetch room list every 5 seconds
+    }, 5000);
 
-    socket.on("rooms_list", (roomList) => {
-      console.log("Received rooms list:", roomList); // ✅ thêm log kiểm tra
-
-      // Thêm vào localStorage hoặc mongoDB
+    const handleRoomList = (roomList) => {
       localStorage.setItem("rooms", JSON.stringify(roomList));
-      // Hoặc nếu bạn muốn lưu vào MongoDB, bạn có thể gọi API ở đây
-      // fetch(`${import.meta.env.VITE_API_URL}/api/admin/rooms`, {
       setRooms(roomList);
-    });
-    socket.on("new_message", (msg) => {
-      if (msg.roomId === selectedRoom) {
+    };
+    const handleNewMessage = (msg) => {
+      if (msg.roomId === selectedRef.current) {
         setMessages((prev) => [...prev, msg]);
       }
-    });
+    };
+    socket.on("new_message", handleNewMessage);
+    socket.on("room_list", handleRoomList);
     return () => {
-      socket.off();
+      socket.off("new_message", handleNewMessage);
+      socket.off("room_list", handleRoomList);
       clearInterval(interval);
     };
-  }, [selectedRoom]);
+  }, []);
 
   const sendMessage = () => {
-    socket.emit("admin_message", {
+    socketRef.current.emit("admin_message", {
       roomId: selectedRoom,
       message: input,
     });
@@ -67,8 +72,8 @@ const AdminPanel = () => {
                 key={room}
                 onClick={() => {
                   setSelectedRoom(room);
-                  setMessages([]); // Clear messages when switching rooms
-                  socket.emit("join_room", { roomId: room });
+                  setMessages([]);
+                  socketRef.current.emit("join_room", room);
                 }}
                 style={{
                   cursor: "pointer",
