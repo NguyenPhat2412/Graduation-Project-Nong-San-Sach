@@ -529,3 +529,17 @@ exports.getRecentlyViewedProducts = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+exports.getBlogById = async (req, res) => {
+  const { blogId } = req.params;
+  try {
+    const blog = await Blogs.findById(blogId);
+    if (!blog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+    res.status(200).json(blog);
+  } catch (error) {
+    console.error("Error fetching blog by ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

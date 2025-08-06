@@ -9,4 +9,7 @@ router.get("/blog/tags", BlogController.GetTag);
 // Get all blogs
 router.get("/blogs", BlogController.GetAllBlogs);
 
+// get Blog by Id
+router.get("/blogs/:blogId", BlogController.getBlogById);
+
 module.exports = router;

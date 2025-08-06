@@ -24,6 +24,7 @@ import AppFaq from "./components/Faq/app.faq";
 import LiveChat from "./components/LiveChat/LiveChat";
 import ChatBubble from "./components/LiveChat/ChatBubble";
 import { useState } from "react";
+import BlogDetails from "./components/Blog/BlogDetails/blog.details";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -49,6 +50,7 @@ function App() {
           <Route path="/" element={<AppHome />} />
           <Route path="/app/blog" element={<AppBlog />} />
           <Route path="/app/faq" element={<AppFaq />} />
+          <Route path="/app/blog/:id" element={<BlogDetails />} />
         </Routes>
       </BrowserRouter>
       <LiveChat isOpen={open} />

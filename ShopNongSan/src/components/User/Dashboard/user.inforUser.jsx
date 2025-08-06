@@ -10,7 +10,7 @@ const InformationUser = () => {
   if (!userInfo) {
     return <div>Loading...</div>;
   }
-  const userId = userInfo._id;
+  const userId = userInfo?._id;
 
   const { username, email, avatar } = userInfo;
 

@@ -11,7 +11,7 @@ const UserHistory = () => {
   const [dataOrder, setDataOrder] = useState([]);
   const [show, setShow] = useState(false);
   const { userInfo } = useUser();
-  const userId = userInfo._id;
+  const userId = userInfo?._id;
   const navigate = useNavigate();
 
   // Fetch user order history
@@ -80,15 +80,15 @@ const UserHistory = () => {
               </thead>
               <tbody>
                 {orderHistory.map((order) => (
-                  <tr key={order._id}>
-                    <td>{order._id}</td>
-                    <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                    <td>{order.totalAmount || "No total available"}</td>
-                    <td>{order.status}</td>
+                  <tr key={order?._id}>
+                    <td>{order?._id}</td>
+                    <td>{new Date(order?.createdAt).toLocaleDateString()}</td>
+                    <td>{order?.totalAmount || "No total available"}</td>
+                    <td>{order?.status}</td>
                     <td>
                       <Button
                         onClick={() =>
-                          navigate(`/user/order-history/${order._id}`)
+                          navigate(`/user/order-history/${order?._id}`)
                         }
                         variant="primary"
                         className="view-order-button"

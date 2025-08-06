@@ -5,12 +5,12 @@ import { useUser } from "../../../UseContext/UserContext";
 import { notification } from "antd";
 const UserSettingPassword = () => {
   const { userInfo } = useUser();
-  const userId = userInfo ? userInfo._id : null;
+  const userId = userInfo ? userInfo?._id : null;
   const [currentPassword, setCurrentPassword] = useState(
-    userInfo ? userInfo.password : ""
+    userInfo ? userInfo?.password : ""
   );
   const [newPassword, setNewPassword] = useState(
-    userInfo ? userInfo.password : ""
+    userInfo ? userInfo?.password : ""
   );
 
   const [api, contextHolder] = notification.useNotification();

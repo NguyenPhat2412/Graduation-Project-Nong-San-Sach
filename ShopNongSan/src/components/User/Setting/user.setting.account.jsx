@@ -5,7 +5,7 @@ import "./user.setting.account.css";
 function UserSettingAccount(props) {
   const { userInfo } = useUser();
   const { username, email, avatar } = userInfo;
-  const userId = userInfo._id;
+  const userId = userInfo?._id;
   const [name, setName] = useState(username);
   const [emailUser, setEmail] = useState(email);
   const formData = new FormData();
