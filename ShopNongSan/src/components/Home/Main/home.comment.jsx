@@ -21,13 +21,15 @@ const HomeComment = () => {
     };
     fetchDataComment();
   }, []);
+
+  const displayComment = comment.length > 3 ? comment.slice(0, 3) : comment;
   return (
     <div className="home-comment-wrapper">
       <div className="home-comment-header">
         <h2>Client Testimonials</h2>
       </div>
       <div className="home-comment-container">
-        {comment.map((item) => (
+        {displayComment.map((item) => (
           <div className="home-comment" key={item._id}>
             <div className="home-comment-logo">
               <img

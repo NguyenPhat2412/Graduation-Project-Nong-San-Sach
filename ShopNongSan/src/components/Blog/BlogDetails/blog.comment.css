@@ -80,3 +80,64 @@
 .comment-submit-btn:hover {
   background-color: #388e3c;
 }
+
+.comment-list-container {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.comment-list-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  border-left: 4px solid #4caf50;
+  padding-left: 12px;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.2s ease;
+}
+
+.comment-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.comment-item img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+}
+
+.comment-item div {
+  flex: 1;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.comment-item strong {
+  display: block;
+  font-size: 16px;
+  color: #2e7d32;
+  margin-bottom: 4px;
+}
