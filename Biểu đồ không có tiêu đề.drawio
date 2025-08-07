@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.7">
   <diagram name="Trang-1" id="dHnvUi2NV0nn5fop29Nm">
-    <mxGraphModel dx="2131" dy="1552" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1096" dy="125" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -209,34 +209,34 @@
           <mxGeometry y="104" width="270" height="26" as="geometry" />
         </mxCell>
         <mxCell id="J2ZhHDaDN9UHt9ArRhud-1" value="Comment" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-340" y="690" width="270" height="294" as="geometry" />
+          <mxGeometry x="-340" y="690" width="270" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-2" value="+ userId: ObjectId()&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-19" value="+ _id: ObjectId() (required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="26" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-3" value="+ blogId: ObjectId() (required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-2" value="+ userId: ObjectId()&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="52" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-4" value="+ name: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-3" value="+ blogId: ObjectId() (required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="78" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-17" value="+ avatar: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-4" value="+ name: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="104" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-5" value="+ email: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-17" value="+ avatar: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="130" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-16" value="+ comment: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-5" value="+ email: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="156" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-6" value="+ createdAt: Timestamp &amp;lt;Default: Date.now&amp;gt;&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-16" value="+ comment: String(required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="182" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-8" value="+ updatedAt: Timestamp &amp;lt;Default: Date.now&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-6" value="+ createdAt: Timestamp &amp;lt;Default: Date.now&amp;gt;&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
           <mxGeometry y="208" width="270" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="J2ZhHDaDN9UHt9ArRhud-18" value="" style="whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
-          <mxGeometry y="234" width="270" height="60" as="geometry" />
+        <mxCell id="J2ZhHDaDN9UHt9ArRhud-8" value="+ updatedAt: Timestamp &amp;lt;Default: Date.now&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="J2ZhHDaDN9UHt9ArRhud-1">
+          <mxGeometry y="234" width="270" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
