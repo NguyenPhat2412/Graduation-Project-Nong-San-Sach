@@ -109,7 +109,7 @@ const CheckOut = () => {
       response
         .then((res) => res.json())
         .then((data) => {
-          if (data.order) {
+          if (data?.order) {
             handleMessage();
           } else {
             openNotification(
