@@ -57,8 +57,14 @@
 }
 
 .blog-meta i {
-  color: #888;
+  color: #00f83e;
   font-size: 13px;
+}
+.blog-meta p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
 .blog-item-title {
