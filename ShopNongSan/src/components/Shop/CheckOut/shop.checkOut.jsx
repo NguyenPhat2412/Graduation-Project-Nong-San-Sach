@@ -10,7 +10,7 @@ import { fetchCart } from "../../Home/Redux/redux.controllerDatabase";
 import RegisterInformation from "../../Home/RegisterInformation/app.register.information";
 import "./shop.checkOut.css";
 import { notification } from "antd";
-import { Link } from "react-router";
+
 const CheckOut = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -109,7 +109,7 @@ const CheckOut = () => {
       response
         .then((res) => res.json())
         .then((data) => {
-          if (data?.order) {
+          if (data) {
             handleMessage();
           } else {
             openNotification(
