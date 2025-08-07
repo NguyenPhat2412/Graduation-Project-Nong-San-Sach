@@ -164,27 +164,27 @@ const CheckOut = () => {
         />
       </div>
       <Container>
-        <h1>Billing Information</h1>
+        <h1>Thông tin thanh toán</h1>
       </Container>
       <Container className="checkout-container">
         {contextHolder}
         <div>
           <div className="form-group-name">
             <div className="form-group">
-              <label>First Name</label>
+              <label>Họ</label>
               <input
                 className="form-control"
-                placeholder="First Name"
+                placeholder="Họ"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Last Name</label>
+              <label>Tên</label>
               <input
                 className="form-control"
-                placeholder="Last Name"
+                placeholder="Tên"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -203,20 +203,20 @@ const CheckOut = () => {
 
           <div className="form-group-phone">
             <div className="form-group">
-              <label>Phone Number</label>
+              <label>Số điện thoại</label>
               <input
                 className="form-control"
-                placeholder="Phone Number"
+                placeholder="Số điện thoại"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Address</label>
+              <label>Địa chỉ</label>
               <input
                 className="form-control"
-                placeholder="Street, building, etc."
+                placeholder="Đường, tòa nhà, v.v."
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
@@ -224,7 +224,7 @@ const CheckOut = () => {
           </div>
           <div className="form-group-zip">
             <div className="form-group">
-              <label>Postal Code (ZipCode)</label>
+              <label>Mã bưu chính (ZipCode)</label>
               <input
                 className="form-control"
                 placeholder="100000"
@@ -234,21 +234,21 @@ const CheckOut = () => {
             </div>
 
             <div className="form-group">
-              <label>Country</label>
+              <label>Quốc gia</label>
               <input className="form-control" value="Vietnam" readOnly />
             </div>
 
             <div className="form-group">
-              <label>Payment Method</label>
+              <label>Phương thức thanh toán</label>
               <select className="form-control">
-                <option value="">Select</option>
-                <option value="cod">Cash on Delivery (COD)</option>
-                <option value="card">Credit/Debit Card</option>
+                <option value="">Chọn</option>
+                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                <option value="card">Thẻ tín dụng/thẻ ghi nợ</option>
               </select>
             </div>
 
             <div className="form-group">
-              <label>Card Number</label>
+              <label>Số thẻ</label>
               <input
                 className="form-control"
                 placeholder="**** **** **** ****"
@@ -256,18 +256,21 @@ const CheckOut = () => {
             </div>
           </div>
           <div>
-            <h2>Additional Information</h2>
+            <h2>Thông tin bổ sung</h2>
             <textarea
               className="form-control"
-              placeholder="Any additional notes or instructions"
+              placeholder="Bất kỳ ghi chú hoặc hướng dẫn bổ sung nào"
               rows="4"
             ></textarea>
-            <p>We'll never share your information with anyone else.</p>
+            <p>
+              Chúng tôi sẽ không bao giờ chia sẻ thông tin của bạn với bất kỳ ai
+              khác.
+            </p>
           </div>
         </div>
 
         <div className="register-information-section">
-          <div className="order-summary-title">Order Summary</div>
+          <div className="order-summary-title">Tóm tắt đơn hàng</div>
           {cart.length > 0 ? (
             <>
               <ul className="cart-list">
@@ -309,12 +312,12 @@ const CheckOut = () => {
               </div>
               <div>
                 <button onClick={handleSubmit} className="nav-link-1">
-                  Place Order
+                  Xác nhận đơn hàng
                 </button>
               </div>
             </>
           ) : (
-            <p>Your cart is empty</p>
+            <p>Giỏ hàng của bạn đang trống</p>
           )}
         </div>
       </Container>

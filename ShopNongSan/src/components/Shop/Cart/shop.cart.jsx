@@ -70,19 +70,20 @@ const ShopCart = () => {
       <Container className="cart-header">
         <h1 className="cart-title">{userInfo?.username}'s Cart</h1>
         <p className="cart-subtitle">
-          You have {cart.length} item{cart.length !== 1 ? "s" : ""} in your cart
+          Bạn có {cart.length} sản phẩm{cart.length !== 1 ? "s" : ""} trong giỏ
+          hàng
         </p>
       </Container>
       <Container className="cart-container">
         <main>
           {cart.length === 0 ? (
             <div className="empty-cart-message">
-              Your cart is empty. <br />
+              Giỏ hàng của bạn đang trống. <br />
               <button
                 className="cart-go-to-cart"
                 onClick={() => navigate("/app/shop")}
               >
-                Go to Shop
+                Đi đến cửa hàng
               </button>
             </div>
           ) : (
@@ -91,12 +92,12 @@ const ShopCart = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Product</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Total</th>
-                      <th>Action</th>
+                      <th>Hình ảnh</th>
+                      <th>Sản phẩm</th>
+                      <th>Giá</th>
+                      <th>Số lượng</th>
+                      <th>Tổng</th>
+                      <th>Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -132,7 +133,7 @@ const ShopCart = () => {
                               handleDeleteCart(userId, item.productId)
                             }
                           >
-                            Remove
+                            Xóa
                           </button>
                         </td>
                       </tr>
@@ -144,10 +145,10 @@ const ShopCart = () => {
                     onClick={() => navigate("/shop")}
                     className="px-4 py-2"
                   >
-                    Continue Shopping
+                    Tiếp tục mua sắm
                   </button>
                   <button onClick={handleProceed} className="px-4 py-2">
-                    Proceed to Checkout
+                    Tiến hành thanh toán
                   </button>
                 </div>
               </div>
@@ -155,24 +156,27 @@ const ShopCart = () => {
           )}
         </main>
         <div className="cart-summary">
-          <span className="cart-total-check">CART TOTAL</span>
+          <span className="cart-total-check">TỔNG GIÁ TRỊ GIỎ HÀNG</span>
           <div className="cart-total-details-container">
             <div className="cart-total-details">
-              <span className="cart-subtotal-label">SUBTOTAL</span>
+              <span className="cart-subtotal-label">TẠM TÍNH</span>
               <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
             <div className="cart-total-details">
-              <span className="cart-shipping-label">SHIPPING</span>
-              <span className="text-gray-500">Free Shipping</span>
+              <span className="cart-shipping-label">PHÍ VẬN CHUYỂN</span>
+              <span className="text-gray-500">Miễn phí vận chuyển</span>
             </div>
             <div className="cart-total-details">
-              <span className="cart-total-label">TOTAL</span>
+              <span className="cart-total-label">TỔNG</span>
               <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
           </div>
-          <input placeholder="Enter your coupon" className="coupon-input" />
+          <input
+            placeholder="Nhập mã giảm giá của bạn"
+            className="coupon-input"
+          />
           <button className="apply-coupon-button">
-            <i className="fa-solid fa-gift"></i> Apply Coupon
+            <i className="fa-solid fa-gift"></i> Áp dụng mã giảm giá
           </button>
         </div>
       </Container>
