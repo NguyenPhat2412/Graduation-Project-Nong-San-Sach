@@ -153,7 +153,10 @@ const Product = () => {
                       <td className="py-2 px-3 border">
                         {
                           <img
-                            src={b.img1 || `http://localhost:5000${b.img}`}
+                            src={
+                              b.img1 ||
+                              `${import.meta.env.VITE_API_URL}${b.img}`
+                            }
                             alt={b.name}
                             className="w-10 h-10 object-cover"
                           />
