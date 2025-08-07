@@ -543,3 +543,46 @@ exports.getBlogById = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+exports.PostComment = async (req, res) => {
+  const { userId, blogId, avatar, name, email, comment } = req.body;
+
+  try {
+    const newComment = new Comment({
+      userId,
+      blogId,
+      avatar,
+      name,
+      email,
+      comment,
+    });
+    await newComment.save();
+    res
+      .status(201)
+      .json({ message: "Comment posted successfully", comment: newComment });
+  } catch (error) {
+    console.error("Error posting comment:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+// get comments by blogId
+exports.GetCommentsByBlogId = async (req, res) => {
+  const { blogId } = req.params;
+
+  try {
+    const comments = await Comment.find({ blogId }).populate(
+      "userId",
+      "username"
+    );
+    if (!comments || comments.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No comments found for this blog" });
+    }
+    res.status(200).json(comments);
+  } catch (error) {
+    console.error("Error fetching comments by blog ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

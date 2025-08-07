@@ -11,5 +11,10 @@ router.get("/blogs", BlogController.GetAllBlogs);
 
 // get Blog by Id
 router.get("/blogs/:blogId", BlogController.getBlogById);
+// post comment
+router.post("/blog/comment", BlogController.PostComment);
+
+// get comments by blogId
+router.get("/blog/comments/:blogId", BlogController.GetCommentsByBlogId);
 
 module.exports = router;

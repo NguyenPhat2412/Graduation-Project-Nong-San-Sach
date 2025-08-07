@@ -4,12 +4,20 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema(
   {
-    img: { type: String, required: true },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    blogId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
+      required: true,
+    },
     avatar: { type: String, required: true },
     name: { type: String, required: true },
-    position: { type: String, required: true },
-    content: { type: String, required: true },
-    rating: { type: Number, required: true },
+    email: { type: String, required: true },
+    comment: { type: String, required: true },
   },
   {
     timestamps: true,
