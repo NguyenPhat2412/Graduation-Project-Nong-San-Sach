@@ -138,7 +138,10 @@ const Blog = () => {
                       <td className="py-2 px-3 border">
                         {
                           <img
-                            src={b.img1 || `http://localhost:5000${b.banner}`}
+                            src={
+                              b.img1 ||
+                              `${import.meta.env.VITE_API_URL}${b.banner}`
+                            }
                             alt={b.author}
                             className="w-10 h-10 object-cover"
                           />
