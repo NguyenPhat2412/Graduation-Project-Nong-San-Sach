@@ -299,7 +299,7 @@ const CheckOut = () => {
                 ))}
               </ul>
               <div className="cart-total">
-                <div>Total: </div>
+                <div>Tổng: </div>
                 <div>
                   {cart
                     .reduce(
