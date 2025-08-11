@@ -80,23 +80,21 @@ const Users = () => {
 
       <div className="col-span-1 md:col-span-4 p-6 dashboard-container">
         <div className="transactions bg-white shadow-md rounded-lg p-6 shadow-md mt-6">
-          <h1 className="text-2xl font-bold mb-4">User List</h1>
+          <h1 className="text-2xl font-bold mb-4">Danh sách người dùng</h1>
           {users.length === 0 ? (
-            <p className="text-gray-500">No User found.</p>
+            <p className="text-gray-500">Không có người dùng nào.</p>
           ) : (
             <div className="transactions-list overflow-x-auto">
               <table className="min-w-full text-sm text-left border">
                 <thead className="bg-gray-200 text-gray-700 text-xl">
                   <tr>
                     <th className="py-4 px-6 border">STT</th>
-
                     <th className="py-4 px-6 border">ID</th>
-                    <th className="py-4 px-6 border">User Name</th>
-                    <th className="py-4 px-6 border">Password</th>
-                    <th className="py-4 px-6 border">Full Name</th>
+                    <th className="py-4 px-6 border">Tên đăng nhập</th>
+
                     <th className="py-4 px-6 border">Email</th>
                     <th className="py-4 px-6 border">isAdmin</th>
-                    <th className="py-4 px-6 border">Actions</th>
+                    <th className="py-4 px-6 border">Hành động</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -106,29 +104,26 @@ const Users = () => {
                         {(currentPage - 1) * bookingsPerPage + idx + 1}
                       </td>
 
-                      <td className="py-2 px-3 border">{b._id}</td>
+                      <td className="py-2 px-3 border">{b?._id}</td>
                       <td className="py-2 px-3 border">
-                        {b.username || "N/A"}
+                        {b?.username || "N/A"}
                       </td>
-                      <td className="py-2 px-3 border">{b.password}</td>
+
+                      <td className="py-2 px-3 border">{b?.email}</td>
                       <td className="py-2 px-3 border">
-                        {b.fullName || "N/A"}
-                      </td>
-                      <td className="py-2 px-3 border">{b.email}</td>
-                      <td className="py-2 px-3 border">
-                        {b.isAdmin ? "Yes" : "No"}
+                        {b?.isAdmin ? "Có" : "Không"}
                       </td>
                       <td className="py-2 px-3 border">
                         <button
                           style={{
-                            backgroundColor: "redcó",
+                            backgroundColor: "red",
                             color: "white",
                             padding: "10px 20px",
                           }}
-                          onClick={() => handleDeleteUser(b._id)}
+                          onClick={() => handleDeleteUser(b?._id)}
                           className="bg-red-500 text-white px-4 py-2 rounded"
                         >
-                          Delete
+                          Xóa
                         </button>
                       </td>
                     </tr>

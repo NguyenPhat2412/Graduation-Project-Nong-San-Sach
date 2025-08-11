@@ -88,13 +88,13 @@ const DashBoard = () => {
           style={{ width: "100%", height: "75vh" }}
         >
           <div className="dashboard-header mb-6">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
+            <h1 className="text-2xl font-bold">Trang chủ</h1>
 
             <div className="dashboard-stats grid grid-cols-3 gap-20 mt-4 ">
               <div className="stat-item bg-gray-100 p-4 rounded shadow">
                 <div>
                   <p className="text-2xl font-bold">{numberClient}</p>
-                  <h2 className="text-xl font-semibold">Clients</h2>
+                  <h2 className="text-xl font-semibold">Khách hàng</h2>
                 </div>
                 <div>
                   <i className="fa-solid fa-user-plus"></i>
@@ -102,8 +102,8 @@ const DashBoard = () => {
               </div>
               <div className="stat-item bg-gray-100 p-4 rounded shadow">
                 <div>
-                  <p className="text-2xl font-bold">${numberEarning} </p>
-                  <h2 className="text-xl font-semibold">Earnings of Month</h2>
+                  <p className="text-2xl font-bold">{numberEarning} VND</p>
+                  <h2 className="text-xl font-semibold">Doanh thu tháng</h2>
                 </div>
                 <div>
                   <i className="fa-solid fa-dollar-sign"></i>
@@ -113,7 +113,7 @@ const DashBoard = () => {
                 <div>
                   <p className="text-2xl font-bold">{numberOrder}</p>
 
-                  <h2 className="text-xl font-semibold">New Orders</h2>
+                  <h2 className="text-xl font-semibold">Đơn hàng mới</h2>
                 </div>
                 <div>
                   <i className="fa-solid fa-file-circle-plus"></i>
@@ -125,7 +125,7 @@ const DashBoard = () => {
             {loading ? (
               <p>Loading</p>
             ) : orders.length === 0 ? (
-              <div>No Order</div>
+              <div>Không có đơn hàng</div>
             ) : (
               <div>
                 {currentOrder.map((order) => (
@@ -134,31 +134,31 @@ const DashBoard = () => {
                       <thead>
                         <tr className="bg-gray-100">
                           <th className="font-bold">ID User</th>
-                          <th className="font-bold">Name</th>
-                          <th className="font-bold">Phone</th>
-                          <th className="font-bold">Address</th>
-                          <th className="font-bold">Total</th>
-                          <th className="font-bold">Delivery</th>
-                          <th className="font-bold">Status</th>
-                          <th className="font-bold">Details</th>
+                          <th className="font-bold">Họ và tên</th>
+                          <th className="font-bold">Số điện thoại</th>
+                          <th className="font-bold">Địa chỉ</th>
+                          <th className="font-bold">Tổng tiền</th>
+                          <th className="font-bold">Giao hàng</th>
+                          <th className="font-bold">Trạng thái</th>
+                          <th className="font-bold">Chi tiết</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr className="hover:bg-gray-50 text-center">
-                          <td>{order.userId}</td>
-                          <td>{order.customer.name}</td>
-                          <td>{order.customer.phone}</td>
-                          <td>{order.customer.address}</td>
-                          <td>{order.totalPrice} VND</td>
+                          <td>{order?.userId}</td>
+                          <td>{order?.customer?.name}</td>
+                          <td>{order?.customer?.phone}</td>
+                          <td>{order?.customer?.address}</td>
+                          <td>{order?.totalAmount} VND</td>
                           <td>
-                            {order.delivery
+                            {order?.delivery
                               ? "Đã hoàn thành"
                               : "Chưa hoàn thành"}
                           </td>
-                          <td>{order.status}</td>
+                          <td>{order?.status}</td>
                           <td>
                             <Link
-                              to={`/orders/${order._id}`}
+                              to={`/orders/${order?._id}`}
                               className="text-blue-500 hover:underline border border-blue-500"
                               style={{
                                 padding: "5px 10px",
@@ -166,7 +166,7 @@ const DashBoard = () => {
                                 backgroundColor: "#f0f0f0",
                               }}
                             >
-                              View Details
+                              Xem chi tiết
                             </Link>
                           </td>
                         </tr>

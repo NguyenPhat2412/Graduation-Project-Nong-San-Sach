@@ -65,7 +65,7 @@ const AdminPanel = () => {
           className="transactions bg-white shadow-md rounded-lg p-7 shadow-md mt-6"
           style={{ width: "100%", height: "75vh" }}
         >
-          <h2>Admin Panel</h2>
+          <h2>Phòng trò chuyện quản trị viên</h2>
           <ul>
             {rooms.map((room) => (
               <li

@@ -13,7 +13,7 @@ const NavBar = () => {
           <p className="text-xs text-gray-400 uppercase mb-2">Main</p>
           <Link to="/" className="main-list block py-2 px-3 rounded flex ">
             <i className="icon fa-solid fa-house"></i>
-            <p>Dashboard</p>
+            <p>Trang chủ</p>
           </Link>
         </div>
 
@@ -21,14 +21,14 @@ const NavBar = () => {
           <p className="text-xs text-gray-400 uppercase mb-2">Lists</p>
           <Link to="/users" className="main-list block py-2 px-3 rounded flex ">
             <i className="fa-regular fa-user"></i>
-            <p>Users</p>
+            <p>Người dùng</p>
           </Link>
           <Link
             to="/admin-panel"
             className="main-list block py-2 px-3 rounded flex "
           >
             <i className="fa-brands fa-rocketchat"></i>
-            <p>Admin Chat</p>
+            <p>Trò chuyện quản trị</p>
           </Link>
         </div>
 
@@ -39,7 +39,7 @@ const NavBar = () => {
             className="main-list block py-2 px-3 rounded flex "
           >
             <i className="fa-solid fa-blog"></i>
-            <p>New Blog</p>
+            <p>Tạo Blog</p>
           </Link>
           <Link to="/blogs" className="main-list block py-2 px-3 rounded flex ">
             <i className="fa-solid fa-square-rss"></i>
@@ -50,14 +50,14 @@ const NavBar = () => {
             className="main-list block py-2 px-3 rounded flex "
           >
             <i className="fa-solid fa-hotel"></i>
-            <p>New Product</p>
+            <p>Tạo sản phẩm</p>
           </Link>
           <Link
             to="/products"
             className="main-list block py-2 px-3 rounded flex "
           >
             <i className="fa-solid fa-box"></i>
-            <p>Products</p>
+            <p>Sản phẩm</p>
           </Link>
         </div>
 
@@ -67,7 +67,7 @@ const NavBar = () => {
             to="/register"
             className="main-list block py-2 px-3 rounded flex "
           >
-            <i className="fa-solid fa-right-from-bracket"></i> <p>Logout</p>
+            <i className="fa-solid fa-right-from-bracket"></i> <p>Đăng xuất</p>
           </Link>
         </div>
       </div>

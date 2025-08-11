@@ -14,4 +14,8 @@ router.get("/number-of-earnings", adminController.getNumberOfEarnings);
 
 // Get all orders
 router.get("/orders", adminController.getAllOrders);
+
+// Update order status
+router.put("/orders/:orderId/status", adminController.UpdateStatusOrder);
+
 module.exports = router;

@@ -92,10 +92,10 @@ const Blog = () => {
           className="transactions bg-white shadow-md rounded-lg p-7 shadow-md mt-6"
           style={{ width: "100%", height: "75vh" }}
         >
-          <h1 className="text-2xl font-bold mb-4">Blog List</h1>
+          <h1 className="text-2xl font-bold mb-4">Danh sách bài viết</h1>
           <div className="flex justify-between items-center mb-4">
             <input
-              placeholder="Enter blog"
+              placeholder="Tìm kiếm bài viết"
               value={searchBlog}
               onChange={(e) => setSearchBlog(e.target.value)}
               className="border border-gray-300 rounded px-3 py-2 w-1/3"
@@ -108,9 +108,9 @@ const Blog = () => {
             ></input>
           </div>
           {loading ? (
-            <p className="text-gray-500">Loading blogs</p>
+            <p className="text-gray-500">Đang tải blog...</p>
           ) : blogs.length === 0 ? (
-            <p className="text-gray-500">No blog found.</p>
+            <p className="text-gray-500">Không tìm thấy blog.</p>
           ) : (
             <div className="transactions-list overflow-x-auto ">
               <table className="min-w-full text-sm text-left border">
@@ -118,14 +118,14 @@ const Blog = () => {
                   <tr>
                     <th className="py-2 px-3 border">STT</th>
                     <th className="py-2 px-3 border">ID</th>
-                    <th className="py-2 px-3 border">Title</th>
+                    <th className="py-2 px-3 border">Tiêu đề</th>
 
-                    <th className="py-2 px-3 border">Banner</th>
-                    <th className="py-2 px-3 border">Author</th>
-                    <th className="py-2 px-3 border">Tags</th>
-                    <th className="py-2 px-3 border">Category</th>
+                    <th className="py-2 px-3 border">Hình ảnh</th>
+                    <th className="py-2 px-3 border">Tác giả</th>
+                    <th className="py-2 px-3 border">Thẻ</th>
+                    <th className="py-2 px-3 border">Danh mục</th>
 
-                    <th className="py-2 px-3 border">Edit</th>
+                    <th className="py-2 px-3 border">Chỉnh sửa</th>
                   </tr>
                 </thead>
                 <tbody>

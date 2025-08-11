@@ -36,14 +36,14 @@ const EditBlog = () => {
         }
         const data = await res.json();
         if (data) {
-          setTitle(data.title || "");
-          setDate(data.date || "");
-          setContent(data.content || "");
-          setAuthor(data.author || "");
-          setTags(data.tags || "");
-          setCategory(data.category || "");
-          setNumberComments(data.numberComments || 0);
-          setLinks(data.links || "");
+          setTitle(data?.title || "");
+          setDate(data?.date || "");
+          setContent(data?.content || "");
+          setAuthor(data?.author || "");
+          setTags(data?.tags || "");
+          setCategory(data?.category || "");
+          setNumberComments(data?.numberComments || 0);
+          setLinks(data?.links || "");
 
           setErrors({});
         } else {
@@ -148,7 +148,9 @@ const EditBlog = () => {
           className="transactions bg-white shadow-md rounded-lg p-7 shadow-md mt-6"
           style={{ width: "100%", height: "75vh" }}
         >
-          <h2 className="text-2xl font-bold text-left mt-4 mb-6">Edit BLog</h2>
+          <h2 className="text-2xl font-bold text-left mt-4 mb-6">
+            Chỉnh sửa Blog
+          </h2>
           {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div className="flex flex-row gap-2">
@@ -156,60 +158,60 @@ const EditBlog = () => {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter Title"
-              ></input>
+                placeholder="Nhập tiêu đề"
+              />
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                placeholder="Enter Category"
-              ></input>
+                placeholder="Nhập danh mục"
+              />
               <input
                 type="text"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
-                placeholder="Enter Author"
-              ></input>
+                placeholder="Nhập tác giả"
+              />
             </div>
             <div className="flex flex-row gap-2">
               <input
                 type="text"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                placeholder="Enter Tags"
-              ></input>
+                placeholder="Nhập thẻ"
+              />
               <input
                 type="number"
                 value={numberComments}
                 onChange={(e) => setNumberComments(e.target.value)}
-                placeholder="Enter Number of Comments"
-              ></input>
+                placeholder="Nhập số bình luận"
+              />
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="Enter Date"
-              ></input>
+                placeholder="Nhập ngày"
+              />
             </div>
-            <input>
-              <input
-                type="text"
-                value={links}
-                onChange={(e) => setLinks(e.target.value)}
-                placeholder="Enter Links"
-              ></input>
-            </input>
+
+            <input
+              type="text"
+              value={links}
+              onChange={(e) => setLinks(e.target.value)}
+              placeholder="Nhập đường dẫn"
+            ></input>
+
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="Enter Content"
+              placeholder="Nhập nội dung"
               rows="4"
               cols={50}
               className="border border-gray-300 rounded px-3 py-2"
               style={{ width: "100%", resize: "none" }}
             ></textarea>
             <div className="flex flex-col gap-2">
-              <p>Upload image (1-5 images)</p>
+              <p>Tải lên hình ảnh (1 hình ảnh)</p>
               <input
                 type="file"
                 onChange={handleFileChange}
@@ -227,7 +229,7 @@ const EditBlog = () => {
                 width: "fit-content",
               }}
             >
-              Submit
+              Sửa bài viết mới
             </button>
           </form>
         </div>

@@ -33,8 +33,8 @@ const OrderSchema = new Schema(
     totalAmount: { type: Number, required: true },
     status: {
       type: String,
-      enum: ["Pending", "Processing", "Completed", "Cancelled"],
-      default: "Pending",
+      enum: ["Đang chờ", "Đang xử lý", "Hoàn thành", "Đã hủy"],
+      default: "Đang chờ",
     },
     createdAt: {
       type: Date,

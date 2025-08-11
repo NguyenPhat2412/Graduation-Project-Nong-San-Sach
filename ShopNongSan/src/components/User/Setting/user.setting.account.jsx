@@ -4,7 +4,9 @@ import { useUser } from "../../../UseContext/UserContext";
 import "./user.setting.account.css";
 function UserSettingAccount(props) {
   const { userInfo } = useUser();
-  const { username, email, avatar } = userInfo;
+  const username = userInfo?.username;
+  const email = userInfo?.email;
+  const avatar = userInfo?.avatar;
   const userId = userInfo?._id;
   const [name, setName] = useState(username);
   const [emailUser, setEmail] = useState(email);

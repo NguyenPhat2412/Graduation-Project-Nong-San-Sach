@@ -123,7 +123,7 @@ const NewBlog = () => {
           style={{ width: "100%", height: "75vh" }}
         >
           <h2 className="text-2xl font-bold text-left mt-4 mb-6">
-            Add New BLog
+            Tạo bài viết mới
           </h2>
           {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -132,19 +132,19 @@ const NewBlog = () => {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter Title"
+                placeholder="Nhập tiêu đề"
               ></input>
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                placeholder="Enter Category"
+                placeholder="Nhập danh mục"
               ></input>
               <input
                 type="text"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
-                placeholder="Enter Author"
+                placeholder="Nhập tác giả"
               ></input>
             </div>
             <div className="flex flex-row gap-2">
@@ -152,19 +152,19 @@ const NewBlog = () => {
                 type="text"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                placeholder="Enter Tags"
+                placeholder="Nhập thẻ"
               ></input>
               <input
                 type="number"
                 value={numberComments}
                 onChange={(e) => setNumberComments(e.target.value)}
-                placeholder="Enter Number of Comments"
+                placeholder="Nhập số bình luận"
               ></input>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="Enter Date"
+                placeholder="Nhập ngày"
               ></input>
             </div>
 
@@ -172,19 +172,19 @@ const NewBlog = () => {
               type="text"
               value={links}
               onChange={(e) => setLinks(e.target.value)}
-              placeholder="Enter Links"
+              placeholder="Nhập đường dẫn"
             ></input>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              placeholder="Enter Content"
+              placeholder="Nhập nội dung"
               rows="4"
               cols={50}
               className="border border-gray-300 rounded px-3 py-2"
               style={{ width: "100%", resize: "none" }}
             ></textarea>
             <div className="flex flex-col gap-2">
-              <p>Upload image (1-5 images)</p>
+              <p>Tải lên hình ảnh (1 hình ảnh)</p>
               <input
                 type="file"
                 onChange={handleFileChange}
@@ -202,7 +202,7 @@ const NewBlog = () => {
                 width: "fit-content",
               }}
             >
-              Submit
+              Tạo bài viết mới
             </button>
           </form>
         </div>

@@ -110,10 +110,10 @@ const Product = () => {
           className="transactions bg-white shadow-md rounded-lg p-7 shadow-md mt-6"
           style={{ width: "100%", height: "75vh" }}
         >
-          <h1 className="text-2xl font-bold mb-4">Product List</h1>
+          <h1 className="text-2xl font-bold mb-4">Danh sách sản phẩm</h1>
           <div className="flex justify-between items-center mb-4">
             <input
-              placeholder="Enter product"
+              placeholder="Tìm kiếm sản phẩm"
               value={searchProduct}
               onChange={(e) => setSearchProduct(e.target.value)}
               className="border border-gray-300 rounded px-3 py-2 w-1/3"
@@ -126,9 +126,9 @@ const Product = () => {
             ></input>
           </div>
           {loading ? (
-            <p className="text-gray-500">Loading products</p>
+            <p className="text-gray-500">Đang tải sản phẩm...</p>
           ) : products.length === 0 ? (
-            <p className="text-gray-500">No product found.</p>
+            <p className="text-gray-500">Không tìm thấy sản phẩm.</p>
           ) : (
             <div className="transactions-list overflow-x-auto ">
               <table className="min-w-full text-sm text-left border">
@@ -136,11 +136,11 @@ const Product = () => {
                   <tr>
                     <th className="py-2 px-3 border">STT</th>
                     <th className="py-2 px-3 border">ID</th>
-                    <th className="py-2 px-3 border">Name</th>
-                    <th className="py-2 px-3 border">Price</th>
-                    <th className="py-2 px-3 border">Image</th>
-                    <th className="py-2 px-3 border">Category</th>
-                    <th className="py-2 px-3 border">Edit</th>
+                    <th className="py-2 px-3 border">Tên</th>
+                    <th className="py-2 px-3 border">Giá cả</th>
+                    <th className="py-2 px-3 border">Hình ảnh</th>
+                    <th className="py-2 px-3 border">Danh mục</th>
+                    <th className="py-2 px-3 border">Chỉnh sửa</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -174,7 +174,7 @@ const Product = () => {
                           }}
                           to={`/edit-product/${b._id}`}
                         >
-                          Update
+                          Chỉnh sửa
                         </Link>
                         <button
                           className="bg-red-500 text-white rounded ml-2"
@@ -189,7 +189,7 @@ const Product = () => {
                             }
                           }}
                         >
-                          Delete
+                          Xóa
                         </button>
                       </td>
                     </tr>

@@ -123,7 +123,7 @@ const NewProduct = () => {
           style={{ width: "100%", height: "75vh" }}
         >
           <h2 className="text-2xl font-bold text-left mt-4 mb-6">
-            Add New Product
+            Tạo sản phẩm
           </h2>
           {message && <p className="mb-4 text-sm text-red-500">{message}</p>}
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -132,19 +132,19 @@ const NewProduct = () => {
                 type="text"
                 value={name}
                 onChange={(e) => setProductName(e.target.value)}
-                placeholder="Enter Product Name"
+                placeholder="Nhập tên sản phẩm"
               ></input>
               <input
                 type="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                placeholder="Enter Category"
+                placeholder="Nhập danh mục"
               ></input>
               <input
                 type="number"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                placeholder="Enter Price"
+                placeholder="Nhập giá"
               ></input>
             </div>
             <div className="flex flex-row gap-2">
@@ -152,19 +152,19 @@ const NewProduct = () => {
                 type="number"
                 value={price_old}
                 onChange={(e) => setPriceOld(e.target.value)}
-                placeholder="Enter Old Price"
+                placeholder="Nhập giá cũ"
               ></input>
               <input
                 type="number"
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
-                placeholder="Enter Rating (0-5)"
+                placeholder="Nhập đánh giá (0-5)"
               ></input>
             </div>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Enter Description"
+              placeholder="Nhập mô tả"
               rows="4"
               cols={50}
               className="border border-gray-300 rounded px-3 py-2"
@@ -175,10 +175,10 @@ const NewProduct = () => {
               type="number"
               value={discount}
               onChange={(e) => setDiscount(e.target.value)}
-              placeholder="Enter Discount Percentage"
+              placeholder="Nhập phần trăm giảm giá"
             ></input>
             <div className="flex flex-col gap-2">
-              <p>Upload image (5 images)</p>
+              <p>Tải lên 1 hình ảnh</p>
               <input
                 type="file"
                 onChange={handleFileChange}
@@ -196,7 +196,7 @@ const NewProduct = () => {
                 width: "fit-content",
               }}
             >
-              Submit
+              Tạo sản phẩm
             </button>
           </form>
         </div>
