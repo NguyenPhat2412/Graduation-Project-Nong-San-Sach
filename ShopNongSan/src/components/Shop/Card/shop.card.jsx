@@ -68,13 +68,13 @@ const Cart = (props) => {
               <div className="cart-total-label">
                 <span>Tổng tiền: </span>
                 <span>
-                  $
                   {cart
                     .reduce(
                       (total, item) => total + item.price * item.quantity,
                       0
                     )
-                    .toFixed(2)}
+                    .toFixed(2)}{" "}
+                  VND
                 </span>
               </div>
               <button className="cart-checkout-button">Thanh toán</button>

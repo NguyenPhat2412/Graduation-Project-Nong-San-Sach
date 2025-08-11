@@ -53,11 +53,7 @@ const ViewOrder = () => {
           <span>Address:</span> {viewOrder.customer?.address}
         </p>
         <p>
-          <span>Tổng tiền:</span>{" "}
-          {viewOrder.totalAmount?.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-          })}
+          <span>Tổng tiền:</span> {viewOrder?.totalAmount} VND
         </p>
       </div>
 

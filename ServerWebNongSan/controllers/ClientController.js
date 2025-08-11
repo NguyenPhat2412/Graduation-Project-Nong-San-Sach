@@ -5,8 +5,11 @@ const Product = require("../models/product");
 const Category = require("../models/category");
 const Cart = require("../models/Cart");
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
 const Order = require("../models/Order");
+const nodemailer = require("nodemailer");
+
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const { default: mongoose } = require("mongoose");
 
@@ -14,6 +17,14 @@ const { sendOrderConfirmationEmail } = require("../utils/emailService");
 const { sendContactEmail } = require("../utils/contactService");
 const Blogs = require("../models/Blog");
 const Contact = require("../models/Contact");
+
+let otpStore = {};
+
+function generateOTP() {
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  return otp;
+}
+
 exports.getFooter = async (req, res) => {
   try {
     const footer = await Footer.findOne();
@@ -221,33 +232,77 @@ exports.UpdateProductQuantity = async (req, res) => {
 exports.RegisterUser = async (req, res) => {
   const { username, password, email } = req.body;
   try {
-    const newUser = new User({ username, password, email });
+    if (!username || !password || !email) {
+      return res.status(400).json({ message: "Phải điền đầy đủ thông tin!" });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Định dạng email không hợp lệ" });
+    }
+    const existingUser = await User.findOne({ email, role: "user" });
+
+    if (existingUser) {
+      return res.status(409).json({ message: "Email đã được sử dụng" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ username, password: hashedPassword, email });
     await newUser.save();
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: "Đăng ký người dùng thành công" });
   } catch (error) {
     console.error("Error registering user:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: "Lỗi hệ thống!" });
   }
 };
 
 exports.LoginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
-    if (!user || user.password !== password) {
-      return res.status(401).json({ message: "Invalid email or password" });
+    const user = await User.findOne({ email, role: "user" });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res
+        .status(401)
+        .json({ message: "Vui lòng kiểm tra lại email hoặc mật khẩu!" });
     }
+
+    const otp = generateOTP();
+    otpStore[user.email] = { otp, expires: Date.now() + 300 * 1000 };
+
+    const transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.EMAIL_HOST,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_HOST,
+      to: user.email,
+      subject: "Mã xác thực OTP",
+      text: `Mã xác thực OTP của bạn là ${otp}. Nó sẽ hết hạn trong 5 phút.`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error sending OTP email:", error);
+      } else {
+        console.log("OTP email sent:", info.response);
+      }
+    });
     const token = jwt.sign(
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "24h" }
     );
+
     res.cookie("token", token, {
       httpOnly: false,
       secure: true,
       sameSite: "None",
     });
-    res.status(200).json({ message: "Login successful", token });
+    res.status(200).json({ message: "Cập nhật OTP để tiếp tục", token });
   } catch (error) {
     console.error("Error logging in user:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -270,14 +325,19 @@ exports.UpdateUser = async (req, res) => {
   const { userId } = req.params;
   const { username, email, password } = req.body;
 
-  const avatarPath = req.file ? `/uploads/avatar/${req.file.filename}` : null;
+  const avatarPath = req.files?.avatar?.[0]
+    ? `/uploads/avatar/${req.files?.avatar[0]?.filename}`
+    : null;
+
+  const passwordHash = password ? await bcrypt.hash(password, 10) : undefined;
 
   try {
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { username, email, password, avatar: avatarPath },
+      { username, email, password: passwordHash, avatar: avatarPath },
       { new: true }
     );
+
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -585,4 +645,33 @@ exports.GetCommentsByBlogId = async (req, res) => {
     console.error("Error fetching comments by blog ID:", error);
     res.status(500).json({ error: "Internal server error" });
   }
+};
+
+// verify otp
+exports.VerifyOTP = async (req, res) => {
+  const { email, otp } = req.body;
+
+  if (!email || !otp) {
+    return res
+      .status(400)
+      .json({ message: "Email and OTP đều không được để trống" });
+  }
+
+  const storedOTP = otpStore[email];
+
+  if (!storedOTP) {
+    return res.status(400).json({ message: "Mã OTP không hợp lệ" });
+  }
+
+  if (storedOTP.otp !== otp) {
+    return res.status(400).json({ message: "Mã OTP không chính xác" });
+  }
+
+  if (Date.now() > storedOTP.expires) {
+    delete otpStore[email];
+    return res.status(400).json({ message: "Mã OTP đã hết hạn" });
+  }
+
+  delete otpStore[email];
+  res.status(200).json({ message: "Xác thực OTP thành công" });
 };

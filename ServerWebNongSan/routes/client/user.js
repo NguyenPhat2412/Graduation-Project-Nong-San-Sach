@@ -42,4 +42,7 @@ router.post("/contact", authMiddleware, ClientController.PostContact);
 // Logout
 router.post("/logout", authMiddleware, ClientController.LogoutUser);
 
+// verify otp
+router.post("/verify-otp", authMiddleware, ClientController.VerifyOTP);
+
 module.exports = router;

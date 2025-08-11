@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -11,13 +12,25 @@ function UpdateUser(props) {
   if (!userId) {
     return <div>Loading...</div>;
   }
-  formData.append("username", name);
-  formData.append("email", emailUser);
-  if (avatarFile) {
-    formData.append("avatar", avatarFile);
-  }
+
+  const [api, holderContext] = notification.useNotification();
+
+  const openNotification = (type, message) => {
+    api[type]({
+      message: message,
+      placement: "topRight",
+    });
+  };
+
   // PUT the data
-  const UpdateUser = async () => {
+  const UpdateUser = async (e) => {
+    e.preventDefault();
+    formData.append("username", name);
+    formData.append("email", emailUser);
+    console.log("data được gửi đi", formData);
+    if (avatarFile) {
+      formData.append("avatar", avatarFile);
+    }
     const response = await fetch(
       `${import.meta.env.VITE_DATABASE_URL}/api/client/update-user/${userId}`,
       {
@@ -26,15 +39,15 @@ function UpdateUser(props) {
         credentials: "include",
       }
     );
+    const data = await response.json();
 
     if (!response.ok) {
-      alert("Failed to update user information.");
+      openNotification("error", "Failed to update user information.");
       return;
     }
 
-    alert("User information updated successfully!");
+    openNotification("success", data.message);
     props.onHide();
-    window.location.reload();
   };
 
   return (
@@ -44,6 +57,7 @@ function UpdateUser(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
+      {holderContext}
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Update User Information

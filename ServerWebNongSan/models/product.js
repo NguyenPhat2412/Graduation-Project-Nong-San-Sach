@@ -17,8 +17,6 @@ const productSchema = new Schema(
       },
     ],
     description: { type: String },
-    // numberComment: { type: Number, default: 0 },
-    // quantity: { type: Number, required: true },
   },
   {
     timestamps: true,

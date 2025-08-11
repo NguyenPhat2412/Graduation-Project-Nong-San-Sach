@@ -246,14 +246,6 @@ const CheckOut = () => {
                 <option value="card">Thẻ tín dụng/thẻ ghi nợ</option>
               </select>
             </div>
-
-            <div className="form-group">
-              <label>Số thẻ</label>
-              <input
-                className="form-control"
-                placeholder="**** **** **** ****"
-              />
-            </div>
           </div>
           <div>
             <h2>Thông tin bổ sung</h2>

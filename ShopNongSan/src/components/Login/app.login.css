@@ -19,3 +19,10 @@
   margin-top: 5px;
   margin-left: 5px;
 }
+
+.otp-timer {
+  font-size: 0.875rem;
+  color: #6c757d;
+  text-align: center;
+  margin-top: 5px;
+}

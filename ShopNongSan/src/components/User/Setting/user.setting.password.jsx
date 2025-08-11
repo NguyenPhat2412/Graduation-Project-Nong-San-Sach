@@ -6,12 +6,8 @@ import { notification } from "antd";
 const UserSettingPassword = () => {
   const { userInfo } = useUser();
   const userId = userInfo ? userInfo?._id : null;
-  const [currentPassword, setCurrentPassword] = useState(
-    userInfo ? userInfo?.password : ""
-  );
-  const [newPassword, setNewPassword] = useState(
-    userInfo ? userInfo?.password : ""
-  );
+  const [currentPassword, setCurrentPassword] = useState();
+  const [newPassword, setNewPassword] = useState();
 
   const [api, contextHolder] = notification.useNotification();
 
@@ -25,18 +21,18 @@ const UserSettingPassword = () => {
   const handlePasswordChange = (e) => {
     e.preventDefault();
     if (!userId) {
-      openNotification("error", "User not logged in or ID not available.");
+      openNotification("error", "Bạn cần đăng nhập để thực hiện hành động này");
       return;
     }
     if (currentPassword === "" || newPassword === "") {
-      openNotification("error", "Please fill in all fields.");
+      openNotification("error", "Vui lòng điền tất cả các trường.");
       return;
     }
 
     if (currentPassword === newPassword) {
       openNotification(
         "error",
-        "New password cannot be the same as current password."
+        "Mật khẩu mới không thể giống mật khẩu hiện tại."
       );
       return;
     }
@@ -57,16 +53,13 @@ const UserSettingPassword = () => {
         return response.json();
       })
       .then((data) => {
-        openNotification("success", "Password updated successfully!");
+        openNotification("success", "Mật khẩu đã được cập nhật thành công!");
         setCurrentPassword("");
         setNewPassword("");
       })
       .catch((error) => {
         console.error("Error updating password:", error);
-        openNotification(
-          "error",
-          "Failed to update password. Please try again."
-        );
+        openNotification("error", "Vui lòng thử lại nhé!");
       });
   };
 

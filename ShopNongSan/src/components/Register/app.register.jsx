@@ -11,7 +11,6 @@ const AppRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const [api, contextHolder] = notification.useNotification();
@@ -40,31 +39,22 @@ const AppRegister = () => {
           }),
         }
       );
-      if (!response.ok) {
-        throw new Error("Registration failed");
-      }
+
       const data = await response.json();
-      if (password !== confirmPassword) {
-        setError(true);
-        openNotification("error", "Passwords do not match");
+      if (response.status !== 201) {
+        openNotification("error", data.message);
         return;
       }
-      if (
-        email === "" ||
-        password === "" ||
-        confirmPassword === "" ||
-        name === ""
-      ) {
-        setError(true);
+      if (password !== confirmPassword) {
+        openNotification("error", "Mật khẩu không khớp");
         return;
       }
       clearForm();
-      openNotification("success", "Registration successful!");
-      setError(false);
+      openNotification("success", "Đăng ký thành công!");
       navigate("/account/login");
     } catch (error) {
+      openNotification("error", "Đăng ký không thành công");
       console.error("Error during registration:", error);
-      setError(true);
     }
   };
 
@@ -73,7 +63,6 @@ const AppRegister = () => {
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    setError(false);
   };
 
   return (
@@ -96,9 +85,6 @@ const AppRegister = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            {error && (
-              <div className="error-message">Tên không được để trống</div>
-            )}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
@@ -107,9 +93,6 @@ const AppRegister = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {error && (
-              <div className="error-message">Email không được để trống</div>
-            )}
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -119,9 +102,6 @@ const AppRegister = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {error && (
-              <div className="error-message">Mật khẩu không được để trống</div>
-            )}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
             <Form.Control
@@ -130,11 +110,6 @@ const AppRegister = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {error && (
-              <div className="error-message">
-                Mật khẩu xác nhận không được để trống
-              </div>
-            )}
           </Form.Group>
           <Form.Group
             className="d-flex mb-3 justify-content-between"
