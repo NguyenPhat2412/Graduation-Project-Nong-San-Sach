@@ -4,12 +4,11 @@ import { useUser } from "../../../UseContext/UserContext";
 import "./user.setting.account.css";
 function UserSettingAccount(props) {
   const { userInfo } = useUser();
-  const username = userInfo?.username;
-  const email = userInfo?.email;
+
   const avatar = userInfo?.avatar;
   const userId = userInfo?._id;
-  const [name, setName] = useState(username);
-  const [emailUser, setEmail] = useState(email);
+  const [name, setName] = useState(userInfo?.username);
+  const [emailUser, setEmail] = useState(userInfo?.email);
   const formData = new FormData();
   const [avatarFile, setAvatarFile] = useState(null);
   const inputRef = useRef();
@@ -45,13 +44,13 @@ function UserSettingAccount(props) {
   return (
     <div className="user-setting-account">
       <div className="user-setting-account-header">
-        <h4>Account Settings</h4>
+        <h4>Cài đặt tài khoản</h4>
       </div>
       <form onSubmit={UpdateUser} className="user-setting-account-form">
         <div>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
-              Username
+              Tên đăng nhập
             </label>
             <input
               type="text"
@@ -77,7 +76,7 @@ function UserSettingAccount(props) {
           </div>
 
           <Button variant="primary" onClick={UpdateUser}>
-            Update
+            Cập nhật
           </Button>
         </div>
         <div className="user-avatar-section">
@@ -96,7 +95,7 @@ function UserSettingAccount(props) {
             />
 
             <Button variant="primary" onClick={() => inputRef.current.click()}>
-              Choose Image
+              Chọn hình ảnh
             </Button>
           </div>
         </div>

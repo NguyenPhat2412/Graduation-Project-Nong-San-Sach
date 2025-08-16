@@ -2,6 +2,7 @@ import { useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "./NewBlog.css";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const NewBlog = () => {
   const [title, setTitle] = useState("");
@@ -20,6 +21,13 @@ const NewBlog = () => {
     setBanner(Array.from(e.target.files));
   };
 
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      description: "Thông báo",
+      message: message,
+    });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -87,12 +95,11 @@ const NewBlog = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to create blog");
       }
-      alert("Blog created successfully!");
+      openNotification("success", "Blog created successfully!");
       setTitle("");
       setDate("");
       setContent("");
@@ -114,6 +121,7 @@ const NewBlog = () => {
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>
+      {contextHolder}
       <div
         className="col-span-1 md:col-span-4 p-6 dashboard-container"
         style={{ width: "100%" }}

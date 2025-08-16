@@ -67,7 +67,7 @@ const AppUserBoard = () => {
       </div>
       <div>
         <i className="fa-solid fa-gear"></i>
-        <Link to="/user/setting" className="nav-link">
+        <Link to="/user/settings" className="nav-link">
           Cài đặt
         </Link>
       </div>

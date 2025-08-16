@@ -46,7 +46,7 @@ function App() {
           <Route path="/app/shop/checkout" element={<CheckOut />} />
           <Route path="/app/contact" element={<ContactMe />} />
           <Route path="/user/order-history/:orderId" element={<ViewOrder />} />
-          <Route path="/user/setting" element={<UserSetting />} />
+          <Route path="/user/settings" element={<UserSetting />} />
           <Route path="/" element={<AppHome />} />
           <Route path="/app/blog" element={<AppBlog />} />
           <Route path="/app/faq" element={<AppFaq />} />

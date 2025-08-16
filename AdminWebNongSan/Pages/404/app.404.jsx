@@ -20,7 +20,6 @@ const App404 = () => {
           throw new Error("Failed to fetch error data");
         }
         const data = await response.json();
-        console.log(data);
         setDataError(...data);
       } catch (error) {
         console.error("Error fetching error data:", error);

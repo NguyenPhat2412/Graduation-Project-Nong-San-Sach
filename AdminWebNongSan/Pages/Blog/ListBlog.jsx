@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "../../components/Dashboard/Dashboard.css";
 import { Link } from "react-router-dom";
+import { notification } from "antd";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
@@ -9,6 +10,14 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchBlog, setSearchBlog] = useState("");
   const BlogPerPage = 7;
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      description: "Thông báo",
+      message: message,
+    });
+  };
 
   // Get info of Blog
   useEffect(() => {
@@ -60,7 +69,7 @@ const Blog = () => {
       if (!res.ok) {
         throw new Error("Failed to delete product");
       }
-      alert("Product deleted successfully");
+      openNotification("success", "Product deleted successfully");
       navigator("/");
     } catch (err) {
       console.error("Error when delete product", err);
@@ -83,6 +92,7 @@ const Blog = () => {
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>
+      {contextHolder}
 
       <div
         className="col-span-1 md:col-span-4 p-6 dashboard-container"

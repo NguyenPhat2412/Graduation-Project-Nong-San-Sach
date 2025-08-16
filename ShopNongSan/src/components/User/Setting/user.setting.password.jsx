@@ -68,12 +68,12 @@ const UserSettingPassword = () => {
       {contextHolder}
       <div className="user-setting-password">
         <div className="user-setting-password-header">
-          <h4>Password Settings</h4>
+          <h4>Cài đặt mật khẩu</h4>
         </div>
         <form>
           <div className="mb-3">
             <label htmlFor="currentPassword" className="form-label">
-              Current Password
+              Mật khẩu cũ
             </label>
             <input
               type="password"
@@ -86,7 +86,7 @@ const UserSettingPassword = () => {
           </div>
           <div className="mb-3">
             <label htmlFor="newPassword" className="form-label">
-              New Password
+              Mật khẩu mới
             </label>
             <input
               type="password"
@@ -99,7 +99,7 @@ const UserSettingPassword = () => {
           </div>
         </form>
         <Button variant="primary" type="submit" onClick={handlePasswordChange}>
-          Update Password
+          Cập nhật mật khẩu
         </Button>
       </div>
     </>
