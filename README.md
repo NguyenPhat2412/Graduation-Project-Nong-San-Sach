@@ -1,615 +1,166 @@
-﻿# Graduation-Project-Nong-San-Sach
-MỤC LỤC
-1	TỔNG QUAN	5
-1.1	Mục đích	5
-1.2	Phạm vi	5
-1.3	Thuật ngữ, Định nghĩa, Từ viết tắt	5
-1.4	Tài liệu tham khảo	5
-1.5	Tổng quan	6
-2	YÊU CẦU CHỨC NĂNG DỰ ÁN 1: NÔNG SẢN SẠCH	7
-2.1	Chức năng Đăng ký người dùng mới	7
-2.2	Chức năng Đăng nhập & Kiểm soát truy cập	7
-2.3	Quản lý sản phẩm (Entity: Product)	7
-2.4	Quản lý giỏ hàng (Entity: Cart)	7
-2.5	Tạo đơn hàng & thanh toán (Entity: Order)	7
-2.6	Theo dõi đơn hàng (Entity: Order Tracking)	8
-2.7	Quản lý người dùng.	8
-2.8	Liên hệ và câu hỏi thường gặp.	8
-2.9	Quản lý tin tức.	8
-2.10	Trang Landing Page	8
-3	YÊU CẦU CHỨC NĂNG DỰ ÁN 2: QUẢN TRỊ VIÊN NÔNG SẢN SẠCH	9
-3.1	Chức năng Đăng ký người dùng mới	9
-3.2	Chức năng Đăng nhập & Kiểm soát truy cập	9
-3.3	Quản lý sản phẩm (Entity: Product)	9
-3.4	Thêm/ Cập nhật sản phẩm:	9
-3.5	Quản lý Blog/Tin tức	9
-3.6	Trang Quản lý Tin nhắn	10
-3.7	Thêm/Cập nhật bài blog	10
-3.8	Quản lý đơn hàng (Entity: Order)	10
-3.9	Chi tiết đơn hàng	10
-3.10	Thống kê doanh thu	10
-3.11	Trang dashboard tổng quan	11
-4	YÊU CẦU PHI CHỨC NĂNG (NÂNG CAO)	12
-4.1	Tính dễ sử dụng (Usability)	12
-4.2	Tính đáng tin cậy (Reliability)	12
-4.3	Tính hiệu năng (Performance)	12
-4.4	Tính bảo mật (Security)	12
-4.5	Khả năng bảo trì (Maintainability)	12
-5	THIẾT KẾ KIẾN TRÚC, THI CÔNG	13
-5.1	Các thành phần trong ứng dụng	13
-5.2	Tổ chức CODE	13
-5.3	Quy ước viết CODE	14
-6	THIẾT KẾ DỮ LIỆU	16
-6.1	Lược đồ cơ sở dữ liệu	16
-−	[Hình được vẽ bằng công cụ tạo mối quan hệ]	16
-6.2	Liệt kê danh sách các bảng dữ liệu	16
-6.3	Đặc tả chi tiết từng bảng dữ liệu	16
-7	HƯỚNG DẪN SỬ DỤNG	18
-7.1	Danh sách chức năng dành cho USER (Người mua hàng)	18
-7.2	Danh sách chức năng dành cho MANAGEMENT (ADMIN)	18
-7.3	Chức năng 1 – Đặt hàng (User)	19
-7.4	Chức năng 2 – Thêm sản phẩm (admin)	19
-7.5	Chức năng 3 – Quản lý đơn hàng (admin)	19
-8	CÀI ĐẶT ỨNG DỤNG	20
-8.1	Cài đặt Database	20
-8.2	Cài đặt Server	20
-8.3	Cài đặt Web App	20
-8.4	Truy cập trực tiếp	20
-9	KẾT QUẢ ĐẠT ĐƯỢC VÀ HƯỚNG PHÁT TRIỂN	21
-9.1	Kết quả đạt được	21
-9.2	Đã hoàn thành	21
-9.3	Còn hạn chế	21
-9.4	Hướng phát triển	21
+Graduation Project - Nông Sản Sạch
+📌 Giới thiệu
 
-1	TỔNG QUAN
-1.1	Mục đích
-Dự án “Nông sản sạch” được triển khai với mục đích chính là xây dựng một nền tảng trực tuyến hỗ trợ kết nối giữa người sản xuất nông nghiệp (chủ yếu là bà con nông dân) với các đơn vị tiêu thụ đầu ra, bao gồm: 
--	Các chuỗi siêu thị mini như Winmart, Co.op Food, Bách Hóa Xanh…
--	Các thương lái thu mua nông sản từ địa phương.
--	Các cửa hàng bán rau, củ, quả sạch nhỏ lẻ tại thành phố.
--	Người tiêu dùng cá nhân có nhu cầu sử dụng thực phẩm sạch, truy xuất nguồn hàng rõ ràng.
-Hệ thống hướng tới việc đảm bảo đầu ra ổn định, minh bạch và bền vững cho các sản phẩm nông sản sạch. Qua đó, góp phần: 
--	Nâng cao thu thập cho người nông dân.
--	Giảm tình trạng “được mùa mất giá”, tránh phụ thuộc vào thương lái không uy tín.
--	Đáp ứng nhu cầu ngày càng cao của xã hội về thực phẩm sạch, an toàn, rõ nguồn gốc.
-Ngoài ra mục tiêu thương mại và cộng động, dự án còn phục vụ: 
--	Là môi trường thực hành để người thực hiện vận dụng các kiến thức và kỹ năng đã học tập (lập trình web, cơ sở dữ liệu, thiết kế giao diện, xử lý API…)
--	Là sản phẩm thực tế để đánh giá năng lực triển khai, hoàn thiện và vận hành một hệ thống phần mềm trong môi trường giả lập hoặc thực tế.  
-1.2	Phạm vi
-Dự án tập trung xây dựng một website thương mại điện tử chuyên biệt cho ngành nông sản, với phạm vi hoạt động như sau:
--	Đối tượng sử dụng: 
-•	Người bán: Nông dân, hợp tác xã, hộ sản xuất nông nghiệp, nhà vườn.
-•	Người mua: Cửa hàng thực phẩm sạch, siêu thị, nhà hàng, cá nhân có nhu cầu tiêu dùng. 
--	Sản phẩm cung cấp: 
-•	Các loại rau – củ - quả tươi, ưu tiên sản phẩm sạch, hữu cơ, có thể truy xuất nguồn gốc. 
--	Hình thức hoạt động: 
-•	Hiển thị danh sách sản phẩm, thông tin chi tiết, giá cả. 
-•	Cho phép đặt hàng, xem chi tiết thông tin đơn hàng, theo dõi đơn hàng.
-•	Hỗ trợ quản lý sản phẩm người dùng, giao dịch từ phía quản trị viên.
-1.3	Tài liệu tham khảo
--	Các dự án thương mại điện tử thực tế: Shopee, Nongsanviet.net.vn,…
--	Hướng dẫn và các tài liệu kỹ thuật trong khóa học: HTML, CSS, JS, ReactJS, NodeJs, MongoDB,…
--	Tài liệu của môn học trong FUNiX.
-1.4	Tổng quan
-Nông sản sạch là một hệ thống thương mại điện tử có chức năng hiển thị, tìm kiếm, đặt hàng và quản lý sản phẩm nông sản sạch. Trang Web được thiết kế theo phong cách hiện đại, thân thiện người dùng, có khả năng hiển thị trên nhiều thiết bị (responsive).
-Ngoài chức năng như một “cửa hàng nông sản trực tuyến”, Nông sản sạch còn hướng tới trở thành cầu nối giữa người sản xuất và người tiêu dùng, giúp:
--	Người nông dân dễ dàng tiếp cận thị trường tiêu thụ thông qua công nghệ số.
--	Người tiêu dùng tiếp cận các sản phẩm sạch, minh bạch nguồn gốc, giá cả hợp lý.
--	Giảm thiểu các khâu trung gian, tăng hiệu quả chuỗi cung ứng nông sản. 
-Về mặt công nghệ, hệ thống được xây dựng bằng các công nghệ hiện đại như: 
--	FrontEnd: ReactJs, Bootstrap,  Tailwind, Ant Design.
--	Backend: NodeJs, ExpressJS.
--	Cơ sở dữ liệu: MongoDB.
--	Triển khai: Render.com, MongoDB Atlass (Cloud).
-Dự án thể hiện kết hợp giữa tư duy lập trình, phân tích hệ thống và tính ứng dụng xã hội thực tiễn. 
-2	YÊU CẦU CHỨC NĂNG DỰ ÁN 1: NÔNG SẢN SẠCH 
-Hệ thống cung cấp dịch vụ bán hàng nông sản trực tuyến với cái tên Nông Sản Sạch, hỗ trợ người dùng mua sắm, thanh toán, theo dõi đơn hàng, và lịch sử giao dịch. Ngoài ra còn có trang blog trực tuyến giúp người tiêu dùng có thể theo dõi những tin tức về các đơn hàng nông sản sạch và thực phẩm bổ ích cho cơ thể. Đồng thời có hệ thống quản trị để quản lý sản phẩm, xem chi tiết đơn hàng v.vv và các chức năng nâng cao như quảng cáo, đề xuất sản phẩm. 
-2.1	Chức năng Đăng ký người dùng mới
--	Cho phép người dùng tạo mới tài khoản để sử dụng trang web.
--	Nhập các thông tin cơ bản: Họ và tên, email, mật khẩu, (số điện thoại, địa chỉ trong tương lai)
--	Kiểm tra hợp lệ định dạng email, độ dài mật khẩu tối thiểu 8 kí tự.
--	Thông báo các lỗi khi có vấn đề trong kiểm tra định dạng.
--	Gửi email xác thực (đang phát triển).
-2.2	Chức năng Đăng nhập & Kiểm soát truy cập
--	Cho phép người dùng đăng nhập bằng gmail với mật khẩu đã đăng ký.
--	Kiểm tra thông tin đăng nhập hợp lệ. 
--	Phân quyền người dùng (khách hàng), quản trị viên (admin).
--	Duy trì phiên người dùng qua cookie hoặc token (JWT). 
-2.3	Quản lý sản phẩm (Entity: Product)
-Cho phép người dùng: 
--	Xem danh sách sản phẩm nông sản sạch (phân loại theo rau, củ, quả)
--	Xem chi tiết sản phẩm ( mô tả, giá, nguồn gốc, đánh giá)
--	Tìm kiếm sản phẩm theo thể loại, đánh giá, giá cả của sản phẩm
--	Xem sản phẩm có được giảm giá hay không.
--	Xem danh sách nông sản đã xem gần đây. 
-2.4	Quản lý giỏ hàng (Entity: Cart)
--	Cho phép người dùng thêm sản phẩm vào giỏ hàng hiện tại. 
--	Cập nhật số lượng, hoặc xóa sản phẩm theo yêu cầu.
--	Lưu tạm trong session/localStorage nếu chưa đăng nhập. 
--	Theo dõi chi tiết giá cả sản phẩm và tổng tiền của các đơn hàng
-2.5	Tạo đơn hàng & thanh toán (Entity: Order)
-Tạo đơn hàng từ giỏ hàng: 
--	Thông tin: danh sách sản phẩm, địa chỉ giao hàng, ghi chú, tổng tiền, các thông tin cơ bản của người dùng.
--	Tùy chọn phương thức thanh toán. 
-+ COD (trả tiền khi nhận hàng) 
-+ Thanh toán VNPay/MoMo (nếu có) 
--	Sau khi thành toán, trạng thái đơn hàng chuyển sang “chờ xác nhận” 
-2.6	Theo dõi đơn hàng (Entity: Order Tracking)
-Người dùng có thể: 
--	Xem danh sách đơn hàng đã đặt.
--	Tra cứu theo mã đơn hàng, trạng thái đơn hàng.
--	Xem chi tiết đơn hàng (danh sách sản phẩm, thông tin cơ bản của người dùng, ngày đặt, trạng thái).
-2.7	Quản lý người dùng.
-Người dùng có thể:
--	Cập nhật các thông tin cơ bản của bản thân như Avatar, Họ và tên, gmail, mật khẩu.
--	Xem thông tin chi tiết của bản thân trong Setting của Website Nông Sản Sạch.
--	Thông tin của người dùng sẽ luôn được cập nhật bên phía server. 
-2.8	Liên hệ và câu hỏi thường gặp.
--	Người dùng có thể gửi phản hồi về các trải nghiệm của bản thân hay lỗi bất tiện khi sử dụng website cho phía nhà phát triển để có thể gửi phản hồi một cách nhanh chóng qua gmail.
--	Người dùng nhập đầy đủ thông tin về các lỗi, cũng như gmail, họ và tên. 
--	Người dùng có thể xem hướng dẫn các dịch vụ của trang web trong phần Về chúng tôi. 
--	Người dùng có thể hỏi trực tiếp thông qua hệ thống roomList đã có trên trang chủ của web.
-2.9	Quản lý tin tức.
--	Người dùng có thể xem được các tin tức cơ bản của các bài báo liên quan đến nông sản.
--	Có thể truy cập đến các bài báo nông sản đó thông tin các đường link được gắn sẵn.
--	Xem được các thông tin cơ bản về thể loại, các thông tin cơ bản của bài báo trước khi truy cập. 
--	Không cần đăng nhập vẫn có thể xem được các tin tức đó. 
-2.10	 Quản lý comment Blog
--	Người dùng có thể comment dưới mỗi bài Blog (mới có 1 bài blog được làm)
--	Nội dung của người comment được hiển thị bên dưới phần comment
+Dự án Nông Sản Sạch là một nền tảng thương mại điện tử đơn giản được xây dựng với mục đích kết nối trực tiếp giữa nông dân – hợp tác xã – hộ sản xuất với người tiêu dùng, cửa hàng, siêu thị nhỏ lẻ.
+Thông qua website này, nông sản sạch có thể được đưa đến tay người mua một cách minh bạch, an toàn, rõ nguồn gốc. Đồng thời, đây cũng là sản phẩm học tập giúp nhóm chúng em vận dụng những kiến thức đã học về:
 
-2.11	 Trang Landing Page
--	Trang giới thiệu sản phẩm nông sản sạch.
--	Liên kết tới các trang sản phẩm, giỏi hàng, đăng ký/đăng nhập.
--	Có phần giới thiệu về thông tin người tạo website, tin tức.
-3	YÊU CẦU CHỨC NĂNG DỰ ÁN 2: QUẢN TRỊ VIÊN NÔNG SẢN SẠCH
-Hệ thống cho phép quản trị viên thực hiện các tác vụ quản lý sản phẩm, đơn hàng, bài viết blog, người dùng và chức năng thống kê tài chính, phục vụ cho việc vận hành hệ thống thương mại điện tử từ bán nông sản sạch. 
-3.1	Chức năng Đăng ký người dùng mới
--	Admin có thể đăng ký tài khoản admin cấp dưới (nếu được phân quyền)
--	Nhập các thông tin: Họ tên, email, mật khẩu, phân quyền (role: “admin”)
--	Kiểm tra: Emai hợp lệ, mật khẩu phải trên 8 kí tự. 
--	Tự động gửi thông báo tải khoản thành công sẽ chuyển sang đăng nhập.
-3.2	Chức năng Đăng nhập & Kiểm soát truy cập
--	Cho phép đăng nhập bằng email và mật khẩu admin. 
--	Phân quyền: Admin, kiểm soát quản lý.
--	Duy trì đăng nhập bằng cookie hoặc JWT.
--	Tự động chuyển hướng đến dashboard sau khi đăng nhập thành công.
--	Chặn truy cập không có quyền truy cập phù hợp. 
-3.3	Quản lý sản phẩm (Entity: Product)
--	Hiển thị danh sách sản phẩm đang có trong hệ thống.
--	Tìm kiếm tên sản phẩm theo danh sách sản phẩm. 
--	Thực hiện các thao tác: thêm mới sản phẩm, sửa thông tin sản phẩm, xóa sản phẩm, ẩn/hiện sản phẩm trên giao diện người dùng. 
-3.4	Thêm/ Cập nhật sản phẩm:
-Form bao gồm: 
--	Tên sản phẩm
--	Mô tả
--	Ảnh đại diện
--	Thể loại
--	Số lượng 
--	Giá bán, giá khuyến mãi
-Kiểm tra 
--	Giá > 0
--	Ảnh có định dạng jpg/png/webp
-Cho phép upload nhiều ảnh (tối đa 5 ảnh/ sản phẩm) 
-3.5	Quản lý Blog/Tin tức
--	Hiển thị danh sách các bài blog đã đăng tải.
-Tác vụ: 
--	Tạo bài blog mới
--	Chỉnh sửa nội dung, ảnh, tiêu đề
--	Xóa bài blog.
--	Ẩn/hiện bài blog.
-3.6	Trang Quản lý Tin nhắn
--	Các phản hồi quan trọng của người dùng sẽ được phản hồi thông qua một chức năng roomList.
--	Admin có quyền phản hồi lại hệ thống một cách nhanh chóng và trực tiếp.
--	Admin có thể thấy danh sách mà các room cần admin phản hồi từ người dùng thông qua socket.io
-3.7	Thêm/Cập nhật bài blog
-Form gồm:
--	Tiêu đề bài viết
--	Ảnh tiêu đề.
--	Nội dung chính 
--	Số lượng Comment
--	Tác giả
--	Link bài viết. 
--	Miêu tả bài viết. 
-3.8	Quản lý đơn hàng (Entity: Order)
--	Hiển thị danh sách các đơn hàng đã đặt.
-Bộ lọc theo: 
--	Trạng thái đơn: chờ xác nhận, đang xử lý, hoàn tất, hủy.
--	Ngày đặt hàng
--	Người mua.
-Cho phép Admin: 
--	Xem chi tiết đơn hàng
--	Cập nhật trạng thái đơn hàng.
--	Cập nhật ghi chú nội dung
--	Xóa đơn hàng
-3.9	Chi tiết đơn hàng
-Gồm các thông tin: 
--	Danh sách sản phẩm, số lượng, giá
--	Tổng tiền
--	Thông tin người đặt
--	Phương thức thanh toán
--	Trạng thái hiện tại. 
--	Lịch sử thay đổi trạng thái ( có thể có trong tương lai )
-3.10	Thống kê doanh thu 
-Bảng tổng hợp:
--	Tổng doanh thu theo số lượng đơn hàng với tổng số tiền của mỗi đơn hàng. 
--	Số lượng đơn hàng. 
--	Giá trị trung bình mỗi đơn.
--	Danh sách tất cả các đơn hàng
--	Phân trang danh sách các đơn hàng. 
-3.11	Trang dashboard tổng quan
-Hiển thị
--	Số lượng đơn hàng.
--	Doanh thu đơn hàng.
--	Danh sách đơn hàng.
--	Trang chủ có các icon chỉ dẫn sang các mục khác.
--	Số user đã đăng ký trong website Nông Sản Sạch.
-4	YÊU CẦU PHI CHỨC NĂNG (NÂNG CAO)
-Các yêu cầu chức năng mô tả các đặc tính kỹ thuật mà hệ thống cần đạt được, không phụ thuộc vào chức năng cụ thể, nhưng ảnh hưởng đến trải nghiệm người dùng, tính ổn đinh, bảo mật và khả năng mở rộng của hệ thống.
-4.1	Tính dễ sử dụng (Usability)
--	Giao diện người dùng thân thiện, trực quan, hỗ trợ người dùng không chuyên về kỹ thuật.
--	Màu sắc hài hòa, các thành phân bố trí rõ ràng, có hướng dẫn (tooltip, placeholder, lable).
--	Tương thích đa thiết bị: điện thoại, tablet, desktop (responsive)
--	Có thể thao tác bằng bàn phím và dễ tiếp cận.
--	Thười gian học cách sử dụng hệ thống: dưới 10 phút với người mới.
--	Có hệ thống báo lỗi, thành công.
-4.2	Tính đáng tin cậy (Reliability)  
--	Hệ thống phải đảm bảo hoạt động liên tục với thời gian uptime >= 99.5%.
--	Dữ liệu người dùng, đơn hàng và sản phẩm được lưu trữ và backup định kỳ.
--	Khi có lỗi hệ thống, phải hiện thị thông báo rõ ràng cho người dùng.
--	Các thao tác quan trọng như tạo đơn hàng, thanh toán phải có xác nhận và kiểm tra đầu vào.
--	Có cơ chế log lỗi và theo dõi sự cố (server log + frontend error tracking).
-4.3	Tính hiệu năng (Performance)
--	Tốc độ tải trang chính (Landing Page): <= 3 giây.
--	Trang danh sách sản phẩm/blog: hiển thị: <= 1 giây cho tối đa 50 phẩm / blog.
--	API phản hồi: <= 200ms trong điều kiện hoạt động bình thường. 
--	Trang đơn hàng có thể xử lý > 100 đơn hàng mà không bị giật lag.
-4.4	Tính bảo mật (Security)
--	Đa số API phải yêu cầu xác thực bằng token được lưu trong Cookie.
--	Dữ liệu nhạy cảm như (token) được mã hóa (JWT).
--	Phân quyền rõ ràng giữa người dùng và admin. 
--	Giao tiếp giữa client và server phải sử dụng HTTPS.
-4.5	Khả năng bảo trì (Maintainability)
--	Mã nguồn được tổ chức rõ ràng, dễ bảo trì, có chú thích.
--	Tách biệt frontend và backend.
--	Cấu hình dễ dàng (sử dụng biến môi trường .env)
--	Tài liệu code, cấu trúc DB và API rõ ràng.
--	Có hệ thống log để kiểm tra và khắc phục lỗi nhanh. 
+Lập trình web (Frontend + Backend)
 
-5	THIẾT KẾ KIẾN TRÚC, THI CÔNG
-5.1	Các thành phần trong ứng dụng
-−	OS Platform: Windows 11 (dev environment)
-−	Database Server:  MongoDB Atlas (Cloud)
- 
-−	Web Server: Node.js (Express framework) chạy trên mỗi trường cloud Render.
- 
-−	Frontend: 
-o	ReactJs + Redux Toolkit
-o	Tailwind CSS
-o	React Router
-o	Axios.
+Thiết kế cơ sở dữ liệu (MongoDB)
 
-−	Dev Tools: 
-o	Visual Studio Code: 
- 
-o	Git: 	
- 
-o	MongoDB Compass: 
- 
-o	Figma: 	
- 
-o	Postman: Có thể sử dụng trong tương lai.
+Xây dựng API và xử lý logic nghiệp vụ
 
-5.2	Tổ chức CODE  
-1.	Frontend
- 
-Hình ảnh cây thư mục Frontend
-Các thành phần và chức năng của cây thư mục
--	Public: nơi chứa ảnh.
--	Src/assets: nơi chứa các vật phẩm của Vite.
--	Components: chuawsc các component React tái sử dụng và các component được sử dụng chính.
--	UseContext: nơi xây dựng context để các component có thể tái sử dụng bất cứ chỗ nào khi được cài đặt trong App.
--	App.jsx: Nơi chứa các đường dẫn được bọc bởi BrowserRouter, Routes, Route
--	.env: chứa các biến môi trường. 
-2.	Backend
- 
--	Controllers: chức các hàm xử lý logic của từng route
--	Data: lưu trữu các dữ liệu mẫu, dữ liệu khởi tạo hoặc cấu hình tạo hệ thống
--	Middleware: chứa các middleware xử lý xác thực, xử lý ảnh.
--	Models: chứa các schema mongoose cho MongoDB.
--	Node_modules: thư viện phục thuộc được cài bằng npm
--	Public: chứa các tài nguyên tĩnh
--	Routes: khai báo các API endpoint.
--	Chứa các hàm tiện tích 
--	.env: file cấu hình biến môi trường
--	.gitignore: khai báo các file/ thư mục không push lên git.
--	Index.js: điểm khởi động ứng dụng backend, kết nối với database, khởi chạy server.
-5.3	Quy ước viết CODE
-1.	Quy ước chung: 
--	Tên biến và hàm: camelCase (getProductById, getAllOrder).
--	Tên component: app.PascalCase (app.listProdcut.jsx) hoặc PascalCase (ViewOrder) ở admin. 
--	Dùng Arrow Function: const function = () => {}.
--	Có viết hàm trong JSX, và có sài callback tách riêng.
-2.	Frontend:
--	Sử dụng Vite + React tăng hiệu suất hoạt động cũng như cài một số thư viện. 
--	Sử dụng React Hook thay vì Class Component.
--	Tách logic khỏi UI bằng custom hook hoặc Redux Toolkit.
--	Có gọi API trực tiếp trong componenet, và không sài cho một số trường hợp khi sài Redux Toolkit.
-3.	Backend
--	Sử dụng async/await thay vì callback hoặc .then()
--	Trả về JSOn thống nhất định dạng: 
-{
-  success: true/false,
-  message: "...",
-  data: {...}
-}
--	Một số route phải xác thực token nếu cần (requireAuth middleware).
-4.	Lint & Format
--	Sử dụng Prettier để đảm bảo định dạng code đồng nhất.
--	Commit code nên qua prettier –write và kiểm tra trước khi push.
+Phân quyền và bảo mật trong ứng dụng web
 
-6	THIẾT KẾ DỮ LIỆU
-6.1	Lược đồ cơ sở dữ liệu
- 
-Hình ảnh lược đồ biểu diễn dữ liệu.
-6.2	Liệt kê danh sách các bảng dữ liệu  
-Stt	Tên Collection	Mô tả chức năng chính
-1	Users	Thông tin người dùng và quản trị viên khi đăng kí tài khoản.
-2	Products 	Dữ liệu sản phẩm nông sản 
-3	Orders	Đơn hàng của người dùng ( bao gồm cả mảng sản phẩm)
-4	Blogs	Tin tức, bài viết từ quản trị viên 
-5	Categories	Danh mục sản phẩm 
-6	Contact	Thông tin người dùng liên hệ với quản trị viên khi muốn trò chuyện trực tiếp.
-7	Comment	Người dùng comment dưới thông tin của mỗi bài blog
+🎯 Mục tiêu của dự án
 
-6.3	Đặc tả chi tiết từng bảng dữ liệu
-1.	Users
-{
-  "_id": "6880a06760c95c1b26f6e1bc",
-  "email": "abc123@gmail.com",
-  "password": "12345678",
-  "username": "Nguyễn Phát 2412",
-  "role": "user",
-  "createdAt": "2025-07-23T08:42:15.688Z",
-  "updatedAt": "2025-07-25T10:14:37.542Z",
-  "__v": 0,
-  "avatar": "/uploads/avatar/1753862842678.png"
-}
-2.	Products
-{
-"name": "Táo xanh", 
-"price": 24000, 
-"rating": 4, 
-"img": "/public/product_vegetable/green_apple.png", 
-"category": [ 
-{ 
-0 : "fresh_fruit", }, 
-{ 
-1: "organic", 
-}
-], 
-"tag": ["fruit", "organic", "fresh"], 
-"description": "Táo xanh gòm và chua nhẹ, giàu chất xơ và vitamin C, là món ăn nhẹ lành mạnh tuyệt vời", 
-"brand": "/public/Brand/Group 19.png", 
-"discount": 50, 
-"price_old": 48000, 
-"stock": true 
-}
-3.	Orders
-{
-  "_id": "6882861faa1111bcd57ee5de",
-  "userId": "6880a06760c95c1b26f6e1bc",
-  "customer": {
-    "name": "dsa dsadsa",
-    "email": "massterrio2412@gmail.com",
-    "phone": "0983549821",
-    "address": "Ha Noi "
-  },
-  "products": [
-    {
-      "_id": "6882861faa1111bcd57ee5df",
-      "productId": "687fbc9af6bd27343e8e785c",
-      "name": "Chinese cabbage",
-      "quantity": 12,
-      "price": 12,
-      "img": "/public/product_vegetable/chinese_cabbage.png"
-    },
-    {
-      "_id": "6882861faa1111bcd57ee5e0",
-      "productId": "687fbc9af6bd27343e8e785b",
-      "name": "Fresh Indian Malta",
-      "quantity": 4,
-      "price": 14.99,
-      "img": "/public/product_vegetable/fresh_india_malta.png"
-    },
-  ],
-  "totalAmount": 252.96,
-  "status": "Pending"
-}
-4.	Blogs
-{
-_id: 68879e22b31ed004381b14dc
-Title: "Chanh vàng: Nguồn gốc, giá trị dinh dưỡng, công dụng đối với sức khỏe …"
-Date: 2025-07-28T00:00:00.000+00:00
-Content : "Chanh vàng gây ấn tượng với vẻ ngoài rực rỡ, bắt mắt và chứa nhiều dưỡn…"
-author: "Gia An"
-tags: [fruit, organic]
-category: "fruit”
-banner: "/uploads/products/1754270111801Image (3).png"
-numberComment: 0
-links: "https://fptshop.com.vn/tin-tuc/dien-may/chanh-vang-170128"
-}
+Hỗ trợ người nông dân tiếp cận thị trường dễ dàng hơn, giảm tình trạng “được mùa mất giá”.
 
-5.	Categories
-{
-  "_id": "68889a86222ab69034d84443",
-  "name": "Hữu cơ",
-  "category": "organic"
-}
-6.	Contact
-{
-  "_id": "6888c21f95ac4165f1caf65c",
-  "name": "Nguyễn Xuân Phát",
-  "email": "abc123@gmail.com",
-  "subject": "Lỗi Sản Phẩm",
-  "message": "Thử gửi nội dung"
-}
-7.	Comment 
-{
-  "_id": "68945f57d6a3d6c7c29f454f",
-  "userId": "6880a06760c95c1b26f6e1bc",
-  "blogId": "68879e22b31ed004381b14dc",
-  "avatar": "/uploads/avatar/1753862842678.png",
-  "name": "Nguyễn Phát 2412",
-  "email": "abc123@gmail.com",
-  "comment": "trang web tuyệt vời lắm",
-  "createdAt": "2025-08-07T08:09:59.033Z",
-  "updatedAt": "2025-08-07T08:09:59.033Z",
-  "__v": 0
-}
-7	HƯỚNG DẪN SỬ DỤNG
-7.1	Danh sách chức năng dành cho USER (Người mua hàng)
-STT	Chức năng	Mô tả
-1	Đăng ký tài khoản	Nhập họ tên, email, mật khẩu để tạo tài khoản người dùng. 
-2	Đăng nhập	Sử dụng email và mật khẩu để đăng nhập hệ thống.
-3	Duyệt sản phẩm	Xem danh sách sản phẩm nông sản theo các danh mục tìm kiếm.
-4	Xem chi tiết sản phẩm	Xem thông tin mô tả, giá ảnh và đánh giá của từng sản phẩm. 
-5	Thêm vào giỏ hàng	Chọn sản phẩm, số lượng, và thêm vào giỏ hàng.
-6	Quản lý giỏ hàng	Tăng/ giảm số lượng, xóa sản phẩm khỏi giỏ hàng.
-7	Đặt hàng	Nhập địa chỉ giao hàng, chọn phương thức thanh toán, xác nhận đơn.
-8	Theo dõi đơn hàng	Xem danh sách và trạng thái các đơn hàng đã đặt.
-9	Xem chi tiết đơn hàng	Xem chi tiết thông tin của đơn hàng: thông tin của người sử dụng, danh sách sản phẩm. 
-10	Gửi liên hệ	Gửi phản hồi, góp ý hoặc khiếu nại tới hệ thống qua email.
-11 	Trò chuyện trực tiếp với quản trị viên thông qua hệ thống 	Người dùng có thể trò chuyện trực tiếp với quản trị viên.
-12	Cài đặt	Người dùng có thể chỉnh sửa thông tin cơ bản của người dùng: như avatar, email, mật khẩu.
-13	Blog (tin tức)	Xem danh sách các blog, tin tức, và xem trực tiếp bài báo thông qua các đường link
-14	Hướng dẫn	Người dùng có thể xem hướng dẫn trong phần về chúng tôi.
-15	Comment	Người dùng có thể comment dưới mỗi bài blog
+Đáp ứng nhu cầu ngày càng cao của xã hội về thực phẩm sạch - an toàn - truy xuất nguồn gốc.
 
-7.2	Danh sách chức năng dành cho MANAGEMENT (ADMIN)
-STT	Chức năng	Mô tả
-1	Đăng ký tài khoản quản trị viên	Nhập họ tên, email, mật khẩu để tạo tài khoản quản trị viên.
-2	Đăng nhập	Sử dụng email và mật khẩu để đăng nhập hệ thống.
-3	Quản lý sản phẩm	Thêm, sửa, xóa, cập nhật sản phẩm.
-4	Quản lý Blog	Thêm, sửa, xóa, cập nhật Blog
-5	Danh sách đơn hàng	Xem thông tin đơn hàng, xóa.
-6	Quản lý đơn hàng	Cập nhật trạng thái xử lý, theo dõi doanh thu.
-7	Theo dõi đơn hàng	Xem danh sách và trạng thái các đơn hàng đã đặt.
-8	Xem chi tiết đơn hàng	Xem chi tiết thông tin của đơn hàng: thông tin của người sử dụng, danh sách sản phẩm. 
-9	Quản lý người dùng	Xem danh sách người dùng, khóa hoặc phân quyền nếu cần.
-10	Quản lý phản hồi liên hệ 	Xem và xử lý các liên hệ gửi từ form liên hệ người dùng qua email.
-11	Thống kê tổng quan	Xem doanh thu, số lượng đơn hàng, tổng số client đã đăng ký
-13	Đăng xuất tài khoản	Admin có thể đăng xuất tài khoản
+Là sản phẩm thực hành giúp sinh viên rèn kỹ năng phân tích, thiết kế và triển khai một hệ thống phần mềm hoàn chỉnh.
 
-7.3	Chức năng 1 – Đặt hàng (User)
--	Truy cập trang giỏ hàng -> nhấn “tiến hành đặt hàng”
--	Điền thông tin người nhận, địa chỉ, ghi chú nếu có.
--	Chọn phương thức thanh toán: COD/VNPay/MoMo.
--	Xác nhận -> đơn hàng được ghi lại vào hệ thống với trạng thái là “pending”.
-7.4	Chức năng 2 – Thêm sản phẩm (admin)
--	Truy cập vào module “Product”
--	Nhấn “thêm sản phẩm mới” -> nhập: các thông tin cơ bản
--	Nhấn lưu để hoàn tất.
-7.5	Chức năng 3 – Quản lý đơn hàng (admin)
--	Truy cập “ đơn hàng”
--	Xem danh sách đơn hàng theo ngày/ tháng.
--	Click -> cập nhật: Trạng thái: đang xử lý/ đang giao/ hoàn tất/ hủy.
--	Nhấn cập nhật -> trạng thái được thay đổi và gửi thông báo cho người mua. 
+📂 Công nghệ sử dụng
 
-8	CÀI ĐẶT ỨNG DỤNG
-8.1	Cài đặt Database
-Yêu cầu: MongoDB >= 5.0 hoặc MongoDB Atlas
-Cài đặt MongoAtlas
-1.	Truy cập: https://www.mongodb.com/cloud/atlas.
-2.	Tạo cluiter -> tạo database mới -> user + password
-3.	Lấy connection string như sau: mongodb+srv://<username>:<password>@cluster0.mongodb.net/nongsansach.
-Cấu hình biến môi trường .env:
-MONGO_URI=mongodb+srv://<user>:<pass>@cluster0.mongodb.net/nongsansach.
-8.2	Cài đặt Server
-Yêu cầu: Node.js >= 18.x, npm hoặc yarn.
-Bước 1: clonet source code 
+Frontend: ReactJS + Redux Toolkit + TailwindCSS + React Router + Axios
+
+Backend: NodeJS + ExpressJS
+
+Database: MongoDB Atlas (Cloud)
+
+Triển khai: Render.com
+
+Công cụ hỗ trợ: Git, VSCode, MongoDB Compass, Figma, Postman
+
+⚙️ Các chức năng chính
+Người dùng (User)
+
+Đăng ký, đăng nhập, chỉnh sửa thông tin cá nhân
+
+Xem danh sách sản phẩm, chi tiết sản phẩm
+
+Tìm kiếm, lọc sản phẩm
+
+Quản lý giỏ hàng (thêm / xóa / chỉnh sửa số lượng)
+
+Đặt hàng & chọn phương thức thanh toán (COD, VNPay/MoMo - sandbox)
+
+Theo dõi trạng thái đơn hàng
+
+Xem tin tức (Blog) và bình luận dưới mỗi bài viết
+
+Gửi phản hồi / liên hệ trực tiếp với Admin
+
+Quản trị viên (Admin)
+
+Quản lý sản phẩm: thêm, sửa, xóa, ẩn/hiện sản phẩm
+
+Quản lý đơn hàng: cập nhật trạng thái, hủy, xem chi tiết
+
+Quản lý người dùng (phân quyền, khóa tài khoản)
+
+Quản lý Blog (thêm/sửa/xóa bài viết, ẩn/hiện blog)
+
+Thống kê doanh thu, số lượng đơn hàng, số lượng user đăng ký
+
+Quản lý phản hồi từ người dùng thông qua hệ thống tin nhắn
+
+🗄️ Thiết kế cơ sở dữ liệu
+
+Hệ thống sử dụng MongoDB với các Collections chính:
+
+STT	Collection	Mô tả
+1	Users	Thông tin người dùng & admin
+2	Products	Dữ liệu sản phẩm nông sản
+3	Orders	Đơn hàng (bao gồm chi tiết sản phẩm)
+4	Blogs	Tin tức, bài viết blog
+5	Categories	Danh mục sản phẩm
+6	Contact	Phản hồi liên hệ từ người dùng
+7	Comment	Bình luận dưới mỗi bài Blog
+🚀 Hướng dẫn cài đặt
+1. Cài đặt Database (MongoDB Atlas)
+
+Truy cập: https://www.mongodb.com/cloud/atlas
+
+Tạo Cluster -> Database -> User + Password
+
+Copy connection string:
+
+mongodb+srv://<username>:<password>@cluster0.mongodb.net/nongsansach
+
+Thêm vào file .env:
+
+MONGO_URI=mongodb+srv://<user>:<pass>@cluster0.mongodb.net/nongsansach
+
+2. Cài đặt Backend
 git clone https://github.com/NguyenPhat2412/Graduation-Project-Nong-San-Sach.git
 cd ServerWebNongSan
-Bước 2: 
 npm install
-Bước 3: Cấu hình .env
-Bước 4: Khởi chạy server
-Kiểm tra xem server có hoạt động không.
-8.3	Cài đặt Web App
-Yêu cầu: Node.js >= 18.x, npm hoặc yarn	
-Bước 1: clone source frontend
+npm start
+
+3. Cài đặt Frontend
 git clone https://github.com/NguyenPhat2412/Graduation-Project-Nong-San-Sach.git
 cd ShopNongSan
-Bước 2: Cài đặt dependencies
 npm install
-Bước 3 tạo file .env
-Bước 4: Chạy ứng dụng: npm run dev
-Truy cập:
--	Frontend: http://localhost:5173/
--	Backend: http://localhost:5000/
-8.4	Truy cập trực tiếp 
-Frontend: https://shop-nong-san-sach.onrender.com/
-Admin: https://graduation-project-nong-san-sach.onrender.com/
-Server: https://server-web-nong-san-sach.onrender.com
+npm run dev
 
+4. Truy cập ứng dụng
 
-9	KẾT QUẢ ĐẠT ĐƯỢC VÀ HƯỚNG PHÁT TRIỂN
-9.1	Kết quả đạt được
-Sau quá trình thiết kế, phát triển và kiểm thử, hệ thống “Nông sản sạch” đã đạt được các kết quả sau:
-•	Xây dựng thành công một nền tảng thương mại điện tử đơn giản chuyên cung cấp nông sản sạch, phục vụ người dùng cuối và đội ngũ quản trị.
-•	Giao diện người dùng (User Web App) thân thiện, trực quan, có khả năng tương thích đa thiết bị (responsive design).
-•	Cung cấp đầy đủ các chức năng cốt lõi như: xem sản phẩm, tìm kiếm, giỏ hàng, thanh toán đơn hàng, theo dõi đơn, đánh giá sản phẩm.
-•	Xây dựng hệ thống quản trị (Admin Dashboard) cho phép quản lý sản phẩm, đơn hàng, người dùng, bài viết blog và xem thống kê tổng quan.
-•	Áp dụng mô hình dữ liệu NoSQL (MongoDB) linh hoạt, dễ mở rộng.
-•	Hoàn thiện hệ thống xác thực người dùng, phân quyền (admin / user), đảm bảo truy cập có kiểm soát.
-•	 Tích hợp hệ thống thông báo trạng thái đơn hàng, định dạng dữ liệu rõ ràng, dễ mở rộng.
-9.2	Đã hoàn thành
-Nhóm chức năng	Tình trạng
-Đăng ký, đăng nhập, đăng xuất người dùng	Hoàn thiện
-Giỏ hàng và đặt hàng	Hoàn thiện
-Comment	Hoàn thiện
-Theo dõi đơn hàng	Hoàn thiện
-Quản lý sản phẩm	Hoàn thiện
-Quản lý đơn hàng	Hoàn thiện
-Quản lý Blog, bài viết	Hoàn thiện
-Thống kê doanh thu đơn hàng	Hoàn thiện
-Phân quyền người dùng	Hoàn thiện
-Giao diện responsive	Hoàn thiện
+Frontend: http://localhost:5173/
 
-9.3	Còn hạn chế
-Mặc dù hệ thống đã cơ bản hoàn thiện các chức năng chính, vẫn còn một số hạn chế như sau:
-•	Chưa tích hợp thanh toán trực tuyến thực tế (VNPay/MoMo vẫn ở mức giả lập hoặc sandbox).
-•	Chưa có hệ thống đánh giá điểm sản phẩm theo thuật toán học máy (AI/ML).
-•	Giao diện mobile tuy đã hỗ trợ responsive nhưng chưa được tối ưu toàn diện (UX/UI).
-•	Chưa triển khai bộ lọc nâng cao (lọc sản phẩm theo giá, đánh giá, khoảng ngày thu hoạch…).
-•	Thiếu hệ thống email/SMS notification thực tế (hiện chỉ log hoặc toast).
-•	Thiếu bộ công cụ quản lý vận chuyển hoặc kết nối bên thứ 3 (logistics API).
+Backend: http://localhost:5000/
 
-9.4	Hướng phát triển
-Trong các giai đoạn phát triển tiếp theo, hệ thống “Nông sản sạch” có thể được mở rộng và nâng cấp với các định hướng sau:
-1.	 Tích hợp thanh toán điện tử thực tế:
-o	Kết nối với VNPay, MoMo hoặc ZaloPay để người dùng có thể thanh toán trực tiếp trên website.
-2.	Phát triển ứng dụng di động (mobile app):
-o	Xây dựng app React Native / Flutter để mở rộng trải nghiệm người dùng trên Android và iOS.
-3.	Kết nối hệ thống giao vận/logistics:
-o	Tích hợp API từ bên thứ 3 như Giao Hàng Nhanh (GHN), Giao Hàng Tiết Kiệm (GHTK) để xử lý vận đơn.
-4.	Tính năng chat hỗ trợ khách hàng:
-o	Xây dựng hệ thống live chat hoặc chatbot để hỗ trợ người mua trực tiếp.
-5.	Ứng dụng trí tuệ nhân tạo (AI/ML):
-o	Đề xuất sản phẩm dựa trên hành vi người dùng.
-o	Phân tích xu hướng mua sắm để tối ưu marketing.
-6.	Tích hợp quản lý chiến dịch khuyến mãi:
-o	Cho phép admin tạo mã giảm giá, chương trình flash sale, giới hạn số lượng...
-7.	Nâng cấp hệ thống báo cáo và thống kê:
-o	Biểu đồ tương tác, lọc thời gian nâng cao, xuất PDF/Excel cho admin.
-8.	Tăng cường bảo mật:
-o	Áp dụng OAuth 2.0 / Google Auth
-o	Chống XSS, CSRF toàn diện, sử dụng helmet, rate limiter.
-9.	Quản lý kho và chuỗi cung ứng:
-o	Tích hợp hệ thống quản lý kho hàng, ngày hết hạn, định lượng nhập xuất.
+5. Link triển khai trực tiếp
 
+Website cho User: https://shop-nong-san-sach.onrender.com/
 
+Admin Dashboard: https://graduation-project-nong-san-sach.onrender.com/
 
+Server API: https://server-web-nong-san-sach.onrender.com/
 
+✅ Kết quả đạt được
 
+Xây dựng thành công website thương mại điện tử Nông Sản Sạch.
 
+Hoàn thiện đầy đủ các chức năng cơ bản: đăng ký, đăng nhập, giỏ hàng, đặt hàng, theo dõi đơn hàng, quản trị sản phẩm, blog, thống kê.
+
+Giao diện thân thiện, responsive trên nhiều thiết bị.
+
+Dữ liệu được quản lý trên MongoDB Atlas, dễ mở rộng và bảo trì.
+
+Có hệ thống phân quyền rõ ràng: User / Admin.
+
+⚠️ Hạn chế hiện tại
+
+Thanh toán online (VNPay, MoMo) mới chỉ ở mức sandbox, chưa tích hợp thực tế.
+
+Chưa tối ưu UX/UI cho mobile.
+
+Thiếu hệ thống email/SMS notification thực tế (mới chỉ log/toast).
+
+Chưa tích hợp API vận chuyển (GHN, GHTK).
+
+Bộ lọc sản phẩm còn đơn giản, chưa hỗ trợ nâng cao.
+
+🔮 Hướng phát triển
+
+Tích hợp thanh toán trực tuyến thực tế (VNPay, MoMo, ZaloPay).
+
+Phát triển ứng dụng di động bằng React Native / Flutter.
+
+Tích hợp API giao vận: GHN, GHTK.
+
+Ứng dụng AI/ML để gợi ý sản phẩm theo hành vi người dùng.
+
+Xây dựng hệ thống quản lý kho & chuỗi cung ứng.
+
+Nâng cấp hệ thống báo cáo, thống kê (xuất PDF/Excel).
+
+Cải thiện bảo mật: OAuth2, Google Auth, chống XSS, CSRF.
+
+👨‍🎓 Lời kết
+
+Đây là sản phẩm của một sinh viên năm 2, vừa là bài tập thực hành lớn vừa là nền tảng thực tế có thể mở rộng.
+Trong quá trình làm, mình đã học được rất nhiều về tổ chức dự án, quản lý code, triển khai backend/frontend và làm việc với database.
+
+Mong nhận được sự góp ý từ thầy cô và các bạn để dự án ngày càng hoàn thiện hơn!
