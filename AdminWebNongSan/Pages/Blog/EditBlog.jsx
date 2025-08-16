@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "./NewBlog.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { notification } from "antd";
 
 const EditBlog = () => {
   const [title, setTitle] = useState("");
@@ -20,6 +21,14 @@ const EditBlog = () => {
     setBanner(Array.from(e.target.files));
   };
   const { blogId } = useParams();
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      message: "Notification",
+      description: message,
+    });
+  };
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -47,7 +56,7 @@ const EditBlog = () => {
 
           setErrors({});
         } else {
-          console.error("No product data found for the given ID");
+          openNotification("error", "No product data found");
         }
       } catch (err) {
         console.error("Error when fetch product: ", err);
@@ -126,7 +135,7 @@ const EditBlog = () => {
       if (!response.ok) {
         throw new Error(data.error || "Failed to update blog");
       }
-      alert("Blog updated successfully!");
+      openNotification("success", "Blog updated successfully!");
 
       navigate("/");
     } catch (error) {
@@ -137,6 +146,7 @@ const EditBlog = () => {
 
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>

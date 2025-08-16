@@ -5,10 +5,15 @@ import Cart from "../Shop/Card/shop.card";
 import { useUser } from "../../UseContext/UserContext";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart } from "../Home/Redux/redux.controllerDatabase";
+import ListProductSearch from "./app.navbar.listProductSearch";
 
 const NavBarBetween = () => {
   const [open, setOpen] = useState(false);
   const cart = useSelector((state) => state.cart.listCart);
+  const [products, setProducts] = useState([]);
+  const [filterProducts, setFilterProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const { userInfo } = useUser();
   const dispatch = useDispatch();
   const showDrawer = () => {
     setOpen(true);
@@ -16,7 +21,42 @@ const NavBarBetween = () => {
   const onClose = () => {
     setOpen(false);
   };
-  const { userInfo } = useUser();
+
+  useEffect(() => {
+    const response = fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/api/client/products`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    response
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Failed to fetch products");
+      })
+      .then((data) => {
+        setProducts(data);
+        console.log("Products fetched successfully:", data);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, [search]);
+
+  // Search
+  useEffect(() => {
+    if (search) {
+      const filteredProduct = products.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilterProducts(filteredProduct);
+    }
+  }, [search]);
 
   const userId = userInfo?._id;
   useEffect(() => {
@@ -33,9 +73,19 @@ const NavBarBetween = () => {
           <p>Nông Sản Sạch</p>
         </div>
         <div className="navbar-search">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Tìm kiếm sản phẩm" />
-          <Button>Tìm kiếm</Button>
+          <div>
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <Button>Tìm kiếm</Button>
+          </div>
+          <div className="list-product-search">
+            <ListProductSearch products={filterProducts} search={search} />
+          </div>
         </div>
         <div className="navbar-icons">
           <i className="fa-solid fa-bell"></i>

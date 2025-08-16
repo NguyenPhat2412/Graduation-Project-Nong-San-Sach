@@ -79,6 +79,19 @@
 .navbar-search {
   border: 2px solid #2bff00;
   border-radius: 30px;
+  position: relative;
+}
+
+.list-product-search {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  border-radius: 5px;
+  z-index: 1000;
 }
 
 .navbar-search input {
@@ -130,6 +143,35 @@
   font-size: 12px;
 }
 
+.list-product-search-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+.list-product-search-item:hover {
+  background-color: #807a7a;
+  transition: background-color 0.3s ease;
+}
+.list-product-search-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.list-product-search-item p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  padding-right: 10px;
+}
+
+.no-result {
+  text-align: center;
+  padding: 10px;
+  color: #999;
+}
 @media screen and (max-width: 768px) {
   .navbar-between-content {
     flex-direction: column;
@@ -142,9 +184,6 @@
   .navbar-auth {
     flex-direction: column;
     align-items: flex-start;
-  }
-  .navbar-search {
-    width: 100%;
   }
   .navbar-between-menu {
     flex-direction: column;
