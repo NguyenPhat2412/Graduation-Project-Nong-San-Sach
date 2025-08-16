@@ -13,7 +13,6 @@ const InformationUser = () => {
   const userId = userInfo?._id;
 
   const { username, email, avatar } = userInfo;
-  console.log("User Info:", userInfo);
 
   // const handleUpdate = async () => {
   //   if (!avatarFile) {

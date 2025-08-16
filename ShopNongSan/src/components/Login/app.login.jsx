@@ -20,8 +20,9 @@ const AppLogin = () => {
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
     api[type]({
-      message: message,
+      description: message,
       placement: "topRight",
+      message: "Thông báo",
     });
   };
 

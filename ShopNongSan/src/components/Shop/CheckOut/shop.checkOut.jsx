@@ -23,7 +23,7 @@ const CheckOut = () => {
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
     api[type]({
-      message: "Notification",
+      message: "Thông báo",
       description: message,
     });
   };
@@ -53,22 +53,19 @@ const CheckOut = () => {
       !address ||
       !zipCode
     ) {
-      openNotification("error", "Please fill in all fields.");
+      openNotification("error", "Vui lòng nhập đầy đủ các thông tin!");
       return false;
     }
     if (!validateEmail(email)) {
-      openNotification("error", "Please enter a valid email address.");
+      openNotification("error", "Vui lòng nhập địa chỉ email hợp lệ.");
       return false;
     }
     if (phoneNumber.length < 10) {
-      openNotification(
-        "error",
-        "Phone number must be at least 10 digits long."
-      );
+      openNotification("error", "Số điện thoại phải có ít nhất 10 chữ số.");
       return false;
     }
     if (zipCode.length < 5) {
-      openNotification("error", "Zip code must be at least 5 digits long.");
+      openNotification("error", "Mã bưu điện phải có ít nhất 5 chữ số.");
       return false;
     }
     return true;
@@ -110,38 +107,26 @@ const CheckOut = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            handleMessage();
+            openNotification("success", "Đặt hàng thành công!");
+
+            dispatch(fetchCart(userId));
+
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setPhoneNumber("");
+            setAddress("");
+            setZipCode("");
           } else {
-            openNotification(
-              "error",
-              "Failed to place order. Please try again."
-            );
+            openNotification("error", "Hãy thử đặt hàng lại.");
             console.error("Error placing order:", data);
           }
         })
         .catch((error) => {
           console.error("Error placing order:", error);
-          openNotification(
-            "error",
-            "An error occurred while placing your order."
-          );
+          openNotification("error", "Đã xảy ra lỗi khi đặt hàng.");
         });
     }
-  };
-
-  const handleMessage = async () => {
-    openNotification("loading", "Placing order...");
-    setTimeout(() => {
-      openNotification("success", "Order placed successfully!");
-
-      setFirstName("");
-      setLastName("");
-      setEmail("");
-      setPhoneNumber("");
-      setAddress("");
-      setZipCode("");
-      dispatch(fetchCart(userId));
-    }, 2000);
   };
 
   // Load Tỉnh/Thành phố
@@ -309,7 +294,9 @@ const CheckOut = () => {
               </div>
             </>
           ) : (
-            <p>Giỏ hàng của bạn đang trống</p>
+            <div className="empty-cart">
+              <p>Giỏ hàng của bạn đang trống</p>
+            </div>
           )}
         </div>
       </Container>

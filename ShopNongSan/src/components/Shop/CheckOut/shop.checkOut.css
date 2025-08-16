@@ -128,7 +128,9 @@ select.form-control {
 .nav-link-1:hover {
   background-color: #218838;
 }
-
+.empty-cart {
+  padding-left: 16px;
+}
 @media (max-width: 576px) {
   .form-group {
     margin-bottom: 12px;

@@ -28,7 +28,6 @@ const UserHistory = () => {
           throw new Error("Failed to fetch order history");
         }
         const data = await response.json();
-        console.log("Order history data:", data);
         setDataOrder(data);
       } catch (error) {
         console.error("Error fetching order history:", error);
