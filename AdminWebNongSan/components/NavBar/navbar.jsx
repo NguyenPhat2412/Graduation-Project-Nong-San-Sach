@@ -5,12 +5,12 @@ const NavBar = () => {
     <div className="nav navbar w-64 h-screen p-6 flex flex-col">
       <div>
         <div className="dashboard logo text-4xl font-bold text-gray-500 mb-6 flex items-center p-10 ">
-          <h1>Admin Page</h1>
+          <h1>Quản trị viên</h1>
         </div>
       </div>
       <div className="space-y-6 navbar-list">
         <div className="dashboard-list">
-          <p className="text-xs text-gray-400 uppercase mb-2">Main</p>
+          <p className="text-xs text-gray-400 uppercase mb-2">Trang chính</p>
           <Link to="/" className="main-list block py-2 px-3 rounded flex ">
             <i className="icon fa-solid fa-house"></i>
             <p>Trang chủ</p>
@@ -18,7 +18,7 @@ const NavBar = () => {
         </div>
 
         <div className="dashboard-list">
-          <p className="text-xs text-gray-400 uppercase mb-2">Lists</p>
+          <p className="text-xs text-gray-400 uppercase mb-2">Danh sách</p>
           <Link to="/users" className="main-list block py-2 px-3 rounded flex ">
             <i className="fa-regular fa-user"></i>
             <p>Người dùng</p>
@@ -33,7 +33,7 @@ const NavBar = () => {
         </div>
 
         <div className="dashboard-list">
-          <p className="text-xs text-gray-400 uppercase mb-2">New</p>
+          <p className="text-xs text-gray-400 uppercase mb-2">Mới</p>
           <Link
             to="/new_blog"
             className="main-list block py-2 px-3 rounded flex "
@@ -62,7 +62,7 @@ const NavBar = () => {
         </div>
 
         <div className="dashboard-list">
-          <p className="text-xs text-gray-400 uppercase mb-2">Admin</p>
+          <p className="text-xs text-gray-400 uppercase mb-2">Quản trị</p>
           <Link
             to="/register"
             className="main-list block py-2 px-3 rounded flex "

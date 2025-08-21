@@ -10,6 +10,7 @@ const BlogComment = () => {
   const { userInfo } = useUser();
   const [name, setName] = useState(userInfo?.username || "");
   const [email, setEmail] = useState(userInfo?.email || "");
+  const blogId = localStorage.getItem("numberBlog");
 
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
@@ -46,6 +47,7 @@ const BlogComment = () => {
 
       if (!response.ok) throw new Error("Failed to submit comment");
       openNotification("success", "Comment submitted successfully!");
+
       setComments("");
     } catch (error) {
       console.error("Error submitting comment:", error);
@@ -61,7 +63,7 @@ const BlogComment = () => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_DATABASE_URL}/api/client/blog/comments/68879e22b31ed004381b14dc`
+          `${import.meta.env.VITE_DATABASE_URL}/api/client/blog/comments/${blogId}`
         );
         if (!response.ok) throw new Error("Failed to fetch comments");
         const data = await response.json();
@@ -73,43 +75,49 @@ const BlogComment = () => {
     };
     fetchComments();
   }, []);
-  if (!userInfo) {
-    return (
-      <div className="blog-comment-container">
-        <h3 className="comment-title">Comments</h3>
-        <Link className="comment-login-link" to="/account/login">
-          Please login to comment.
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div className="blog-comment-wrapper">
       <div className="blog-comment-container">
         {contextHolder}
-        <h3 className="comment-title">Leave a Comment</h3>
-        <form className="comment-form" onSubmit={handleCommentSubmit}>
-          <div className="comment-user-info">
-            <input type="text" value={name} disabled placeholder="Your Name" />
-            <input
-              type="email"
-              value={email}
-              disabled
-              placeholder="Your Email"
-            />
+        {!userInfo ? (
+          <div className="blog-comment-container">
+            <h3 className="comment-title">Comments</h3>
+            <Link className="comment-login-link" to="/account/login">
+              Please login to comment.
+            </Link>
           </div>
-          <textarea
-            className="comment-textarea"
-            value={comments}
-            onChange={(e) => setComments(e.target.value)}
-            placeholder="Write your comment here..."
-            rows="4"
-          ></textarea>
-          <button className="comment-submit-btn" type="submit">
-            Submit Comment
-          </button>
-        </form>
+        ) : (
+          <>
+            <h3 className="comment-title">Leave a Comment</h3>
+            <form className="comment-form" onSubmit={handleCommentSubmit}>
+              <div className="comment-user-info">
+                <input
+                  type="text"
+                  value={name}
+                  disabled
+                  placeholder="Your Name"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  disabled
+                  placeholder="Your Email"
+                />
+              </div>
+              <textarea
+                className="comment-textarea"
+                value={comments}
+                onChange={(e) => setComments(e.target.value)}
+                placeholder="Write your comment here..."
+                rows="4"
+              ></textarea>
+              <button className="comment-submit-btn" type="submit">
+                Submit Comment
+              </button>
+            </form>
+          </>
+        )}
 
         {/* Display Comments
       <div>
@@ -125,19 +133,23 @@ const BlogComment = () => {
       </div>
       <div className="comment-list-container">
         <h4 className="comment-list-title">Comments</h4>
-        <ul className="comment-list">
-          {commentList.map((comment) => (
-            <li className="comment-item" key={comment._id}>
-              <div>
-                <img
-                  src={`${import.meta.env.VITE_DATABASE_URL}${comment.avatar}`}
-                  alt={comment.name}
-                />
-                <strong>{comment.name}</strong>: {comment.comment}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {commentList.length === 0 ? (
+          <p>No comments yet.</p>
+        ) : (
+          <ul className="comment-list">
+            {commentList.map((comment) => (
+              <li className="comment-item" key={comment._id}>
+                <div>
+                  <img
+                    src={`${import.meta.env.VITE_DATABASE_URL}${comment.avatar}`}
+                    alt={comment.name}
+                  />
+                  <strong>{comment.name}</strong>: {comment.comment}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

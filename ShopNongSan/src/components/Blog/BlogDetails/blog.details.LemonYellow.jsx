@@ -13,6 +13,7 @@ const LemonYellow = () => {
           throw new Error("Failed to fetch blog details");
         }
         const data = await response.json();
+
         setData(data);
       } catch (error) {
         console.error("Error fetching blog details:", error);

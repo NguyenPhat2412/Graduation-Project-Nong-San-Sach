@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const Blog = new Schema(
   {
     title: { type: String, required: true },
+    numberBlog: { type: Number, default: 0 },
     date: { type: Date, required: true },
     content: { type: String, required: true },
     author: { type: String, required: true },

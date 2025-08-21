@@ -6,7 +6,21 @@ import RegisterInformation from "../../Home/RegisterInformation/app.register.inf
 import BlogCategory from "../app.blog.category";
 import "./blog.detail.css";
 import BlogComment from "./blog.comment";
+import Organlife from "./blog.details.Organlife";
 const BlogDetails = () => {
+  // This component is used to display the details of a blog post
+  const displayBlogDetailsOptions = () => {
+    const blogId = localStorage.getItem("numberBlog");
+    console.log(blogId);
+    if (blogId === "68879e22b31ed004381b14dc") {
+      return <LemonYellow />;
+    } else if (blogId === "6887a20865890c736a50c9ee") {
+      return <Organlife />;
+    } else {
+      return <div>Blog details not found</div>;
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -14,7 +28,7 @@ const BlogDetails = () => {
       </Container>
       <div>
         <Container className="blog-details-wrapper">
-          <LemonYellow />
+          {displayBlogDetailsOptions()}
           <div className="blog-details-category">
             <BlogCategory />
           </div>

@@ -6,6 +6,7 @@ import { Pagination } from "antd";
 const ListBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [numberBlog, setNumberBlog] = useState("");
   const pageSize = 6;
   const totalBlogs = blogs.length;
   const handlePageChange = (page) => {
@@ -15,6 +16,11 @@ const ListBlog = () => {
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
+
+  const functionNumberBlog = (id) => {
+    localStorage.setItem("numberBlog", id);
+    setNumberBlog(id);
+  };
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -60,7 +66,11 @@ const ListBlog = () => {
 
             <h4 className="blog-item-title">{item.title}</h4>
 
-            <Link className="read-more-link" to={`${item.links}`}>
+            <Link
+              className="read-more-link"
+              to={`${item.links}`}
+              onClick={() => functionNumberBlog(item._id)}
+            >
               Read more <i className="fa-solid fa-arrow-right"></i>
             </Link>
           </div>

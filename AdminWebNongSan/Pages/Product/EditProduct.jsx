@@ -23,7 +23,7 @@ const EditProduct = () => {
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
     api[type]({
-      message: "Notification",
+      message: "Thông báo",
       description: message,
     });
   };

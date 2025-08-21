@@ -675,3 +675,23 @@ exports.VerifyOTP = async (req, res) => {
   delete otpStore[email];
   res.status(200).json({ message: "Xác thực OTP thành công" });
 };
+
+exports.numberCommentTotal = async (req, res) => {
+  const { blogId } = req.params;
+  try {
+    const totalComments = await Comment.countDocuments({ blogId });
+    const blog = await Blogs.findById(blogId);
+    if (!blog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+    const numberComment = totalComments;
+
+    // update blog with new comment count
+    blog.numberComment = numberComment;
+    await blog.save();
+    res.status(200).json({ totalComments });
+  } catch (error) {
+    console.error("Error fetching comment count:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

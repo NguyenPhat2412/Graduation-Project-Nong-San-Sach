@@ -1,0 +1,47 @@
+.blog-details {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  line-height: 1.7;
+  color: #333;
+}
+
+.blog-banner img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.blog-content p {
+  margin: 15px 0;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.blog-content h2 {
+  margin: 25px 0 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #f5a623; /* màu vàng chanh */
+}
+
+.blog-content ul {
+  padding-left: 20px;
+  margin: 15px 0;
+}
+
+.blog-content li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.blog-content li strong {
+  color: #333;
+}
+
+.source {
+  font-size: 14px;
+  color: #777;
+  margin-top: 30px;
+  font-style: italic;
+}

@@ -12,7 +12,7 @@ const LoginPage = () => {
 
   const openNotification = (type, message) => {
     api[type]({
-      message: "Notification",
+      message: "Thông báo",
       description: message,
     });
   };

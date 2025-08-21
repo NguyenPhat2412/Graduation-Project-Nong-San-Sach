@@ -35,22 +35,22 @@ const DashboardNavbar = ({ userId }) => {
     <nav className="navbar">
       <ul className="flex justify-between p-4 rounded gap-20">
         <li className="dashboard-navbar-list text-blue-500 hover:text-blue-700 uppercase font-semibold w-70 h-30 shadow-md rounded-lg">
-          Users
+          Người dùng
           <p>{numberUser}</p>
           <i className="fa-solid fa-users text-red-500 text-xl"></i>
         </li>
         <li className="dashboard-navbar-list text-blue-500 hover:text-blue-700 w-70 h-30 shadow-md rounded-lg uppercase font-semibold">
-          Orders
+          Đơn hàng
           <p>{numberOrders}</p>
           <i className="fa-solid fa-truck text-yellow-500 text-xl"></i>
         </li>
         <li className="dashboard-navbar-list text-blue-500 hover:text-blue-700 w-70 h-30 shadow-md rounded-lg uppercase font-semibold">
-          Earnings
+          Doanh thu
           <p>${numberEarnings}</p>
           <i className="fa-solid fa-money-bill text-green-500 text-xl"></i>
         </li>
         <li className="dashboard-navbar-list text-blue-500 hover:text-blue-700 w-70 h-30 shadow-md rounded-lg uppercase font-semibold">
-          Balance
+          Số dư
           <p>${numberBalance}</p>
           <i className="fa-solid fa-scale-balanced text-purple-500 text-xl"></i>
         </li>

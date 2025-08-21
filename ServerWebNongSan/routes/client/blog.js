@@ -17,4 +17,7 @@ router.post("/blog/comment", BlogController.PostComment);
 // get comments by blogId
 router.get("/blog/comments/:blogId", BlogController.GetCommentsByBlogId);
 
+// get number of comments by blogId
+router.get("/blog/comments/number/:blogId", BlogController.numberCommentTotal);
+
 module.exports = router;
