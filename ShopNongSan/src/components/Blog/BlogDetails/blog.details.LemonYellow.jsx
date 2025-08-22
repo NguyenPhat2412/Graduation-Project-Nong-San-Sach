@@ -4,6 +4,7 @@ const LemonYellow = () => {
   const [data, setData] = useState(null);
   // fetch data blog
   useEffect(() => {
+    document.title = "Lợi ích của Chanh vàng";
     const fetchBlogDetails = async () => {
       try {
         const response = await fetch(
@@ -85,6 +86,9 @@ const LemonYellow = () => {
         alt="Lemon Yellow"
         className="blog-section-image"
       />
+      <p className="source">
+        Nguồn: https://fptshop.com.vn/tin-tuc/dien-may/chanh-vang-170128
+      </p>
     </div>
   );
 };
