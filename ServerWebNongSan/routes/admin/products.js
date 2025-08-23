@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const adminController = require("../../controllers/AdminsController");
-
 // Get all products
 router.get("/products", adminController.getAllProducts);
 
@@ -17,5 +16,8 @@ router.post("/products", adminController.addNewProduct);
 
 // get order by Id
 router.get("/orders/:orderId", adminController.GetOrderByOrderId);
+
+// delete order
+router.delete("/orders/:orderId", adminController.DeleteOrderById);
 
 module.exports = router;

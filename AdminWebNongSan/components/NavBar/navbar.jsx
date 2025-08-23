@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
 const NavBar = () => {
+  const HandleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
   return (
     <div className="nav navbar w-64 h-screen p-6 flex flex-col">
       <div>
@@ -63,12 +67,13 @@ const NavBar = () => {
 
         <div className="dashboard-list">
           <p className="text-xs text-gray-400 uppercase mb-2">Quản trị</p>
-          <Link
-            to="/register"
-            className="main-list block py-2 px-3 rounded flex "
+          <button
+            className="flex items-center py-2 px-3 rounded"
+            onClick={HandleLogout}
           >
-            <i className="fa-solid fa-right-from-bracket"></i> <p>Đăng xuất</p>
-          </Link>
+            <i className="fa-solid fa-right-from-bracket"></i>
+            <span style={{ marginLeft: "34px" }}>Đăng xuất</span>
+          </button>
         </div>
       </div>
     </div>

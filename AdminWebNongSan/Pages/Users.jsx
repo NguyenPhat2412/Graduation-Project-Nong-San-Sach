@@ -34,7 +34,7 @@ const Users = () => {
 
   // Lấy số lượng người dùng
   useEffect(() => {
-    fetch("http://localhost:5000/api/admin/users", {
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
       method: "GET",
       credentials: "include",
     })
@@ -45,7 +45,7 @@ const Users = () => {
   // Delete user theo id
   const handleDeleteUser = async (id) => {
     const response = await fetch(
-      `http://localhost:5000/api/admin/users/${id}`,
+      `${import.meta.env.VITE_API_URL}/api/admin/users/${id}`,
       {
         method: "DELETE",
         credentials: "include",
@@ -53,9 +53,9 @@ const Users = () => {
     );
     if (response.ok) {
       setUsers(users.filter((user) => user._id !== id));
-      openNotification("success", "User deleted successfully!");
+      openNotification("success", "Đã xóa user thành công");
     } else {
-      openNotification("error", "Failed to delete user!");
+      openNotification("error", "Không thể xóa user");
     }
   };
 

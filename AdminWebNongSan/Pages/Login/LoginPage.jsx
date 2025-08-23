@@ -49,9 +49,8 @@ const LoginPage = () => {
         openNotification("error", data.error);
       } else {
         openNotification("success", "Đăng nhập thành công!");
-        console.log("Login successful:", data);
 
-        localStorage.setItem("currentUser", JSON.stringify(data.user));
+        localStorage.setItem("currentUser", JSON.stringify(userData));
         localStorage.setItem("token", data.token);
         navigate("/");
         window.location.reload();

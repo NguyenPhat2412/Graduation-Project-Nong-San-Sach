@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../NavBar/navbar";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
+import { notification } from "antd";
 
 const DashBoard = () => {
   const [numberClient, setNumberClient] = useState(0);
@@ -15,6 +16,20 @@ const DashBoard = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const TOKEN = localStorage.getItem("token");
+
+  if (!TOKEN) {
+    window.location.href = "/login";
+  }
+
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (type, message) => {
+    api[type]({
+      description: message,
+      placement: "topRight",
+      message: "Thông báo",
+    });
+  };
   // Lấy thông tin tổng quan
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -62,6 +77,29 @@ const DashBoard = () => {
     fetchDashboardData();
   }, []);
 
+  // Xử lý xóa đơn hàng
+  const handleDeleteOrder = async (orderId) => {
+    if (window.confirm("Bạn có chắc chắn muốn xóa đơn hàng này?")) {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/admin/orders/${orderId}`,
+          {
+            method: "DELETE",
+            credentials: "include",
+          }
+        );
+        if (response.ok) {
+          setOrders(orders.filter((order) => order._id !== orderId));
+          openNotification("success", "Xóa đơn hàng thành công!");
+        } else {
+          console.error("Error deleting order:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error deleting order:", error);
+      }
+    }
+  };
+
   // Phân trang
   const indexOfLastOrder = currentPage * ProductPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ProductPerPage;
@@ -75,6 +113,7 @@ const DashBoard = () => {
   const endPage = Math.min(totalPages, startPage + paginateRange - 1);
   return (
     <div className="dashboard-container-main min-h-screen flex bg-white ">
+      {contextHolder}
       <div className="col-span-1 md:col-span-1">
         <NavBar />
       </div>
@@ -141,6 +180,7 @@ const DashBoard = () => {
                           <th className="font-bold">Giao hàng</th>
                           <th className="font-bold">Trạng thái</th>
                           <th className="font-bold">Chi tiết</th>
+                          <th className="font-bold">Hành động</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -168,6 +208,19 @@ const DashBoard = () => {
                             >
                               Xem chi tiết
                             </Link>
+                          </td>
+                          <td>
+                            <button
+                              className="text-red-500 hover:underline border border-red-500"
+                              style={{
+                                padding: "5px 10px",
+                                borderRadius: "5px",
+                                backgroundColor: "#f0f0f0",
+                              }}
+                              onClick={() => handleDeleteOrder(order._id)}
+                            >
+                              Xóa
+                            </button>
                           </td>
                         </tr>
                       </tbody>

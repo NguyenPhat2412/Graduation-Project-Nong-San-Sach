@@ -79,6 +79,11 @@ exports.loginAdmin = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
+    res.cookie("token", token, {
+      httpOnly: false,
+      secure: true,
+      sameSite: "None",
+    });
     if (user.password !== password) {
       return res.status(401).json({ message: "Invalid password" });
     }
@@ -306,6 +311,21 @@ exports.GetOrderByOrderId = async (req, res) => {
   }
 };
 
+exports.DeleteOrderById = async (req, res) => {
+  const orderId = req.params.orderId;
+
+  try {
+    const order = await Order.findByIdAndDelete(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+    res.status(200).json({ message: "Order deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting order:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 // Updated status order
 exports.UpdateStatusOrder = async (req, res) => {
   const orderId = req.params.orderId;
@@ -323,6 +343,19 @@ exports.UpdateStatusOrder = async (req, res) => {
     res.status(200).json({ message: "Order status updated successfully" });
   } catch (error) {
     console.error("Error updating order status:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.getInformation = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching user information:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
