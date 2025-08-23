@@ -5,7 +5,7 @@ const NavBar = () => {
     <div className="nav navbar w-64 h-screen p-6 flex flex-col">
       <div>
         <div className="dashboard logo text-4xl font-bold text-gray-500 mb-6 flex items-center p-10 ">
-          <h1>Quản trị viên</h1>
+          <h1>Admin</h1>
         </div>
       </div>
       <div className="space-y-6 navbar-list">
