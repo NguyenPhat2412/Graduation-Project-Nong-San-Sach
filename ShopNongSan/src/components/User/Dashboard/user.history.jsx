@@ -29,7 +29,6 @@ const UserDashboard = () => {
           throw new Error("Failed to fetch order history");
         }
         const data = await response.json();
-        console.log("Order history data:", data);
         setDataOrder(data);
       } catch (error) {
         console.error("Error fetching order history:", error);
@@ -60,11 +59,11 @@ const UserDashboard = () => {
           <div>
             <div className="user-history-title">
               <div className="user-history-title-text">
-                Recent Order History
+                Lịch sử đơn hàng gần đây
               </div>
               <div>
                 <Button onClick={() => setShow(!show)}>
-                  {show ? "Show Less" : "Show More"}
+                  {show ? "Hiện ít hơn" : "Hiện nhiều hơn"}
                 </Button>
               </div>
             </div>
@@ -73,14 +72,14 @@ const UserDashboard = () => {
                 {orderHistory.length > 0 ? (
                   <tr>
                     <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>Ngày</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
                   </tr>
                 ) : (
                   <tr>
-                    <th colSpan="3">No order history available</th>
+                    <th colSpan="3">Không có lịch sử đơn hàng</th>
                   </tr>
                 )}
               </thead>
@@ -89,7 +88,7 @@ const UserDashboard = () => {
                   <tr key={order?._id}>
                     <td>{order?._id}</td>
                     <td>{new Date(order?.createdAt).toLocaleDateString()}</td>
-                    <td>{order?.totalAmount || "No total available"}</td>
+                    <td>{order?.totalAmount || "Không có tổng tiền"}</td>
                     <td>{order?.status}</td>
                     <td>
                       <Button
@@ -98,7 +97,7 @@ const UserDashboard = () => {
                         }
                         variant="primary"
                       >
-                        View Order
+                        Xem đơn hàng
                       </Button>
                     </td>
                   </tr>

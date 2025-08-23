@@ -54,10 +54,10 @@ const UserHistory = () => {
         <div>
           <div>
             <div className="user-history-title">
-              <div className="user-history-title-text">Order History</div>
+              <div className="user-history-title-text">Lịch sử đơn hàng</div>
               <div>
                 <Button onClick={() => setShow(!show)}>
-                  {show ? "Show Less" : "Show More"}
+                  {show ? "Hiện ít hơn" : "Hiện nhiều hơn"}
                 </Button>
               </div>
             </div>
@@ -66,14 +66,14 @@ const UserHistory = () => {
                 {orderHistory.length > 0 ? (
                   <tr>
                     <th>Order ID</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>Ngày</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
                   </tr>
                 ) : (
                   <tr>
-                    <th colSpan="3">No order history available</th>
+                    <th colSpan="3">Không có lịch sử đơn hàng</th>
                   </tr>
                 )}
               </thead>
@@ -92,7 +92,7 @@ const UserHistory = () => {
                         variant="primary"
                         className="view-order-button"
                       >
-                        View Order
+                        Xem đơn hàng
                       </Button>
                     </td>
                   </tr>
