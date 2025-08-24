@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import "./home.recentlyView.css";
 import ProductDetails from "../../Shop/ProductDetails/shop.productDetails";
+import { useTranslation } from "react-i18next";
 const RecentlyViewedProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
 
   const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
 
+  const { t } = useTranslation();
   useEffect(() => {
     // get local storage
     const getRecentlyViewedProducts = async () => {
@@ -33,7 +35,7 @@ const RecentlyViewedProducts = () => {
     <div className="recently-viewed-products">
       {recentlyViewedProducts.length > 0 ? (
         <>
-          <h3>Đã xem gần đây </h3>
+          <h3>{t("recently_viewed_header")}</h3>
           <div className="product-list">
             {recentlyViewedProducts.map((product) => (
               <div key={product.id} className="product-item">
@@ -70,9 +72,7 @@ const RecentlyViewedProducts = () => {
           </div>
         </>
       ) : (
-        <div className="no-recently-viewed">
-          Chưa có sản phẩm nào được xem gần đây
-        </div>
+        <div className="no-recently-viewed">{t("no_recently_viewed")}</div>
       )}
 
       <ProductDetails

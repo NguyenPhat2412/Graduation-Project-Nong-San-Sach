@@ -172,6 +172,11 @@
   padding: 10px;
   color: #999;
 }
+.language-select,
+.language-select option {
+  border: none;
+}
+
 @media screen and (max-width: 768px) {
   .navbar-between-content {
     flex-direction: column;

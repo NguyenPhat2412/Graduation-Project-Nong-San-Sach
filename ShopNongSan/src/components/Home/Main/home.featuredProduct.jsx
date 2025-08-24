@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./home.featuredProduct.css";
 import ProductDetails from "../../Shop/ProductDetails/shop.productDetails";
 import { useUser } from "../../../UseContext/UserContext";
+import { useTranslation } from "react-i18next";
 const FeatureProduct = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [showAll, setShowAll] = useState(false);
@@ -13,6 +14,8 @@ const FeatureProduct = () => {
   if (userInfo) {
     userId = userInfo._id;
   }
+
+  const { t } = useTranslation();
 
   // Fetch featured products data from database
   useEffect(() => {
@@ -66,13 +69,13 @@ const FeatureProduct = () => {
   return (
     <div className="featured-products">
       <div className="featured-products-header">
-        <h3>Sản phẩm nổi bật</h3>
+        <h3>{t("featured_products_header")}</h3>
         {featuredProducts.length > 5 && (
           <button
             className="view-all-button"
             onClick={() => setShowAll((prev) => !prev)}
           >
-            {showAll ? "Lược bớt" : "Xem thêm sản phẩm"}
+            {showAll ? t("showLess") : t("showMore")}
             <span className="arrow">{showAll ? "▲" : "▼"}</span>
           </button>
         )}

@@ -2,7 +2,9 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router";
 import "./home.main.css";
 import HomeComment from "./home.comment";
+import { useTranslation } from "react-i18next";
 const HomeMain = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="home-main">
@@ -10,43 +12,43 @@ const HomeMain = () => {
           <div>
             <i className="fa-solid fa-apple-whole"></i>
             <Link to="/user/order-history" className="nav-link">
-              Trái cây
+              {t("fruit")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-carrot"></i>
             <Link to="/user/coupon" className="nav-link">
-              Rau củ
+              {t("vegetable")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-fish"></i>
             <Link to="/user/favorites" className="nav-link">
-              Cá
+              {t("fish")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-bacon"></i>
             <Link to="/user/cart" className="nav-link">
-              Thịt
+              {t("meat")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-wine-bottle"></i>
             <Link to="/user/setting" className="nav-link">
-              Cài Đặt
+              {t("setting")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-ice-cream"></i>
             <Link to="/user/farmer" className="nav-link">
-              Kem
+              {t("icecream")}
             </Link>
           </div>
           <div>
             <i className="fa-solid fa-plus"></i>
             <Link to="/app/shop" className="nav-link">
-              Xem thêm sản phẩm
+              {t("addToCart")}
             </Link>
           </div>
         </div>
@@ -57,12 +59,12 @@ const HomeMain = () => {
           />
         </div>
         <div className="home-main-content">
-          <p>Rau củ tươi mát và Hoa quả ngon</p>
+          <p>{t("home_main_content")}</p>
           <div className="home-main-content-text">
-            <p>Giảm giá lên đến 48%</p>
+            <p>{t("home_main_content_text")}</p>
           </div>
           <div className="home-main-content-button">
-            <button>Mua ngay</button>
+            <button>{t("buyNow")}</button>
             <i className="fa-solid fa-arrow-right"></i>
           </div>
         </div>
@@ -71,30 +73,33 @@ const HomeMain = () => {
         <div>
           <div>
             <i className="fa-solid fa-car-side"></i>
-            <p>Phí vận chuyển với giá tốt</p>
+            <p>{t("shipping_title")}</p>
           </div>
-          <p>Phí vận chuyển từ giá tốt bởi các đơn vị đối tác</p>
+          <p>{t("shipping_desc")}</p>
         </div>
+
         <div>
           <div>
             <i className="fa-solid fa-headset"></i>
-            <p>Hỗ trợ khách hàng 24/7</p>
+            <p>{t("support_title")}</p>
           </div>
-          <p>Đội ngũ chăm sóc khách hàng luôn sẵn sàng hỗ trợ bạn</p>
+          <p>{t("support_desc")}</p>
         </div>
+
         <div>
           <div>
             <i className="fa-solid fa-file-invoice"></i>
-            <p>Đổi trả hàng dễ dàng</p>
+            <p>{t("return_title")}</p>
           </div>
-          <p>Chúng tôi hỗ trợ đổi trả hàng trong vòng 30 ngày</p>
+          <p>{t("return_desc")}</p>
         </div>
+
         <div>
           <div>
             <i className="fa-solid fa-credit-card"></i>
-            <p>Thanh toán an toàn</p>
+            <p>{t("payment_title")}</p>
           </div>
-          <p>Chúng tôi đảm bảo thông tin thanh toán của bạn được bảo mật</p>
+          <p>{t("payment_desc")}</p>
         </div>
       </div>
     </>

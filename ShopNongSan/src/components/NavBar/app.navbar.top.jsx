@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { NavDropdown } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 const NavBarTop = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("i18nextLng", lang);
+  };
 
   useEffect(() => {
     try {
@@ -18,6 +25,7 @@ const NavBarTop = () => {
         if (response.ok) {
           setIsLoggedIn(true);
           setUserInfo(data.username);
+          i18n.changeLanguage(localStorage.getItem("i18nextLng") || "vi");
         } else {
           setIsLoggedIn(false);
           setUserInfo(null);
@@ -33,13 +41,22 @@ const NavBarTop = () => {
     <div className="navbar">
       <div className="navbar-address">
         <i className="fa-solid fa-location-dot"></i>
-        <p>Địa chỉ: Cao Thọ, Cao Đức, Bắc Ninh</p>
+        <p>{t("address")}</p>
       </div>
       <div className="navbar-setting">
-        <NavDropdown title="Tiếng Việt">
-          <NavDropdown.Item href="#action/3.1">Tiếng Anh</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Tiếng Trung</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Lựa chọn khác</NavDropdown.Item>
+        <NavDropdown
+          title={
+            i18n.language === "vi"
+              ? "Tiếng Việt"
+              : i18n.language === "en"
+                ? "English"
+                : "Ngôn ngữ khác"
+          }
+          onSelect={(eventKey) => changeLanguage(eventKey)}
+        >
+          <NavDropdown.Item eventKey="vi">Tiếng Việt</NavDropdown.Item>
+          <NavDropdown.Item eventKey="en">English</NavDropdown.Item>
+          <NavDropdown.Item eventKey="other">Khác</NavDropdown.Item>
         </NavDropdown>
         <div>|</div>
         <NavDropdown title="VND (đ)">
@@ -51,17 +68,17 @@ const NavBarTop = () => {
         {isLoggedIn ? (
           <div>
             <div>
-              Chào mừng <strong>{userInfo}</strong>
+              {t("hello")} <strong>{userInfo}</strong>
             </div>
           </div>
         ) : (
           <div className="navbar-auth">
             <Link to={"/account/login"} className="nav-link">
-              Đăng nhập
+              {t("login")}
             </Link>
             <div>/</div>
             <Link to={"/account/register"} className="nav-link">
-              Đăng ký
+              {t("register")}
             </Link>
           </div>
         )}

@@ -7,7 +7,7 @@ import { store } from "./components/Home/Redux/store.js";
 import { Provider } from "react-redux";
 import { CategoryProvider } from "./UseContext/CategoryContext.jsx";
 import { NotificationProvider } from "./UseContext/NotificationContext.jsx";
-
+import "./i18n";
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <UserProvider>

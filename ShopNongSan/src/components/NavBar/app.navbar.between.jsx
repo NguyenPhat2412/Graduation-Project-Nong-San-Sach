@@ -6,6 +6,7 @@ import { useUser } from "../../UseContext/UserContext";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart } from "../Home/Redux/redux.controllerDatabase";
 import ListProductSearch from "./app.navbar.listProductSearch";
+import { useTranslation } from "react-i18next";
 
 const NavBarBetween = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,8 @@ const NavBarBetween = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const response = fetch(
@@ -41,7 +44,6 @@ const NavBarBetween = () => {
       })
       .then((data) => {
         setProducts(data);
-        console.log("Products fetched successfully:", data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -77,11 +79,11 @@ const NavBarBetween = () => {
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
               type="text"
-              placeholder="Tìm kiếm sản phẩm"
+              placeholder={t("searchPlaceholder")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Button>Tìm kiếm</Button>
+            <Button>{t("search")}</Button>
           </div>
           <div className="list-product-search">
             <ListProductSearch products={filterProducts} search={search} />
@@ -111,44 +113,42 @@ const NavBarBetween = () => {
       </div>
       <div className="navbar-between-menu">
         <div className="navbar-menu">
-          <NavDropdown title="Trang chủ">
+          <NavDropdown title={t("home")}>
             <NavDropdown.Item as={Link} to="/">
-              Trang chủ
+              {t("home")}
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/app/about">
-              Giới thiệu
+              {t("about")}
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="#action/3.3">
-              Lựa chọn khác
+              {t("other")}
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Cửa hàng">
+          <NavDropdown title={t("shop")}>
             <NavDropdown.Item as={Link} to="/app/shop">
-              Danh sách sản phẩm
+              {t("productList")}
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/app/shop/cart">
-              Giỏ hàng
+              {t("cart")}
             </NavDropdown.Item>
             <NavDropdown.Item as={Link} to="/app/shop/checkout">
-              Thanh toán
+              {t("checkout")}
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Tin tức">
+          <NavDropdown title={t("blog")}>
             <NavDropdown.Item as={Link} to="/app/blog">
-              Tin tức
+              {t("blog")}
             </NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
-              Thông tin tin tức
+              {t("newsInfo")}
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">
-              Lựa chọn khác
-            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.3">{t("other")}</NavDropdown.Item>
           </NavDropdown>
           <Link to="/app/faq" className="nav-link">
-            Về chúng tôi
+            {t("about")}
           </Link>
           <Link to="/app/contact" className="nav-link">
-            Liên hệ
+            {t("contact")}
           </Link>
         </div>
         <div>

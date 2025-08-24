@@ -8,6 +8,7 @@ import {
   fetchCart,
 } from "../../Home/Redux/redux.controllerDatabase";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 const Cart = (props) => {
   const { onClose, open } = props;
   const cart = useSelector((state) => state.cart.listCart);
@@ -28,10 +29,12 @@ const Cart = (props) => {
     await dispatch(fetchCart(userId));
   };
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <Drawer
-        title="Giỏ hàng"
+        title={t("cart")}
         width={600}
         placement="right"
         closable={{ "aria-label": "Close Button" }}
@@ -52,7 +55,7 @@ const Cart = (props) => {
                     <div>
                       <div className="cart-item-name">{item?.name}</div>
                       <span>{item?.price.toFixed(2)} VND </span>
-                      <span>Quantity: {item?.quantity}</span>
+                      <span>Số lượng: {item?.quantity}</span>
                     </div>
                   </div>
                   <div className="underline-cart-item"></div>
@@ -86,7 +89,7 @@ const Cart = (props) => {
             </div>
           </>
         ) : (
-          <p>Your cart is empty</p>
+          <p>Giỏ hàng của bạn đang trống</p>
         )}
       </Drawer>
     </div>
