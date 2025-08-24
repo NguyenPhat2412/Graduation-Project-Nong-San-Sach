@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavBar from "../NavBar/navbar";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { notification } from "antd";
 
 const DashBoard = () => {
@@ -11,6 +11,7 @@ const DashBoard = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const ProductPerPage = 4;
 
@@ -19,7 +20,7 @@ const DashBoard = () => {
   const TOKEN = localStorage.getItem("token");
 
   if (!TOKEN) {
-    window.location.href = "/login";
+    navigate("/login");
   }
 
   const [api, contextHolder] = notification.useNotification();
