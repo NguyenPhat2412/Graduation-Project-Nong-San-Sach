@@ -25,11 +25,11 @@ const SignUpPage = () => {
       return;
     }
     if (password.length < 8) {
-      openNotification("error", "Password must be at least 8 characters long!");
+      openNotification("error", "Mật khẩu phải có ít nhất 8 ký tự!");
       return;
     }
     if (password !== currentPassword) {
-      openNotification("error", "Passwords do not match!");
+      openNotification("error", "Mật khẩu không khớp!");
       return;
     }
 
@@ -68,9 +68,9 @@ const SignUpPage = () => {
       </div>
       <div className="register-wrapper">
         <div className="register-box">
-          <h1 className="register-title">Sign Up</h1>
+          <h1 className="register-title">Đăng ký</h1>
           <input
-            placeholder="Full Name"
+            placeholder="Họ và tên"
             type="text"
             className="register-input"
             value={name}
@@ -85,25 +85,25 @@ const SignUpPage = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             className="register-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type="password"
-            placeholder="Confirm Password"
+            placeholder="Xác nhận mật khẩu"
             className="register-input"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
           <button className="register-button" onClick={handleSignUp}>
-            Sign Up
+            Đăng ký
           </button>
           <div className="register-footer">
-            Login?{" "}
+            Bạn đã có tài khoản?{" "}
             <Link to="/login" className="register-link">
-              Click
+              Đăng nhập
             </Link>
           </div>
         </div>

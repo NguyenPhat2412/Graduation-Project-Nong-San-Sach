@@ -25,7 +25,7 @@ const EditBlog = () => {
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
     api[type]({
-      message: "Notification",
+      message: "Thông báo",
       description: message,
     });
   };
@@ -56,7 +56,7 @@ const EditBlog = () => {
 
           setErrors({});
         } else {
-          openNotification("error", "No product data found");
+          openNotification("error", "Không tìm thấy dữ liệu bài viết");
         }
       } catch (err) {
         console.error("Error when fetch product: ", err);
@@ -135,11 +135,10 @@ const EditBlog = () => {
       if (!response.ok) {
         throw new Error(data.error || "Failed to update blog");
       }
-      openNotification("success", "Blog updated successfully!");
+      openNotification("success", "Cập nhật bài viết thành công!");
 
       navigate("/");
     } catch (error) {
-      console.error("Error creating blog:", error);
       setMessage("Error creating blog: " + error.message);
     }
   };

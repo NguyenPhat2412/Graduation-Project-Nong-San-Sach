@@ -99,7 +99,7 @@ const NewBlog = () => {
       if (!response.ok) {
         throw new Error(data.error || "Failed to create blog");
       }
-      openNotification("success", "Blog created successfully!");
+      openNotification("success", "Tạo bài viết thành công!");
       setTitle("");
       setDate("");
       setContent("");
@@ -111,7 +111,6 @@ const NewBlog = () => {
       setLinks("");
       navigate("/");
     } catch (error) {
-      console.error("Error creating blog:", error);
       setMessage("Error creating blog: " + error.message);
     }
   };

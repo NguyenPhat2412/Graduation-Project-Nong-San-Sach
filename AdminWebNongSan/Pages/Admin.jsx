@@ -87,7 +87,7 @@ const AdminPanel = () => {
           </ul>
           {selectedRoom && (
             <>
-              <h3>Room: {selectedRoom}</h3>
+              <h3>Phòng: {selectedRoom}</h3>
               <div style={{ height: "530px", overflowY: "scroll" }}>
                 {messages.map((msg, index) => (
                   <div key={index} style={{ margin: "10px 0" }}>
@@ -114,7 +114,7 @@ const AdminPanel = () => {
                   borderRadius: "5px",
                 }}
               >
-                Send
+                Gửi
               </button>
             </>
           )}

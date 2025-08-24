@@ -65,7 +65,7 @@ const LoginPage = () => {
       {contextHolder}
       <div className="login-wrapper">
         <div className="login-box">
-          <h1 className="login-title">Sign In</h1>
+          <h1 className="login-title">Đăng nhập</h1>
           <input
             type="email"
             placeholder="Email"
@@ -74,17 +74,17 @@ const LoginPage = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mật khẩu"
             className="login-input"
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="login-button" onClick={handleLogin}>
-            SIGN IN
+            Đăng nhập
           </button>
           <div className="login-footer">
-            Create an account?{" "}
+            <span className="login-footer-text">Bạn chưa có tài khoản?</span>
             <Link to="/register" className="login-link">
-              Sign Up
+              Đăng ký
             </Link>
           </div>
         </div>

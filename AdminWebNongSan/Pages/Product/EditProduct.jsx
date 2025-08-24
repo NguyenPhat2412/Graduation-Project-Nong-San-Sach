@@ -115,7 +115,7 @@ const EditProduct = () => {
         return response.json();
       })
       .then((data) => {
-        openNotification("success", "Product updated successfully!");
+        openNotification("success", "Cập nhật sản phẩm thành công!");
         setProductName("");
         setCategory("");
         setImage(null);

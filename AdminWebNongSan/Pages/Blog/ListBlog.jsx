@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/navbar";
 import "../../components/Dashboard/Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { notification } from "antd";
 
 const Blog = () => {
@@ -10,6 +10,8 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchBlog, setSearchBlog] = useState("");
   const BlogPerPage = 7;
+
+  const navigate = useNavigate();
 
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
@@ -69,8 +71,8 @@ const Blog = () => {
       if (!res.ok) {
         throw new Error("Failed to delete product");
       }
-      openNotification("success", "Product deleted successfully");
-      navigator("/");
+      openNotification("success", "Xóa sản phẩm thành công!");
+      navigate("/");
     } catch (err) {
       console.error("Error when delete product", err);
     }
