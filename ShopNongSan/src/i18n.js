@@ -1,5 +1,4 @@
 import i18n from "i18next";
-import { First } from "react-bootstrap/esm/PageItem";
 import { initReactI18next } from "react-i18next";
 // tạo bản dịch
 const resources = {

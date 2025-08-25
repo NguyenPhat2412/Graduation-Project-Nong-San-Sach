@@ -16,6 +16,6 @@ router.post("/login", adminController.loginAdmin);
 router.delete("/users/:userId", adminController.deleteUserById);
 
 // get user information
-router.get("/users/info", authMiddleware, adminController.getInformation);
+router.get("/users/info", adminController.getInformation);
 
 module.exports = router;
