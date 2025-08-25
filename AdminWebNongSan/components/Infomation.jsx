@@ -13,8 +13,8 @@ const Information = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            "x-auth-token": TOKEN,
           },
-          credentials: "include",
         }
       );
       const data = await response.json();

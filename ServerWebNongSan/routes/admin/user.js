@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const adminController = require("../../controllers/AdminsController");
-const { authMiddleware } = require("../../middleware/authMiddleware");
+const {
+  authMiddlewareLocalStorage,
+} = require("../../middleware/authMiddleware");
 // get all users
 router.get("/users", adminController.getAllUser);
 
@@ -16,6 +18,10 @@ router.post("/login", adminController.loginAdmin);
 router.delete("/users/:userId", adminController.deleteUserById);
 
 // get user information
-router.get("/users/info", adminController.getInformation);
+router.get(
+  "/users/info",
+  authMiddlewareLocalStorage,
+  adminController.getInformation
+);
 
 module.exports = router;
