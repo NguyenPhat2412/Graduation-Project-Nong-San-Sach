@@ -10,6 +10,7 @@ import { fetchCart } from "../../Home/Redux/redux.controllerDatabase";
 import RegisterInformation from "../../Home/RegisterInformation/app.register.information";
 import "./shop.checkOut.css";
 import { notification } from "antd";
+import { useTranslation } from "react-i18next";
 
 const CheckOut = () => {
   const [firstName, setFirstName] = useState("");
@@ -27,6 +28,8 @@ const CheckOut = () => {
       description: message,
     });
   };
+
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.listCart);
@@ -107,7 +110,7 @@ const CheckOut = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data) {
-            openNotification("success", "Đặt hàng thành công!");
+            openNotification("success", t("order_success"));
 
             dispatch(fetchCart(userId));
 
@@ -118,13 +121,13 @@ const CheckOut = () => {
             setAddress("");
             setZipCode("");
           } else {
-            openNotification("error", "Hãy thử đặt hàng lại.");
+            openNotification("error", t("order_fail"));
             console.error("Error placing order:", data);
           }
         })
         .catch((error) => {
           console.error("Error placing order:", error);
-          openNotification("error", "Đã xảy ra lỗi khi đặt hàng.");
+          openNotification("error", t("order_error"));
         });
     }
   };
@@ -149,37 +152,37 @@ const CheckOut = () => {
         />
       </div>
       <Container>
-        <h1>Thông tin thanh toán</h1>
+        <h1>{t("checkout_info")}</h1>
       </Container>
       <Container className="checkout-container">
         {contextHolder}
         <div>
           <div className="form-group-name">
             <div className="form-group">
-              <label>Họ</label>
+              <label>{t("first_name")}</label>
               <input
                 className="form-control"
-                placeholder="Họ"
+                placeholder={t("first_name")}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Tên</label>
+              <label>{t("last_name")}</label>
               <input
                 className="form-control"
-                placeholder="Tên"
+                placeholder={t("last_name")}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Email</label>
+              <label>{t("email")}</label>
               <input
                 className="form-control"
-                placeholder="Email"
+                placeholder={t("email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -188,20 +191,20 @@ const CheckOut = () => {
 
           <div className="form-group-phone">
             <div className="form-group">
-              <label>Số điện thoại</label>
+              <label>{t("phone")}</label>
               <input
                 className="form-control"
-                placeholder="Số điện thoại"
+                placeholder={t("phone")}
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label>Địa chỉ</label>
+              <label>{t("address_checkout")}</label>
               <input
                 className="form-control"
-                placeholder="Đường, tòa nhà, v.v."
+                placeholder={t("address_checkout")}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
               />
@@ -209,7 +212,7 @@ const CheckOut = () => {
           </div>
           <div className="form-group-zip">
             <div className="form-group">
-              <label>Mã bưu chính (ZipCode)</label>
+              <label>{t("zip_code")}</label>
               <input
                 className="form-control"
                 placeholder="100000"
@@ -219,35 +222,32 @@ const CheckOut = () => {
             </div>
 
             <div className="form-group">
-              <label>Quốc gia</label>
+              <label>{t("country")}</label>
               <input className="form-control" value="Vietnam" readOnly />
             </div>
 
             <div className="form-group">
-              <label>Phương thức thanh toán</label>
+              <label>{t("payment_method")}</label>
               <select className="form-control">
-                <option value="">Chọn</option>
-                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
-                <option value="card">Thẻ tín dụng/thẻ ghi nợ</option>
+                <option value="">{t("select")}</option>
+                <option value="cod">{t("payment_method_cod")}</option>
+                <option value="card">{t("payment_method_card")}</option>
               </select>
             </div>
           </div>
           <div>
-            <h2>Thông tin bổ sung</h2>
+            <h2>{t("additional_info")}</h2>
             <textarea
               className="form-control"
-              placeholder="Bất kỳ ghi chú hoặc hướng dẫn bổ sung nào"
+              placeholder={t("additional_placeholder")}
               rows="4"
             ></textarea>
-            <p>
-              Chúng tôi sẽ không bao giờ chia sẻ thông tin của bạn với bất kỳ ai
-              khác.
-            </p>
+            <p>{t("disclaimer")}</p>
           </div>
         </div>
 
         <div className="register-information-section">
-          <div className="order-summary-title">Tóm tắt đơn hàng</div>
+          <div className="order-summary-title">{t("order_summary")}</div>
           {cart.length > 0 ? (
             <>
               <ul className="cart-list">
@@ -276,7 +276,7 @@ const CheckOut = () => {
                 ))}
               </ul>
               <div className="cart-total">
-                <div>Tổng: </div>
+                <div>{t("total")}: </div>
                 <div>
                   {cart
                     .reduce(
@@ -289,13 +289,13 @@ const CheckOut = () => {
               </div>
               <div>
                 <button onClick={handleSubmit} className="nav-link-1">
-                  Xác nhận đơn hàng
+                  {t("confirm_order")}
                 </button>
               </div>
             </>
           ) : (
             <div className="empty-cart">
-              <p>Giỏ hàng của bạn đang trống</p>
+              <p>{t("empty_cart")}</p>
             </div>
           )}
         </div>

@@ -55,7 +55,9 @@ const Cart = (props) => {
                     <div>
                       <div className="cart-item-name">{item?.name}</div>
                       <span>{item?.price.toFixed(2)} VND </span>
-                      <span>Số lượng: {item?.quantity}</span>
+                      <span>
+                        {t("quantity")} {item?.quantity}
+                      </span>
                     </div>
                   </div>
                   <div className="underline-cart-item"></div>
@@ -69,7 +71,7 @@ const Cart = (props) => {
             </ul>
             <div className="cart-total">
               <div className="cart-total-label">
-                <span>Tổng tiền: </span>
+                <span>{t("total")} </span>
                 <span>
                   {cart
                     .reduce(
@@ -80,16 +82,18 @@ const Cart = (props) => {
                   VND
                 </span>
               </div>
-              <button className="cart-checkout-button">Thanh toán</button>
+              <button className="cart-checkout-button">
+                {t("cart_checkout")}
+              </button>
             </div>
             <div className="cart-go-to-cart">
               <Link to="/app/shop/cart" className="nav-link">
-                Đi đến giỏ hàng
+                {t("cart_go_to_shop")}
               </Link>
             </div>
           </>
         ) : (
-          <p>Giỏ hàng của bạn đang trống</p>
+          <p>{t("empty_cart")}</p>
         )}
       </Drawer>
     </div>

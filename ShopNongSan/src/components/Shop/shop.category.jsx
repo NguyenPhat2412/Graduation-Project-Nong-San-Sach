@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "rc-slider/assets/index.css";
 import "./shop.category.css";
 import { useCategory } from "../../UseContext/CategoryContext";
+import { useTranslation } from "react-i18next";
 const CategoryProduct = () => {
   const [category, setCategory] = useState([]);
   const {
@@ -15,6 +16,7 @@ const CategoryProduct = () => {
   } = useCategory();
   const [products, setProducts] = useState([]);
   const [sale, setSale] = useState(false);
+  const { t } = useTranslation();
 
   const [showAll, setShowAll] = useState(true);
   const [showPriceFilter, setShowPriceFilter] = useState(true);
@@ -72,7 +74,7 @@ const CategoryProduct = () => {
     <div className="category-product">
       <div>
         <div className="category-header">
-          <h3>Tất cả danh mục</h3>
+          <h3>{t("all_category")}</h3>
           <button onClick={handleSaleToggle}>
             {showAll ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -103,7 +105,7 @@ const CategoryProduct = () => {
 
       <div>
         <div className="category-header">
-          <h3>Giá cả</h3>
+          <h3>{t("price")}</h3>
           <button onClick={handlePriceToggle}>
             {showPriceFilter ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -137,7 +139,7 @@ const CategoryProduct = () => {
 
       <div className="rating-filter">
         <div className="category-header">
-          <h3>Đánh giá</h3>
+          <h3>{t("evaluate")}</h3>
           <button onClick={handleRatingToggle}>
             {showRatingFilter ? (
               <i class="fa-solid fa-angle-down"></i>
@@ -176,7 +178,7 @@ const CategoryProduct = () => {
 
       {/* Sale */}
       <div>
-        <h3>Giảm giá</h3>
+        <h3>{t("discount")}</h3>
         <div className="sale-filter">
           {ProductSale.length > 0 &&
             ProductSale.map((product) => (

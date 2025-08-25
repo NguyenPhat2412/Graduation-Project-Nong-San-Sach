@@ -5,6 +5,7 @@ import NavBar from "../NavBar/app.navbar";
 import "./app.contact.css";
 import { useState } from "react";
 import { notification } from "antd";
+import { useTranslation } from "react-i18next";
 const ContactMe = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,10 +13,12 @@ const ContactMe = () => {
   const [message, setMessages] = useState("");
   const [error, setError] = useState("");
 
+  const { t } = useTranslation();
+
   const [api, contextHolder] = notification.useNotification();
   const openNotification = (type, message) => {
     api[type]({
-      message: "Thông báo",
+      message: t("message"),
       description: message,
     });
   };
@@ -48,13 +51,13 @@ const ContactMe = () => {
         }
       );
       if (response.ok) {
-        openNotification("success", "Tin nhắn của bạn đã được gửi thành công!");
+        openNotification("success", t("contact_notification"));
         setName("");
         setEmail("");
         setSubject("");
         setMessages("");
       } else {
-        openNotification("error", "Đã xảy ra lỗi khi gửi tin nhắn.");
+        openNotification("error", t("contact_notification_error"));
       }
     }
   };
@@ -73,12 +76,9 @@ const ContactMe = () => {
       </div>
       <Container>
         <div>
-          <h1>Liên hệ với chúng tôi</h1>
-          <p>
-            Nếu bạn có bất kỳ câu hỏi nào hoặc cần hỗ trợ, hãy thoải mái liên hệ
-            với chúng tôi.
-          </p>
-          <p>Giải quyết vấn đề của bạn với đội ngũ hỗ trợ của chúng tôi.</p>
+          <h1>{t("contact_title")}</h1>
+          <p>{t("contact_desc1")}</p>
+          <p>{t("contact_desc2")}</p>
         </div>
         <div className="contact-form">
           <div className="contact-details">
@@ -98,26 +98,26 @@ const ContactMe = () => {
           <div className="contact-form-fields">
             {error && <p className="error-message">{error}</p>}
             <input
-              placeholder="Tên của bạn"
+              placeholder={t("contact_name_placeholder")}
               value={name}
               onChange={(e) => setName(e.target.value)}
             ></input>
             <input
-              placeholder="Email của bạn"
+              placeholder={t("contact_email_placeholder")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
             <input
-              placeholder="Chủ đề của bạn"
+              placeholder={t("contact_subject_placeholder")}
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
             ></input>
             <textarea
-              placeholder="Nội dung tin nhắn của bạn..."
+              placeholder={t("contact_message_placeholder")}
               value={message}
               onChange={(e) => setMessages(e.target.value)}
             ></textarea>
-            <button onClick={handleSubmit}>Gửi tin nhắn</button>
+            <button onClick={handleSubmit}>{t("contact_button")}</button>
           </div>
         </div>
       </Container>

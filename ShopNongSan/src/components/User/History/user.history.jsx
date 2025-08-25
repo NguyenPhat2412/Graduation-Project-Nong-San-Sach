@@ -7,12 +7,15 @@ import "./user.history.css";
 import { useEffect, useState } from "react";
 import { useUser } from "../../../UseContext/UserContext";
 import { Link, useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 const UserHistory = () => {
   const [dataOrder, setDataOrder] = useState([]);
   const [show, setShow] = useState(false);
   const { userInfo } = useUser();
   const userId = userInfo?._id;
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   // Fetch user order history
   useEffect(() => {
@@ -54,10 +57,12 @@ const UserHistory = () => {
         <div>
           <div>
             <div className="user-history-title">
-              <div className="user-history-title-text">Lịch sử đơn hàng</div>
+              <div className="user-history-title-text">
+                {t("history_title")}
+              </div>
               <div>
                 <Button onClick={() => setShow(!show)}>
-                  {show ? "Hiện ít hơn" : "Hiện nhiều hơn"}
+                  {show ? t("showLess") : t("showMore")}
                 </Button>
               </div>
             </div>
@@ -65,15 +70,15 @@ const UserHistory = () => {
               <thead>
                 {orderHistory.length > 0 ? (
                   <tr>
-                    <th>Order ID</th>
-                    <th>Ngày</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
+                    <th>{t("history_order_id")}</th>
+                    <th>{t("history_date")}</th>
+                    <th>{t("history_total")}</th>
+                    <th>{t("history_status")}</th>
+                    <th>{t("history_action")}</th>
                   </tr>
                 ) : (
                   <tr>
-                    <th colSpan="3">Không có lịch sử đơn hàng</th>
+                    <th colSpan="3">{t("history_empty")}</th>
                   </tr>
                 )}
               </thead>
@@ -92,7 +97,7 @@ const UserHistory = () => {
                         variant="primary"
                         className="view-order-button"
                       >
-                        Xem đơn hàng
+                        {t("history_see")}
                       </Button>
                     </td>
                   </tr>

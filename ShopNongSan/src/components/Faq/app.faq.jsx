@@ -3,7 +3,9 @@ import AppFooter from "../Footer/app.footer";
 import RegisterInformation from "../Home/RegisterInformation/app.register.information";
 import NavBar from "../NavBar/app.navbar";
 import "./app.faq.css";
+import { useTranslation } from "react-i18next";
 const AppFaq = () => {
+  const { t } = useTranslation();
   return (
     <div>
       <div>
@@ -19,36 +21,23 @@ const AppFaq = () => {
             className="faq-image"
           />
           <div>
-            <p>
-              Tôi tên là Nguyễn Xuân Phát, sinh năm 2005, là một người đam mê
-              lập trình. Là người đã tạo ra Nông sản Sạch, một trang web thương
-              mại điện tử chuyên cung cấp các sản phẩm nông sản sạch và an toàn.
-            </p>
+            <p>{t("about_intro")}</p>
           </div>
         </div>
         <div className="faq-content">
-          <h2>(FAQ)</h2>
+          <h2>{t("faq")}</h2>
           <ul>
             <li>
-              <strong>Q: Làm thế nào để đặt hàng?</strong>
-              <p>
-                A: Bạn có thể thêm sản phẩm vào giỏ hàng và tiến hành thanh
-                toán.
-              </p>
+              <strong>Q: {t("faq_q1")}</strong>
+              <p>A: {t("faq_a1")}</p>
             </li>
             <li>
-              <strong>Q: Chính sách đổi trả hàng hóa như thế nào?</strong>
-              <p>
-                A: Chúng tôi hỗ trợ đổi trả trong vòng 30 ngày nếu sản phẩm còn
-                nguyên vẹn.
-              </p>
+              <strong>Q: {t("faq_q2")}</strong>
+              <p>A: {t("faq_a2")}</p>
             </li>
             <li>
-              <strong>Q: Tôi có thể thanh toán bằng phương thức nào?</strong>
-              <p>
-                A: Chúng tôi chấp nhận thanh toán qua thẻ tín dụng, chuyển khoản
-                ngân hàng và tiền mặt khi nhận hàng.
-              </p>
+              <strong>Q: {t("faq_q3")}</strong>
+              <p>A: {t("faq_a3")}</p>
             </li>
           </ul>
         </div>

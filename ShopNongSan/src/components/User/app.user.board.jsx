@@ -3,8 +3,11 @@ import { Link } from "react-router";
 import "./app.user.board.css";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const AppUserBoard = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {
@@ -38,43 +41,43 @@ const AppUserBoard = () => {
       <div>
         <i className="fa-brands fa-windows"></i>
         <Link to="/user/dashboard" className="nav-link">
-          Bảng điều khiển
+          {t("dashboard")}
         </Link>
       </div>
       <div>
         <i className="fa-solid fa-clock-rotate-left"></i>
         <Link to="/user/order-history" className="nav-link">
-          Lịch sử đơn hàng
+          {t("order_history")}
         </Link>
       </div>
       <div>
         <i className="fa-solid fa-ticket"></i>
         <Link to="/user/coupon" className="nav-link">
-          Mã giảm giá
+          {t("coupon")}
         </Link>
       </div>
       <div>
         <i className="fa-regular fa-heart"></i>
         <Link to="/user/favorites" className="nav-link">
-          Sản phẩm yêu thích
+          {t("favorite_products")}
         </Link>
       </div>
       <div>
         <i className="fa-solid fa-cart-plus"></i>
         <Link to="/app/shop/cart" className="nav-link">
-          Giỏ hàng
+          {t("cart")}
         </Link>
       </div>
       <div>
         <i className="fa-solid fa-gear"></i>
         <Link to="/user/settings" className="nav-link">
-          Cài đặt
+          {t("setting")}
         </Link>
       </div>
       <div>
         <i className="fa-solid fa-right-to-bracket"></i>
         <Link to="/account/login" className="nav-link" onClick={handleLogout}>
-          Đăng xuất
+          {t("logout")}
         </Link>
       </div>
     </Container>

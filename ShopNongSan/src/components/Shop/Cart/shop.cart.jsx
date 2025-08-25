@@ -12,11 +12,14 @@ import {
   fetchCart,
   updateCart,
 } from "../../Home/Redux/redux.controllerDatabase";
+import { useTranslation } from "react-i18next";
 const ShopCart = () => {
   const cart = useSelector((state) => state.cart.listCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { userInfo } = useUser();
+
+  const { t } = useTranslation();
 
   const userId = userInfo?._id;
 
@@ -78,12 +81,12 @@ const ShopCart = () => {
         <main>
           {cart.length === 0 ? (
             <div className="empty-cart-message">
-              Giỏ hàng của bạn đang trống. <br />
+              {t("cart_empty")}. <br />
               <button
                 className="cart-go-to-cart"
                 onClick={() => navigate("/app/shop")}
               >
-                Đi đến cửa hàng
+                {t("cart_go_to_shop")}
               </button>
             </div>
           ) : (
@@ -92,12 +95,12 @@ const ShopCart = () => {
                 <table>
                   <thead>
                     <tr>
-                      <th>Hình ảnh</th>
-                      <th>Sản phẩm</th>
-                      <th>Giá</th>
-                      <th>Số lượng</th>
-                      <th>Tổng</th>
-                      <th>Hành động</th>
+                      <th>{t("cart_image")}</th>
+                      <th>{t("cart_item")}</th>
+                      <th>{t("cart_price")}</th>
+                      <th>{t("cart_quantity")}</th>
+                      <th>{t("cart_total")}</th>
+                      <th>{t("cart_action")}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,7 +136,7 @@ const ShopCart = () => {
                               handleDeleteCart(userId, item.productId)
                             }
                           >
-                            Xóa
+                            {t("cart_delete")}
                           </button>
                         </td>
                       </tr>
@@ -145,10 +148,10 @@ const ShopCart = () => {
                     onClick={() => navigate("/shop")}
                     className="px-4 py-2"
                   >
-                    Tiếp tục mua sắm
+                    {t("cart_shopping")}
                   </button>
                   <button onClick={handleProceed} className="px-4 py-2">
-                    Tiến hành thanh toán
+                    {t("checkout")}
                   </button>
                 </div>
               </div>
@@ -156,27 +159,26 @@ const ShopCart = () => {
           )}
         </main>
         <div className="cart-summary">
-          <span className="cart-total-check">TỔNG GIÁ TRỊ GIỎ HÀNG</span>
+          <span className="cart-total-check">{t("cart_summary")}</span>
           <div className="cart-total-details-container">
             <div className="cart-total-details">
-              <span className="cart-subtotal-label">TẠM TÍNH</span>
+              <span className="cart-subtotal-label">{t("cart_subtotal")}</span>
               <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
             <div className="cart-total-details">
-              <span className="cart-shipping-label">PHÍ VẬN CHUYỂN</span>
-              <span className="text-gray-500">Miễn phí vận chuyển</span>
+              <span className="cart-shipping-label">{t("cart_shipping")}</span>
+              <span className="text-gray-500">{t("cart_shipping_text")}</span>
             </div>
             <div className="cart-total-details">
-              <span className="cart-total-label">TỔNG</span>
+              <span className="cart-total-label">
+                {t("cart_total_uppercase")}
+              </span>
               <span className="text-gray-500">{totalPrice.toFixed(2)} VND</span>
             </div>
           </div>
-          <input
-            placeholder="Nhập mã giảm giá của bạn"
-            className="coupon-input"
-          />
+          <input placeholder={t("cart_coupon")} className="coupon-input" />
           <button className="apply-coupon-button">
-            <i className="fa-solid fa-gift"></i> Áp dụng mã giảm giá
+            <i className="fa-solid fa-gift"></i> {t("cart_coupon")}
           </button>
         </div>
       </Container>

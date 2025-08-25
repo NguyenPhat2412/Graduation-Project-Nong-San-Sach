@@ -1,7 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./app.modal.css";
+import { useTranslation } from "react-i18next";
 const ModalRegister = (props) => {
+  const { t } = useTranslation();
   return (
     <Modal
       {...props}
@@ -11,7 +13,7 @@ const ModalRegister = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Đăng ký nhận thông tin mới
+          {t("modal_title")}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body closeButton className="modal-body">
@@ -21,15 +23,14 @@ const ModalRegister = (props) => {
           />
         </div>
         <div className="modal-content-1">
-          <div className="modal-title-1">Đăng ký nhận thông tin mới</div>
+          <div className="modal-title-1">{t("modal_title")}</div>
           <p className="modal-title-2">
-            Đăng ký nhận bản tin của chúng tôi và tiết kiệm{" "}
-            <strong style={{ color: "#c2af07ff" }}>20% tiền</strong> với mã giảm
-            giá hôm nay.
+            {t("modal_description")}{" "}
+            <strong style={{ color: "#c2af07ff" }}>{t("money")}</strong>
           </p>
           <div className="input-form-2">
-            <input type="email" placeholder="Nhập email của bạn" />
-            <Button className="subscribe-button">Đăng ký</Button>
+            <input type="email" placeholder={t("email")} />
+            <Button className="subscribe-button">{t("subscribe")}</Button>
           </div>
         </div>
       </Modal.Body>

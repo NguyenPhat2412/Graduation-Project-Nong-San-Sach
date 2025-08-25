@@ -2,6 +2,7 @@ import { notification } from "antd";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useTranslation } from "react-i18next";
 
 function UpdateUser(props) {
   const { userId, username, email } = props.profile;
@@ -9,8 +10,10 @@ function UpdateUser(props) {
   const [emailUser, setEmail] = useState(email);
   const formData = new FormData();
   const [avatarFile, setAvatarFile] = useState(null);
+
+  const { t } = useTranslation();
   if (!userId) {
-    return <div>Loading...</div>;
+    return <div>{t("userId_check")}</div>;
   }
 
   const [api, holderContext] = notification.useNotification();
@@ -19,7 +22,7 @@ function UpdateUser(props) {
     api[type]({
       description: message,
       placement: "topRight",
-      message: "Thông báo",
+      message: t("message"),
     });
   };
 
@@ -28,7 +31,6 @@ function UpdateUser(props) {
     e.preventDefault();
     formData.append("username", name);
     formData.append("email", emailUser);
-    console.log("data được gửi đi", formData);
     if (avatarFile) {
       formData.append("avatar", avatarFile);
     }
@@ -43,7 +45,7 @@ function UpdateUser(props) {
     const data = await response.json();
 
     if (!response.ok) {
-      openNotification("error", "Failed to update user information.");
+      openNotification("error", t("Failed to update user information."));
       return;
     }
 
@@ -61,7 +63,7 @@ function UpdateUser(props) {
       {holderContext}
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Update User Information
+          {t("user_title_update")}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -104,12 +106,12 @@ function UpdateUser(props) {
             />
           </div>
           <Button variant="primary" onClick={UpdateUser}>
-            Update
+            {t("update")}
           </Button>
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={props.onHide}>{t("close")}</Button>
       </Modal.Footer>
     </Modal>
   );
