@@ -90,6 +90,7 @@ const resources = {
       // update user
       user_title_update: "Update User Information",
       update: "Update",
+      update_failed: "Failed to update user information",
 
       close: "Close",
 
@@ -175,6 +176,10 @@ const resources = {
       price: "Price",
       evaluate: "Evaluate",
       discount: "Discount",
+
+      data_loading: "Loading data...",
+      data_error: "Not found your order",
+      data_information: "Order information",
     },
   },
   vi: {
@@ -263,6 +268,7 @@ const resources = {
       userId_check: "Bạn cần đăng nhập trước khi sử dụng dịch vụ",
       user_title_update: "Cập nhật thông tin người dùng",
       update: "Cập nhật",
+      update_failed: "Cập nhật không thành công",
 
       // message
       message: "Thông báo",
@@ -351,6 +357,10 @@ const resources = {
       price: "Giá cả",
       evaluate: "Đánh giá",
       discount: "Giảm giá",
+
+      data_loading: "Đang tải dữ liệu đơn hàng...",
+      data_error: "Không tìm thấy đơn hàng",
+      data_information: "Thông tin đơn hàng",
     },
   },
 };

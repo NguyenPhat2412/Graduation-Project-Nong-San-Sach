@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import "./user.order.viewOrder.css";
+import { useTranslation } from "react-i18next";
 
 const ViewOrder = () => {
   const { orderId } = useParams();
@@ -8,6 +9,7 @@ const ViewOrder = () => {
   const [viewOrder, setViewOrder] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const { t } = useTranslation();
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
@@ -29,16 +31,16 @@ const ViewOrder = () => {
   }, [orderId]);
 
   if (loading) {
-    return <p className="text-center">Đang tải dữ liệu đơn hàng...</p>;
+    return <p className="text-center">{t("data_loading")}</p>;
   }
 
   if (!viewOrder) {
-    return <p className="text-center text-red">Không tìm thấy đơn hàng.</p>;
+    return <p className="text-center text-red">{t("data_error")}</p>;
   }
 
   return (
     <div className="view-order-container">
-      <h1 className="view-order-title">Thông tin đơn hàng</h1>
+      <h1 className="view-order-title">{t("data_information")}</h1>
       <div className="view-order-info">
         <p>
           <span>ID User:</span> {viewOrder.userId?._id || "N/A"}

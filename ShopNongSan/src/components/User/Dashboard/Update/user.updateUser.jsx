@@ -45,7 +45,7 @@ function UpdateUser(props) {
     const data = await response.json();
 
     if (!response.ok) {
-      openNotification("error", t("Failed to update user information."));
+      openNotification("error", t("update_failed"));
       return;
     }
 
