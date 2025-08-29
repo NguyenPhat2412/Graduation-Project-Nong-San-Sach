@@ -55,21 +55,21 @@ const ViewOrder = () => {
           <span>Address:</span> {viewOrder.customer?.address}
         </p>
         <p>
-          <span>Tổng tiền:</span> {viewOrder?.totalAmount} VND
+          <span>{t("total")}</span> {viewOrder?.totalAmount} VND
         </p>
       </div>
 
       <h3 style={{ marginTop: "30px", marginBottom: "10px" }}>
-        Danh sách sản phẩm
+        {t("productList")}
       </h3>
       <table className="product-table">
         <thead>
           <tr>
-            <th>Id product</th>
-            <th>Image</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>{t("productId")}</th>
+            <th>{t("cart_image")}</th>
+            <th>{t("Name")}</th>
+            <th>{t("cart_price")}</th>
+            <th>{t("cart_quantity")}</th>
           </tr>
         </thead>
         <tbody>
@@ -85,25 +85,20 @@ const ViewOrder = () => {
                   />
                 </td>
                 <td>{item.name}</td>
-                <td>
-                  {item.price.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
-                </td>
+                <td>{item.price.toFixed(2)} VND</td>
                 <td>{item.quantity}</td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="5">Không có sản phẩm nào.</td>
+              <td colSpan="5">{t("data_error")}</td>
             </tr>
           )}
         </tbody>
       </table>
 
       <button className="back-button" onClick={() => navigate("/account")}>
-        Quay lại danh sách đơn hàng
+        {t("cart_go_to_shop")}
       </button>
     </div>
   );
